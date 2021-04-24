@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishDataVault : MonoBehaviour
 {
-    public readonly int FISH_ID_MAX = 5;
+    public static readonly int FISH_ID_MAX = 5;
 
     public TextAsset fishDataCSV;
     private string[] rows;
