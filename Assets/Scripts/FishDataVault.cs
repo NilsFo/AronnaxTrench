@@ -24,7 +24,7 @@ public class FishDataVault : MonoBehaviour
 
     public string[] GetAllData(int id)
     {
-        if (rows == null)
+        if (rows == null || rows.Length == 0)
         {
             ReadData();
         }

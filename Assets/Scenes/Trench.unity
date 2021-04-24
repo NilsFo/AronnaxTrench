@@ -1639,6 +1639,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3153741207906967571, guid: addecfbff2798034b9619418e098f3a0, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 255106378}
+    - target: {fileID: 3153741207906967571, guid: addecfbff2798034b9619418e098f3a0, type: 3}
       propertyPath: submarineCanvas
       value: 
       objectReference: {fileID: 1696048882}

@@ -45,5 +45,7 @@ public class GameState : MonoBehaviour
     }
   }
 
+  public float CurrentDepth {get; set;}
+
 
 }

@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ScriptableObjectArchitecture;
 
 public class FishManagerAI : MonoBehaviour
 {
+    public GameState gameState;
 
     public FishDataVault dataVault;
     public GameObject fishPrefab;
@@ -12,7 +12,6 @@ public class FishManagerAI : MonoBehaviour
     public Canvas submarineCanvas;
     public int spawnDelay = 3;
     public int spawnDelayJitter = 2;
-    public FloatVariable currentDepth;
 
     public int spawnPositionMinY = 50;
     public int spawnPositionMaxY = 650;
@@ -41,7 +40,7 @@ public class FishManagerAI : MonoBehaviour
     {
         int startY = Random.Range(spawnPositionMinY, spawnPositionMaxY);
 
-        List<int> fishIDs = dataVault.GetAllFishForDepth(currentDepth.Value);
+        List<int> fishIDs = dataVault.GetAllFishForDepth(gameState.CurrentDepth);
         //print("Choose one fish from those IDs: " + fishIDs.Count+": "+ System.String.Join(", ", fishIDs.ToArray()));
         if (!(fishIDs.Count == 0))
         {
