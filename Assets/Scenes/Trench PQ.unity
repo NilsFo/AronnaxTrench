@@ -1180,6 +1180,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 2835684198147475171, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_Name
+      value: DepthZeiger
+      objectReference: {fileID: 0}
     - target: {fileID: 2835684198876761082, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: gameState
       value: 

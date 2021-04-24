@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2835684198147475172}
   - component: {fileID: 2835684198147475173}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DepthZeiger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,18 +25,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2835684198147475171}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9686905, w: 0.24827133}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3.676184, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 2835684198876761083}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 151.25}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 978.8812, y: -281.60074}
-  m_SizeDelta: {x: 126.1694, y: 4.2637}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 956, y: -374.5}
+  m_SizeDelta: {x: 5, y: 36}
+  m_Pivot: {x: 0.5, y: 0.1}
 --- !u!222 &2835684198147475172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 714270f05c05f9249b4de7a0ae006588, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
