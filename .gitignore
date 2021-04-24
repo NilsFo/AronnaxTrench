@@ -95,3 +95,4 @@ $RECYCLE.BIN/
 
 # Aseprite
 *.aseprite
+*.aseprite.meta

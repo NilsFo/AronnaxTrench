@@ -10,7 +10,7 @@ public class FollowPlayerRotation: MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.rotation = Quaternion.Euler(0, gameState.PlayerRotation, 0);
+        transform.localRotation = Quaternion.Euler(0, gameState.PlayerRotation, 0);
     }
     
     
