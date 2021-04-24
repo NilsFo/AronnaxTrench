@@ -14,6 +14,9 @@ public class FishManagerAI : MonoBehaviour
     public int spawnDelayJitter = 2;
     public FloatVariable currentDepth;
 
+    public int spawnPositionMinY = 50;
+    public int spawnPositionMaxY = 650;
+
     public float currentCountDown;
 
     // Start is called before the first frame update
@@ -36,7 +39,7 @@ public class FishManagerAI : MonoBehaviour
 
     public void SpawnNextFish()
     {
-        int startY = Random.Range(50, 350);
+        int startY = Random.Range(spawnPositionMinY, spawnPositionMaxY);
 
         List<int> fishIDs = dataVault.GetAllFishForDepth(currentDepth.Value);
         //print("Choose one fish from those IDs: " + fishIDs.Count+": "+ System.String.Join(", ", fishIDs.ToArray()));

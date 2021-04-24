@@ -681,3 +681,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishDataCSV: {fileID: 4900000, guid: 1a0959abec9c2fd4fbce413c8d8ff50f, type: 3}
+  fishSprites: []
+  fishGradients: []

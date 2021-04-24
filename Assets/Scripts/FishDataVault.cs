@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishDataVault : MonoBehaviour
 {
-    public readonly int FISH_ID_MAX = 4;
+    public readonly int FISH_ID_MAX = 5;
 
     public TextAsset fishDataCSV;
     private string[] rows;
@@ -94,7 +94,29 @@ public class FishDataVault : MonoBehaviour
 
     public float GetSpeedX(int id)
     {
-        return float.Parse(GetAllData(id)[4]);
+        return float.Parse(GetAllData(id)[5]);
     }
+
+    public float GetAliveTime(int id)
+    {
+        return float.Parse(GetAllData(id)[9]);
+    }
+
+    public float GetMagnitudeY(int id)
+    {
+        return float.Parse(GetAllData(id)[8]);
+    }
+
+    public float GetMagnitudeX(int id)
+    {
+        return float.Parse(GetAllData(id)[7]);
+    }
+
+    public float GetJitterY(int id)
+    {
+        return float.Parse(GetAllData(id)[6]);
+    }
+
+
 
 }
