@@ -10,5 +10,6 @@ public class FollowSubRotation : MonoBehaviour
     void FixedUpdate()
     {
         transform.localRotation = Quaternion.Euler(0, gameState.SubmarineRotation, 0);
+        transform.position = new Vector3(0,gameState.CurrentDepth, 0);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +5,18 @@ using UnityEngine.Serialization;
 
 public class GameState : MonoBehaviour
 {
-  //private
-  [SerializeField]
+
+    void Start()
+    {
+        caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
+        for (int i = 0; i < FishDataVault.FISH_ID_MAX; i++)
+        {
+            caughtFishIDs[i] = false;
+        }
+    }
+
+    //private
+    [SerializeField]
   private float depth = 0;
   
   [SerializeField]
@@ -20,7 +29,7 @@ public class GameState : MonoBehaviour
   private float pumpPressure = 20f;
   
   [SerializeField]
-  private float targetDivePressure = 0f;
+  private float targetDivePressure = 0f;  // 
   
   [SerializeField]
   private float currentDivePressure = 0f;
@@ -29,7 +38,7 @@ public class GameState : MonoBehaviour
   private float interiorPressure = 0f;
   
   [SerializeField]
-  private float exteriorPressure = 0f;
+  private float exteriorPressureFactor = 1f;
   
   
   [SerializeField]
@@ -47,9 +56,13 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float playerRotationSpeed = 0;
-  
+
+    [SerializeField]
+    public bool[] caughtFishIDs;
+
+
   //public
-  public float PlayerRotation
+    public float PlayerRotation
   {
     get => playerRotation;
     set
@@ -127,8 +140,7 @@ public class GameState : MonoBehaviour
 
   public float ExteriorPressure
   {
-    get => exteriorPressure;
-    set => exteriorPressure = value;
+    get => (depth - 20) * exteriorPressureFactor;
   }
 
   void Update()
@@ -137,6 +149,17 @@ public class GameState : MonoBehaviour
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
     
     //Submarine Player
-    SubmarineRotation = SubmarineThrust * Time.deltaTime;
+    SubmarineRotation += SubmarineThrust * Time.deltaTime;
+
+    if(currentDivePressure != targetDivePressure) {
+        var diveDirection = currentDivePressure < targetDivePressure ? 1:-1;
+        currentDivePressure += pumpPressure * diveDirection * Time.deltaTime;
+        if(diveDirection > 0 != currentDivePressure < targetDivePressure) {
+          currentDivePressure = targetDivePressure;
+        }
+    }
+
+    depth += (ExteriorPressure - currentDivePressure) * 0.0001f;
   }
+
 }
