@@ -646,6 +646,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3153741207906967571, guid: addecfbff2798034b9619418e098f3a0, type: 3}
+      propertyPath: dataVault
+      value: 
+      objectReference: {fileID: 3153741207575751415}
+    - target: {fileID: 3153741207906967571, guid: addecfbff2798034b9619418e098f3a0, type: 3}
       propertyPath: fishPrefab
       value: 
       objectReference: {fileID: 2970050161132130030, guid: 4514d9d4576841249b713eb9a71f5827, type: 3}
@@ -659,3 +663,21 @@ PrefabInstance:
       objectReference: {fileID: 190736075}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: addecfbff2798034b9619418e098f3a0, type: 3}
+--- !u!1 &3153741207575751414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3153741207906967568, guid: addecfbff2798034b9619418e098f3a0, type: 3}
+  m_PrefabInstance: {fileID: 3153741207575751413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3153741207575751415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153741207575751414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fb15ef381d0dd4ea5daa9f4c19a783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishDataCSV: {fileID: 4900000, guid: 1a0959abec9c2fd4fbce413c8d8ff50f, type: 3}

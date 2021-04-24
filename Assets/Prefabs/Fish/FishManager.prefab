@@ -43,10 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b0ed5d4b9cdfb42955ea0fe9a25e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataVault: {fileID: 1107834043851704517, guid: c195d7ca7ffbecb4b8b929a5efbd4489, type: 3}
   fishPrefab: {fileID: 2970050161132130030, guid: 4514d9d4576841249b713eb9a71f5827, type: 3}
   playerCamera: {fileID: 0}
   submarineCanvas: {fileID: 0}
   spawnDelay: 2
   spawnDelayJitter: 1
-  fishDataCSV: {fileID: 4900000, guid: 1a0959abec9c2fd4fbce413c8d8ff50f, type: 3}
+  currentDepth: {fileID: 11400000, guid: 32280919fd56e8a4ea44d37680db07d8, type: 2}
   currentCountDown: 0

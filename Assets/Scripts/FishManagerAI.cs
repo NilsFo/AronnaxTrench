@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class FishManagerAI : MonoBehaviour
 {
 
+    public FishDataVault dataVault;
     public GameObject fishPrefab;
     public Camera playerCamera;
     public Canvas submarineCanvas;
     public int spawnDelay = 3;
     public int spawnDelayJitter = 2;
+    public FloatVariable currentDepth;
 
     public float currentCountDown;
 
@@ -34,12 +37,24 @@ public class FishManagerAI : MonoBehaviour
     public void SpawnNextFish()
     {
         int startY = Random.Range(50, 350);
-        GameObject fish = Instantiate(fishPrefab, new Vector3(0, startY, 0), Quaternion.identity);
 
+        List<int> fishIDs = dataVault.GetAllFishForDepth(currentDepth.Value);
+        //print("Choose one fish from those IDs: " + fishIDs.Count+": "+ System.String.Join(", ", fishIDs.ToArray()));
+        if (!(fishIDs.Count == 0))
+        {
+            int index = Random.Range(0,fishIDs.Count-1);
+            //print("Reqesting ID index: " + index);
+            int id = fishIDs[index];
+            CreateFish(id,startY);
+        }
+    }
+
+    public void CreateFish(int id, int yPosition)
+    {
+        //print("Spawning fish with ID: " + id);
+        GameObject fish = Instantiate(fishPrefab, new Vector3(0, yPosition, 0), Quaternion.identity);
         fish.transform.SetParent(submarineCanvas.transform);
         FishAI fai = fish.GetComponent<FishAI>();
-
-        int id = Random.Range(0, 3);
         fai.id = id;
     }
 
@@ -55,4 +70,5 @@ public class FishManagerAI : MonoBehaviour
     {
         return 5;
     }
+
 }

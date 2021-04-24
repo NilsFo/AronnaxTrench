@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class FishAI : MonoBehaviour, IPointerClickHandler
 {
 
+    public Image myImage;
+    public FishDataVault dataVault;
     public float currentCountDown;
     public int id=0;
-    public int minDepth;
-    public int maxDepth;
+    public float minDepth;
+    public float maxDepth;
+    public int rarity;
     public string fishName = "";
-    public FishDataVault dataVault;
+    public float speedX;
 
     // Start is called before the first frame update
     void Start()
     {
+        dataVault.ReadData();
         InitData(id);
     }
 
@@ -23,13 +28,17 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     void Update()
     {
         currentCountDown = currentCountDown + Time.deltaTime;
-        Transform t = GetComponent<Transform>();
-        t.position = new Vector3(t.position.x+currentCountDown, t.position.y,t.position.z);
 
         if(currentCountDown > 5)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void FixedUpdate()
+    {
+        Transform t = GetComponent<Transform>();
+        t.position = new Vector3(t.position.x + speedX, t.position.y, t.position.z);
     }
 
 
@@ -48,9 +57,17 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     {
         string[] data = dataVault.GetAllData(id);
 
-        this.id = int.Parse(data[0]);
-        this.fishName = data[1];
-        this.minDepth = int.Parse(data[2]);
-        this.maxDepth = int.Parse(data[3]);
+        //print(id);
+        //print(data);
+        this.id = id;
+        this.fishName = dataVault.GetName(id);
+        this.minDepth = dataVault.GetMinDepth(id);
+        this.maxDepth = dataVault.GetMaxDepth(id);
+        this.rarity = dataVault.GetRarity(id);
+        this.speedX = dataVault.GetSpeedX(id);
+
+        myImage.sprite = dataVault.GetSprite(id);
     }
+
+
 }
