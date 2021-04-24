@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 2970050161132130030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,11 +88,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSeedX: 0
+  movementSeedY: 0
+  myManager: {fileID: 0}
+  gameState: {fileID: 0}
   myImage: {fileID: 2970050161132130029}
   dataVault: {fileID: 1107834043851704517, guid: c195d7ca7ffbecb4b8b929a5efbd4489, type: 3}
-  currentCountDown: 0
+  aliveTime: 0
   id: 0
   minDepth: 0
   maxDepth: 0
   rarity: 0
   fishName: 
+  reverseDirection: 0
+  aliveTimeMax: 5
+  speedX: 0
+  magnitudeY: 0
+  jitterY: 0
+  magnitudeX: 0
+  startDepth: 0

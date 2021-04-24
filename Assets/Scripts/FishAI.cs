@@ -11,6 +11,9 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     public FishManagerAI myManager;
     public GameState gameState;
 
+    public float StartPosX = -250;
+    public float EndPosX = -3753;
+
     public Image myImage;
     public FishDataVault dataVault;
     public float aliveTime;
@@ -19,6 +22,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     public float maxDepth;
     public int rarity;
     public string fishName = "";
+    public bool reverseDirection = false;
 
     public float aliveTimeMax = 5;
     public float speedX;
@@ -29,6 +33,10 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     private Transform t;
     private float startY = 0;
     private float despawnTimer = 3;
+    public float startDepth;
+
+    public float worldX;
+    public float worldY;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +49,8 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         movementSeedY = Random.Range(0, 100);
         despawnTimer = 3;
         startY = t.position.y;
+        StartPosX = -250;
+        EndPosX = -3753;
     }
 
     // Update is called once per frame
@@ -48,6 +58,8 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     {
         aliveTime = aliveTime + Time.deltaTime;
 
+
+        /*
         if (AllowDespawnTimer())
         {
             despawnTimer = despawnTimer - Time.deltaTime;
@@ -59,20 +71,30 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         else
         {
             despawnTimer = 3;
-        }
+        }*/
     }
 
     void FixedUpdate()
     {
-        float x = t.position.x;
-        float y = startY;
+        float x = worldX;
+        float y = worldY;
 
         float mx = speedX * (Mathf.Sin(aliveTime) + 1) * magnitudeX;
         mx = Mathf.Max(mx, 0.0001f);
-
+        if (reverseDirection)
+        {
+            mx = mx * -1;
+        }
         float my = jitterY * Mathf.Sin(magnitudeY + aliveTime);
+        float newValue = (EndPosX - StartPosX) * (gameState.PlayerRotation / 360);
 
-        t.position = new Vector3(x + mx, y + my, t.position.z);
+        //mx = 0;
+        //my = 0;
+
+        worldX = mx + x;
+        worldY = my + y;
+
+        transform.position = new Vector3(worldX + newValue, worldY, transform.position.z);
     }
 
 
