@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe80f360dcb4864581ce8c57f5f36cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {fileID: 11400000, guid: 19bb22763f3810d429f188f5ba36eccf, type: 2}
+  gameState: {fileID: 0}
   rotationSpeed: 10
 --- !u!1 &4718375307250050636
 GameObject:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe80f360dcb4864581ce8c57f5f36cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {fileID: 11400000, guid: 19bb22763f3810d429f188f5ba36eccf, type: 2}
+  gameState: {fileID: 0}
   rotationSpeed: -10
 --- !u!1 &4718375307292830689
 GameObject:
@@ -331,7 +331,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4718375307292830695
 MonoBehaviour:
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
