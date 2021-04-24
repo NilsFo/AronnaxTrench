@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class RotatedCam : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public FloatVariable rotation;
+    public GameState gameState;
     public float rotationSpeed = 3;
     
     private float _currentRotationSpeed;
@@ -16,9 +15,7 @@ public class RotatedCam : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         // The step size is equal to speed times frame time.
         float singleStep = _currentRotationSpeed * Time.deltaTime;
-        float newValue = singleStep + rotation.Value;
-
-        rotation.Value = newValue;
+        gameState.PlayerRotation = singleStep + gameState.PlayerRotation;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
