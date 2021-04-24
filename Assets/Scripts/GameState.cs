@@ -5,8 +5,18 @@ using UnityEngine.Serialization;
 
 public class GameState : MonoBehaviour
 {
-  //private
-  [SerializeField]
+
+    void Start()
+    {
+        caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
+        for (int i = 0; i < FishDataVault.FISH_ID_MAX; i++)
+        {
+            caughtFishIDs[i] = false;
+        }
+    }
+
+    //private
+    [SerializeField]
   private float depth = 0;
   
   [SerializeField]
@@ -46,9 +56,9 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float playerRotationSpeed = 0;
-  
-  [SerializeField]
-  public bool[] caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
+
+    [SerializeField]
+    public bool[] caughtFishIDs;
 
 
   //public

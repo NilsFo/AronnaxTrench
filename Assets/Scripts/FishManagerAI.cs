@@ -54,10 +54,17 @@ public class FishManagerAI : MonoBehaviour
         }
     }
 
-    public void CreateFish(int id, int yPosition)
+    public void CreateFish(int id, int startY)
     {
+        bool reversed = Random.value >= 0.5;
+        float startX = Random.Range(-250, -550);
+        if (reversed)
+        {
+
+        }
+
         //print("Spawning fish with ID: " + id);
-        GameObject fish = Instantiate(fishPrefab, new Vector3(0, yPosition, 0), Quaternion.identity);
+        GameObject fish = Instantiate(fishPrefab, new Vector3(startX, startY, 0), Quaternion.identity);
         fish.transform.SetParent(submarineCanvas.transform);
         myFish.Add(fish.gameObject);
 
@@ -65,6 +72,16 @@ public class FishManagerAI : MonoBehaviour
         fai.id = id;
         fai.myManager = this;
         fai.gameState = gameState;
+        fai.startDepth = gameState.CurrentDepth;
+        fai.worldX = startX;
+        fai.worldY = startY;
+
+        if (reversed)
+        {
+            fai.reverseDirection = true;
+            fai.transform.localScale = new Vector3(fai.transform.localScale.x*-1, fai.transform.localScale.y, fai.transform.localScale.z);
+        }
+        
     }
 
     public void InitFishSpawn()
