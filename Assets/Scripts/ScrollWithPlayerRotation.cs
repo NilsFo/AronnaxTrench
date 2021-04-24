@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class ScrollWithRotaion : MonoBehaviour
+public class ScrollWithPlayerRotation : MonoBehaviour
 {
     public GameState gameState;
     

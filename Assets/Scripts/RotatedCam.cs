@@ -8,24 +8,15 @@ public class RotatedCam : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public GameState gameState;
     public float rotationSpeed = 3;
-    
-    private float _currentRotationSpeed;
-    
-    void Update()
-    {
-        // The step size is equal to speed times frame time.
-        float singleStep = _currentRotationSpeed * Time.deltaTime;
-        gameState.PlayerRotation = singleStep + gameState.PlayerRotation;
-    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _currentRotationSpeed = rotationSpeed;
+        gameState.PlayerRotationSpeed = rotationSpeed;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _currentRotationSpeed = 0;
+        gameState.PlayerRotationSpeed = 0;
     }
 
     
