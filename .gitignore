@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Uu]serSettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -22,6 +23,7 @@
 # Visual Studio cache directory
 .vs/
 .vscode/
+.idea/
 
 # Gradle cache directory
 .gradle/
@@ -88,3 +90,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+# Aseprite
+*.aseprite
