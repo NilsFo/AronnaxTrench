@@ -692,7 +692,8 @@ MonoBehaviour:
   maxDepthInM: 10000
   maxDivePressure: 1000
   pumpPressure: 0
-  divePressure: 0
+  targetDivePressure: 0
+  currentDivePressure: 0
   interiorPressure: 0
   exteriorPressure: 0
   submarineRotation: 0
