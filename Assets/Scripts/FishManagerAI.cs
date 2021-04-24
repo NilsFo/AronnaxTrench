@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishManagerAI : MonoBehaviour
 {
     public GameState gameState;
+    public List<GameObject> myFish;
 
     public FishDataVault dataVault;
     public GameObject fishPrefab;
@@ -21,6 +22,8 @@ public class FishManagerAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myFish = new List<GameObject>();
+
         InitFishSpawn();
     }
 
@@ -56,8 +59,12 @@ public class FishManagerAI : MonoBehaviour
         //print("Spawning fish with ID: " + id);
         GameObject fish = Instantiate(fishPrefab, new Vector3(0, yPosition, 0), Quaternion.identity);
         fish.transform.SetParent(submarineCanvas.transform);
+        myFish.Add(fish.gameObject);
+
         FishAI fai = fish.GetComponent<FishAI>();
         fai.id = id;
+        fai.myManager = this;
+        fai.gameState = gameState;
     }
 
     public void InitFishSpawn()

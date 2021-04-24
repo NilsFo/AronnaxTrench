@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,8 +47,12 @@ public class GameState : MonoBehaviour
   [SerializeField]
   private float playerRotationSpeed = 0;
   
+  [SerializeField]
+  public bool[] caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
+
+
   //public
-  public float PlayerRotation
+    public float PlayerRotation
   {
     get => playerRotation;
     set

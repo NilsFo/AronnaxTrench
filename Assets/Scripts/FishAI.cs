@@ -8,6 +8,8 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 {
     public float movementSeedX;
     public float movementSeedY;
+    public FishManagerAI myManager;
+    public GameState gameState;
 
     public Image myImage;
     public FishDataVault dataVault;
@@ -26,6 +28,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     private Transform t;
     private float startY = 0;
+    private float despawnTimer = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
         movementSeedX = Random.Range(0, 100);
         movementSeedY = Random.Range(0, 100);
+        despawnTimer = 3;
         startY = t.position.y;
     }
 
@@ -44,9 +48,17 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     {
         aliveTime = aliveTime + Time.deltaTime;
 
-        if(aliveTime > aliveTimeMax)
+        if (AllowDespawnTimer())
         {
-            Destroy(this.gameObject);
+            despawnTimer = despawnTimer - Time.deltaTime;
+            if(despawnTimer < 0)
+            {
+                RemoveFish();
+            }
+        }
+        else
+        {
+            despawnTimer = 3;
         }
     }
 
@@ -55,7 +67,9 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         float x = t.position.x;
         float y = startY;
 
-        float mx = speedX + (Mathf.Sin(aliveTime) + 1) * magnitudeX;
+        float mx = speedX * (Mathf.Sin(aliveTime) + 1) * magnitudeX;
+        mx = Mathf.Max(mx, 0.0001f);
+
         float my = jitterY * Mathf.Sin(magnitudeY + aliveTime);
 
         t.position = new Vector3(x + mx, y + my, t.position.z);
@@ -70,7 +84,14 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Destroy(this.gameObject);
+        print("Player click: "+fishName);
+        bool[] caughtList = gameState.caughtFishIDs;
+        bool alreadyCaught = caughtList[id];
+        if (!alreadyCaught)
+        {
+            caughtList[id] = true;
+            print("New Catch!!");
+        }
     }
 
     public void InitData(int id)
@@ -105,5 +126,37 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         myImage.sprite = dataVault.GetSprite(id);
     }
 
+    public bool IsInPlayerView()
+    {
+        // TODO
+        return true;
+    }
+
+    public bool IsInComfortableDepth()
+    {
+        float depth = GetCurrentDepth();
+        return depth >= minDepth && depth <= maxDepth;
+    }
+
+    public float GetCurrentDepth()
+    {
+        return gameState.CurrentDepth;
+    }
+
+    public bool AllowDespawnTimer()
+    {
+        if(!IsInComfortableDepth() || aliveTime > aliveTimeMax)
+        {
+            return !IsInPlayerView();
+        }
+        return false;
+            
+    }
+
+    public void RemoveFish()
+    {
+        myManager.myFish.Remove(this.gameObject);
+        Destroy(this.gameObject);
+    }
 
 }
