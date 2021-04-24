@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 public class FishAI : MonoBehaviour, IPointerClickHandler
 {
 
-    public TextAsset fishDataCSV;
     public float currentCountDown;
     public int id=0;
     public int minDepth;
     public int maxDepth;
     public string fishName = "";
+    public FishDataVault dataVault;
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +46,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     public void InitData(int id)
     {
-        string rawData = fishDataCSV.text;
-        string[] rows = rawData.Split('\n');
-
-        string row = rows[id+1];
-        string[] data = row.Split(';');
+        string[] data = dataVault.GetAllData(id);
 
         this.id = int.Parse(data[0]);
         this.fishName = data[1];

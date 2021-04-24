@@ -39,7 +39,7 @@ public class FishManagerAI : MonoBehaviour
         fish.transform.SetParent(submarineCanvas.transform);
         FishAI fai = fish.GetComponent<FishAI>();
 
-        int id = Random.Range(0, 4);
+        int id = Random.Range(0, 3);
         fai.id = id;
     }
 
