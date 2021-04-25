@@ -14,19 +14,25 @@ public class SwitchableLamp : MonoBehaviour
     }
 
     public LampPos lampPos;
+    private Light _light;
 
     // Update is called once per frame
+    private void Start()
+    {
+        _light = GetComponent<Light>();
+    }
+
     void Update()
     {
         switch(lampPos) {
             case LampPos.Front:
-                GetComponent<Light>().enabled = gameState.MidSpotState == GameState.MaschienState.On;
+                _light.enabled = gameState.MidSpotState == GameState.MaschienState.On;
                 break;
             case LampPos.RearLeft:
-                GetComponent<Light>().enabled = gameState.LeftSpotState == GameState.MaschienState.On;
+                _light.enabled = gameState.LeftSpotState == GameState.MaschienState.On;
                 break;
             case LampPos.RearRight:
-                GetComponent<Light>().enabled = gameState.RightSpotState == GameState.MaschienState.On;
+                _light.enabled = gameState.RightSpotState == GameState.MaschienState.On;
                 break;
             
 
