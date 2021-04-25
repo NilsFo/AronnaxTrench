@@ -289,6 +289,9 @@ MonoBehaviour:
   targetDivePressure: 0
   currentDivePressure: 500
   interiorPressure: 0
+  maxInteriorPressurePumpPressure: 20
+  interiorPressurePumpPressure: 0
+  maxPressureDifference: 250
   exteriorPressureFactor: -10
   submarineRotation: 0
   submarineMaxThrust: 20
@@ -306,6 +309,13 @@ MonoBehaviour:
   engienState: 1
   lightState: 1
   spotState: 1
+  mainFuse: 0
+  fuseOne: 0
+  fuseTwo: 0
+  fuseThree: 0
+  fuseFour: 0
+  fuseFive: 0
+  fuseSix: 0
 --- !u!4 &255106379
 Transform:
   m_ObjectHideFlags: 0
@@ -717,26 +727,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1325218963929540541, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325218963929540541, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325218963929540541, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2632640605925133925, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: gameState
       value: 
       objectReference: {fileID: 255106378}
-    - target: {fileID: 2835684198876761082, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 255106378}
-    - target: {fileID: 2835684199318688700, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 255106378}
-    - target: {fileID: 2835684199474234920, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835684199474234920, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2835684199710545919, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -849,14 +855,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7152468033279913847, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 255106378}
-    - target: {fileID: 8207046370633459708, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 255106378}
+    - target: {fileID: 5350577694708613593, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438827808693545931, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
 --- !u!1001 &4550284927100037028

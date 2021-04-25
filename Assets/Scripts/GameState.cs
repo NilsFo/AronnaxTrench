@@ -7,6 +7,12 @@ using UnityEngine.Serialization;
 public class GameState : MonoBehaviour
 {
 
+  public enum FuseState
+  {
+    On,
+    Off
+  }
+  
   public enum MaschienState
   {
     On, 
@@ -32,6 +38,15 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float interiorPressure = 0f;
+  
+  [SerializeField]
+  private float maxInteriorPressurePumpPressure = 20f;
+  
+  [SerializeField]
+  private float interiorPressurePumpPressure = 0f;
+  
+  [SerializeField]
+  private float maxPressureDifference = 250f;
   
   [SerializeField]
   private float exteriorPressureFactor = 1f;
@@ -83,6 +98,21 @@ public class GameState : MonoBehaviour
   
   [SerializeField] 
   private MaschienState spotState = MaschienState.Off;
+  
+  //FuseBox
+  [SerializeField] private FuseState mainFuse = FuseState.On;
+  
+  [SerializeField] private FuseState fuseOne = FuseState.On;
+  
+  [SerializeField] private FuseState fuseTwo = FuseState.On;
+  
+  [SerializeField] private FuseState fuseThree = FuseState.On;
+  
+  [SerializeField] private FuseState fuseFour = FuseState.On;
+  
+  [SerializeField] private FuseState fuseFive = FuseState.On;
+  
+  [SerializeField] private FuseState fuseSix = FuseState.On;
   
   //public
   public float PlayerRotation
@@ -161,10 +191,24 @@ public class GameState : MonoBehaviour
     set => interiorPressure = value;
   }
 
+  public float MaxInteriorPressure => maxDivePressure;
+
   public float ExteriorPressure
   {
     get => (depth - 20) * exteriorPressureFactor;
   }
+
+  public float MaxExteriorPressure => maxDivePressure;
+
+  public float MaxInteriorPressurePumpPressure => maxInteriorPressurePumpPressure;
+
+  public float InteriorPressurePumpPressure
+  {
+    get => interiorPressurePumpPressure;
+    set => interiorPressurePumpPressure = value;
+  }
+
+  public float HullIntegrity => (Mathf.Abs(interiorPressure - ExteriorPressure) / maxPressureDifference);
 
   public float NoiseLevel => noiseLevel;
 
@@ -199,7 +243,50 @@ public class GameState : MonoBehaviour
     get => spotState;
     set => spotState = value;
   }
-  
+
+  //FuseBox
+  public FuseState MainFuse
+  {
+    get => mainFuse;
+    set => mainFuse = value;
+  }
+
+  public FuseState FuseOne
+  {
+    get => fuseOne;
+    set => fuseOne = value;
+  }
+
+  public FuseState FuseTwo
+  {
+    get => fuseTwo;
+    set => fuseTwo = value;
+  }
+
+  public FuseState FuseThree
+  {
+    get => fuseThree;
+    set => fuseThree = value;
+  }
+
+  public FuseState FuseFour
+  {
+    get => fuseFour;
+    set => fuseFour = value;
+  }
+
+  public FuseState FuseFive
+  {
+    get => fuseFive;
+    set => fuseFive = value;
+  }
+
+  public FuseState FuseSix
+  {
+    get => fuseSix;
+    set => fuseSix = value;
+  }
+
   void Start()
   {
     caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
@@ -216,6 +303,10 @@ public class GameState : MonoBehaviour
     
     //Submarine Player
     SubmarineRotation += SubmarineThrust * Time.deltaTime;
+    
+    //Interior Pressuer
+    interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
+
 
     if(currentDivePressure != targetDivePressure) {
         var diveDirection = currentDivePressure < targetDivePressure ? 1:-1;
