@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using PathCreation;
 
 public class FishAI : MonoBehaviour, IPointerClickHandler
 {
 
-    public static readonly bool SELF_CATCH_ENABLED = true;
+
+    public static readonly bool SELF_CATCH_ENABLED = false;
 
     public float movementSeedX;
     public float movementSeedY;
     public FishManagerAI myManager;
     public GameState gameState;
+    public BillBoard myBillBoard;
 
     public float StartPosX = -250;
     public float EndPosX = -3753;
 
     public Image myImage;
+    public SpriteRenderer sprite;
     public FishDataVault dataVault;
     public float aliveTime;
     public int id=0;
@@ -26,6 +30,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     public int rarity;
     public string fishName = "";
     public bool reverseDirection = false;
+    public bool applyJitterToSpwawn = false;
 
     public float aliveTimeMax = 5;
     public float speedX;
@@ -41,6 +46,10 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     public float worldX;
     public float worldY;
     public float SelfCatchTimer = 3;
+
+    public PathCreator myPath;
+    public float dstTravelled;
+    public EndOfPathInstruction endOfPathBehaviour;
 
     // Start is called before the first frame update
     void Start()
@@ -91,33 +100,28 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
             }
         }
 
+        // Movement along a path
+        float speed = speedX;
 
-        // Movement
-        float x = worldX;
-        float y = worldY;
-        y = worldY - gameState.CurrentDepth;
+        //speed = 0.1f;
+        //magnitudeX = 0.1f;
+        //magnitudeY = 5;
+        //jitterY = 150;
+        //TODO why won't this be read??
 
-        float mx = speedX * (Mathf.Sin(aliveTime) + 1) * magnitudeX;
-        mx = Mathf.Max(mx, 0.0001f);
+        float mx = Mathf.Abs(Mathf.Sin(aliveTime)) * magnitudeX;
+        float my = Mathf.Sin(aliveTime * magnitudeY) * jitterY;
+
+        dstTravelled += (speed+mx) * Time.deltaTime;
+
+        float transformDistance = dstTravelled;
         if (reverseDirection)
         {
-            mx = mx * -1;
+            transformDistance = transformDistance * -1;
         }
-        float my = jitterY * Mathf.Sin(magnitudeY + aliveTime);
-        float rotationFactor = (EndPosX - StartPosX) * (gameState.PlayerRotation / 360);
 
-        //my = 0;
-        //mx = 0;
-        
-        worldX = mx + x;
-        worldY = my + y;
-        //float newX = worldX + rotationFactor;
-        //float newY = worldY;
-
-        float newX = mx + x + 1500;
-        float newY = my + y;
-
-        transform.position = new Vector3(newX, newY, transform.position.z);
+        transform.position = myPath.path.GetPointAtDistance(transformDistance, endOfPathBehaviour);
+        transform.rotation = myPath.path.GetRotationAtDistance(transformDistance, endOfPathBehaviour);
     }
 
 
@@ -161,19 +165,27 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         this.magnitudeX = dataVault.GetMagnitudeX(id);
 
         // Adding Jitter to data
-        this.speedX = this.speedX + Random.Range(this.speedX * -0.2f, this.speedX * 0.2f);
-        this.minDepth = this.minDepth + Random.Range(this.minDepth * -0.2f, this.minDepth * 0.2f);
-        this.maxDepth = this.maxDepth + Random.Range(this.maxDepth * -0.2f, this.maxDepth * 0.2f);
-        this.aliveTimeMax = this.aliveTimeMax + Random.Range(this.aliveTimeMax * -0.2f, this.aliveTimeMax * 0.2f);
-        this.magnitudeY = this.magnitudeY + Random.Range(this.magnitudeY * -0.2f, this.magnitudeY * 0.2f);
-        this.magnitudeX = this.magnitudeX + Random.Range(this.magnitudeX * -0.2f, this.magnitudeX * 0.2f);
-        this.jitterY = this.jitterY + Random.Range(this.jitterY * -0.2f, this.jitterY * 0.2f);
+        if (applyJitterToSpwawn)
+        {
+            this.speedX = this.speedX + Random.Range(this.speedX * -0.2f, this.speedX * 0.2f);
+            this.minDepth = this.minDepth + Random.Range(this.minDepth * -0.2f, this.minDepth * 0.2f);
+            this.maxDepth = this.maxDepth + Random.Range(this.maxDepth * -0.2f, this.maxDepth * 0.2f);
+            this.aliveTimeMax = this.aliveTimeMax + Random.Range(this.aliveTimeMax * -0.2f, this.aliveTimeMax * 0.2f);
+            this.magnitudeY = this.magnitudeY + Random.Range(this.magnitudeY * -0.2f, this.magnitudeY * 0.2f);
+            this.magnitudeX = this.magnitudeX + Random.Range(this.magnitudeX * -0.2f, this.magnitudeX * 0.2f);
+            this.jitterY = this.jitterY + Random.Range(this.jitterY * -0.2f, this.jitterY * 0.2f);
+        }
+        print("Fish created: "+fishName+". SpeedX: "+ speedX);
 
         //Applying Gradient Shift
         //TODO
 
         // Applying Sprite
-        myImage.sprite = dataVault.GetSprite(id);
+        if (myImage != null)
+        {
+            myImage.sprite = dataVault.GetSprite(id);
+        }
+        sprite.sprite = dataVault.GetSprite(id);
     }
 
     public bool IsInPlayerView()
@@ -200,7 +212,6 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
             return !IsInPlayerView();
         }
         return false;
-            
     }
 
     public void RemoveFish()
