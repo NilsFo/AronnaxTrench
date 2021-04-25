@@ -324,7 +324,6 @@ public class GameState : MonoBehaviour
 
     // Set fog according to gradient
     var color = gradient.Evaluate(-depth/380f);
-    Debug.Log(color);
     RenderSettings.fogDensity = color.a*0.1f;
     RenderSettings.fogColor = color;
   }
