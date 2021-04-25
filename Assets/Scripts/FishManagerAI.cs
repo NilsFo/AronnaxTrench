@@ -58,10 +58,6 @@ public class FishManagerAI : MonoBehaviour
     {
         bool reversed = Random.value >= 0.5;
         float startX = Random.Range(-250, -550);
-        if (reversed)
-        {
-
-        }
 
         //print("Spawning fish with ID: " + id);
         GameObject fish = Instantiate(fishPrefab, new Vector3(startX, startY, 0), Quaternion.identity);
