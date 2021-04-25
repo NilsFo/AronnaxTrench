@@ -14,31 +14,34 @@ public class SonarAI : MonoBehaviour
     public RectTransform rect;
     public GameState gameState;
     public Camera playerCamera;
-    public List<Image> allBleps;
+    public List<Image> currentBleps;
+    public List<Image> blepCache;
 
     // Start is called before the first frame update
     void Start()
     {
-        allBleps = new List<Image>();
+        currentBleps = new List<Image>();
+        blepCache = new List<Image>();
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         // Deleting old bleps
-        foreach(Image i in allBleps)
+        foreach(Image i in currentBleps)
         {
-            Destroy(i.gameObject);
+            i.enabled = false;
         }
-        allBleps.Clear();
+        currentBleps.Clear();
 
         // Looking for nearby fish
         float depth = gameState.CurrentDepth;
         List<GameObject> fish = GetNearbyFish(depth);
         //print("Nearby Fish: " + fish.Count);
 
-        foreach (GameObject currentFish in fish)
+        for(int i=0;i<fish.Count;i++)
         {
+            GameObject currentFish = fish[i];
             Vector3 localFish = playerCamera.transform.worldToLocalMatrix.MultiplyVector(currentFish.transform.position);
             float fishX = currentFish.transform.position.x - playerCamera.transform.position.x;
             float fishZ = currentFish.transform.position.z - playerCamera.transform.position.z;
@@ -50,13 +53,23 @@ public class SonarAI : MonoBehaviour
             float sonarY = distY / rangeY;
             float a = 1 - sonarY;
 
-            Image newBlep = Instantiate(myBlep, this.transform);
+            Image newBlep;
+            if(i < (blepCache.Count))
+            {
+                newBlep = blepCache[i];
+                newBlep.enabled = true;
+            }
+            else
+            {
+                newBlep = Instantiate(myBlep, this.transform);
+                blepCache.Add(newBlep);
+            }
             newBlep.transform.localPosition = new Vector3(sonarX, sonarZ, this.transform.position.z);
 
             var tempColor = newBlep.color;
             tempColor.a = a;
             newBlep.color = tempColor;
-            allBleps.Add(newBlep);
+            currentBleps.Add(newBlep);
         }
 
     }

@@ -23,10 +23,10 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
         }
         else if(cameraCursor.gameObject.activeInHierarchy) {
             if(camFlash > 0) {
-                Debug.Log("Camera cooldown");
+                // Debug.Log("Camera cooldown");
                 return;
             }
-            Debug.Log("Taking a picture");
+            // Debug.Log("Taking a picture");
             
             // camera flash
             FireCameraFlash();
@@ -83,8 +83,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                     }
                 }
             }
-            Debug.Log("Hit fish " + fishcount + " times while taking a picture");
-            
+            // Debug.Log("Hit fish " + fishcount + " times while taking a picture");
         }
     }
 

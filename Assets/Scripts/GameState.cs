@@ -417,8 +417,8 @@ public class GameState : MonoBehaviour
 
   void Start()
   {
-    caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
-    for (int i = 0; i < FishDataVault.FISH_ID_MAX; i++)
+    caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX+1];
+    for (int i = 0; i <= FishDataVault.FISH_ID_MAX; i++)
     {
       caughtFishIDs[i] = false;
     }
