@@ -8,7 +8,7 @@ public class BulletinFish : MonoBehaviour
 
     public int id=0;
     public FishDataVault dataVault;
-    public GameState gameState;
+    public ShipUiManager manager;
 
     public Image myImage;
     public Text myText;
@@ -51,7 +51,7 @@ public class BulletinFish : MonoBehaviour
 
     public bool IsDiscovered()
     {
-        return gameState.CaughtFishIDs[id];
+        return manager.GameState.CaughtFishIDs[id];
     }
 
 }
