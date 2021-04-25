@@ -707,7 +707,7 @@ MonoBehaviour:
   playerRotationSpeed: 0
   caughtFishIDs: 0000000000
   noiseLevel: 0
-  gradient:
+  fogGradient:
     serializedVersion: 2
     key0: {r: 0.50445, g: 0.73131627, b: 0.9811321, a: 0.44705883}
     key1: {r: 0.38431373, g: 0.4745098, b: 0.7921569, a: 0.47058824}
@@ -736,6 +736,35 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 8
+  envGradient:
+    serializedVersion: 2
+    key0: {r: 0.7973923, g: 0.82828677, b: 0.9339623, a: 1}
+    key1: {r: 0.48279846, g: 0.54671276, b: 0.72619313, a: 1}
+    key2: {r: 0.28315237, g: 0.3680216, b: 0.5943396, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 17926
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
   lifeSupportState: 1
   batteryState: 1
   generatorState: 1
@@ -2773,6 +2802,34 @@ PrefabInstance:
     - target: {fileID: 7263700539405272152, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019276724084691783, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: lightOffColor.b
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: lightOffColor.g
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: lightOffColor.r
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: environmentColor.b
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: environmentColor.g
+      value: 0.37362358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: environmentColor.r
+      value: 0.3224012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}

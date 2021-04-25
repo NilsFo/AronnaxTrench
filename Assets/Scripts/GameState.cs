@@ -107,7 +107,9 @@ public class GameState : MonoBehaviour
   private float noiseLevel = 0;
   
   [SerializeField]
-  public Gradient gradient;
+  public Gradient fogGradient;
+  [SerializeField]
+  public Gradient envGradient;
   
   //MaschienState Dispaly && Warning
   
@@ -377,6 +379,13 @@ public class GameState : MonoBehaviour
     set => fuseSix = value;
   }
 
+  public Color GetCurrentEnvironmentColor() {
+    return envGradient.Evaluate(-depth/380f);
+  }
+  public Color GetCurrentFogColor() {
+    return fogGradient.Evaluate(-depth/380f);
+  }
+
   void Start()
   {
     caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
@@ -409,7 +418,7 @@ public class GameState : MonoBehaviour
 
 
     // Set fog according to gradient
-    var color = gradient.Evaluate(-depth/380f);
+    var color = GetCurrentFogColor();
     RenderSettings.fogDensity = color.a*0.1f;
     RenderSettings.fogColor = color;
   }

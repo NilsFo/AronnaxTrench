@@ -121,7 +121,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         }
 
         transform.position = myPath.path.GetPointAtDistance(transformDistance, endOfPathBehaviour);
-        transform.rotation = myPath.path.GetRotationAtDistance(transformDistance, endOfPathBehaviour);
+        //transform.rotation = myPath.path.GetRotationAtDistance(transformDistance, endOfPathBehaviour);
     }
 
 
