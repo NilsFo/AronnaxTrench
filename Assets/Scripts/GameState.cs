@@ -23,8 +23,15 @@ public class GameState : MonoBehaviour
   
   public enum CameraState
   {
-    disarm,
-    armed,
+    Disarm,
+    Armed,
+  }
+
+  public enum PlayState
+  {
+    New,
+    Playing,
+    End,
   }
   //END Enums
   
@@ -32,10 +39,10 @@ public class GameState : MonoBehaviour
   
   //Tanks 
   [SerializeField]
-  private float maxFuel = 0;
+  private float maxFuel = 10000; //in ml ~ 8 min @ 21 ml/s
 
   [SerializeField]
-  private float currentFuel = 0;
+  private float currentFuel = 10000; //in ml
 
   [SerializeField]
   private float maxOTwo = 0;
@@ -44,16 +51,25 @@ public class GameState : MonoBehaviour
   private float currentOTwo = 0;
   
   [SerializeField]
-  private float maxBattery = 0;
+  private float maxBattery = 240000; //in RF
   
   [SerializeField]
-  private float currentBattery = 0;
-  //END Tanks
+  private float currentBattery = 240000; //in RF
+  //END Tanks 
   
   //Kamera
   [SerializeField]
   private CameraState cameraState = 0;
   //END Kamera
+  
+  //Generator
+  [SerializeField]
+  private float generatorConsumptionOfFuelPerSecond = 21; //in ml
+  
+  [SerializeField]
+  private float generatorRFOutputPerSecond = 1000; //in RF
+  
+  //END Generator
   
   [SerializeField]
   private float depth = 0;
@@ -109,8 +125,10 @@ public class GameState : MonoBehaviour
   [SerializeField]
   public Gradient gradient;
   
-  //MaschienState Dispaly && Warning
+  //PlayState
+  private PlayState playState;
   
+  //MaschienState Dispaly && Warning
   [SerializeField] 
   private MaschienState lifeSupportState = MaschienState.Off;
   
@@ -288,7 +306,6 @@ public class GameState : MonoBehaviour
   }
 
   //MaschienState
-  
   public MaschienState LifeSupportState => lifeSupportState;
 
   public MaschienState BatteryState => batteryState;
@@ -312,6 +329,7 @@ public class GameState : MonoBehaviour
     get => lightState;
     set => lightState = value;
   }
+  //END MaschienState
 
   //Spot Lights
   public MaschienState MidSpotState
@@ -337,6 +355,7 @@ public class GameState : MonoBehaviour
     get => pressureState;
     set => pressureState = value;
   }
+  //END Spot Lights
 
   //FuseBox
   public FuseState MainFuse
@@ -380,6 +399,7 @@ public class GameState : MonoBehaviour
     get => fuseSix;
     set => fuseSix = value;
   }
+  //End FuseBox
 
   void Start()
   {
@@ -392,6 +412,30 @@ public class GameState : MonoBehaviour
 
   void Update()
   {
+    //Generate Energy
+    if (generatorState == MaschienState.On)
+    {
+      float fuelConsumption = Time.deltaTime * generatorConsumptionOfFuelPerSecond;
+      if (currentFuel < fuelConsumption)
+      {
+        //wenig Fuel
+        generatorState = MaschienState.Warning;
+      }
+      else
+      {
+        //genug Fuel 
+        currentFuel -= fuelConsumption;
+        currentBattery += generatorRFOutputPerSecond * Time.deltaTime;
+        if (currentBattery > maxBattery)
+        {
+          currentBattery = maxBattery;
+        }
+      }
+    }
+    
+    //Consume Energy
+    
+    
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
     
@@ -401,6 +445,7 @@ public class GameState : MonoBehaviour
     //Interior Pressuer
     interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
 
+    //Pressure Magic?!
     if(currentDivePressure != targetDivePressure) {
         var diveDirection = currentDivePressure < targetDivePressure ? 1:-1;
         currentDivePressure += pumpPressure * diveDirection * Time.deltaTime;
@@ -408,10 +453,8 @@ public class GameState : MonoBehaviour
           currentDivePressure = targetDivePressure;
         }
     }
-
     depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
-
-
+    
     // Set fog according to gradient
     var color = gradient.Evaluate(-depth/380f);
     RenderSettings.fogDensity = color.a*0.1f;
