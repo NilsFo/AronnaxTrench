@@ -8,7 +8,6 @@ using PathCreation;
 public class FishAI : MonoBehaviour, IPointerClickHandler
 {
 
-
     public static readonly bool SELF_CATCH_ENABLED = false;
 
     public float movementSeedX;
@@ -56,7 +55,11 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     {
         t = GetComponent<Transform>();
         dataVault.ReadData();
-        InitData(id);
+
+        if (id != -1)
+        {
+            InitData(id);
+        }
 
         movementSeedX = Random.Range(0, 100);
         movementSeedY = Random.Range(0, 100);
@@ -70,7 +73,6 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     void Update()
     {
         aliveTime = aliveTime + Time.deltaTime;
-
 
         /*
         if (AllowDespawnTimer())
@@ -93,7 +95,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         if (SELF_CATCH_ENABLED)
         {
             SelfCatchTimer = SelfCatchTimer - Time.deltaTime;
-            if(SelfCatchTimer < 0)
+            if (SelfCatchTimer < 0)
             {
                 Catch();
                 RemoveFish();
@@ -112,7 +114,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         float mx = Mathf.Abs(Mathf.Sin(aliveTime)) * magnitudeX;
         float my = Mathf.Sin(aliveTime * magnitudeY) * jitterY;
 
-        dstTravelled += (speed+mx) * Time.deltaTime;
+        dstTravelled += (speed + mx) * Time.deltaTime;
 
         float transformDistance = dstTravelled;
         if (reverseDirection)
@@ -120,8 +122,11 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
             transformDistance = transformDistance * -1;
         }
 
-        transform.position = myPath.path.GetPointAtDistance(transformDistance, endOfPathBehaviour);
-        //transform.rotation = myPath.path.GetRotationAtDistance(transformDistance, endOfPathBehaviour);
+        if (myPath != null)
+        {
+            transform.position = myPath.path.GetPointAtDistance(transformDistance, endOfPathBehaviour);
+            //transform.rotation = myPath.path.GetRotationAtDistance(transformDistance, endOfPathBehaviour);
+        }
     }
 
 
@@ -175,7 +180,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
             this.magnitudeX = this.magnitudeX + Random.Range(this.magnitudeX * -0.2f, this.magnitudeX * 0.2f);
             this.jitterY = this.jitterY + Random.Range(this.jitterY * -0.2f, this.jitterY * 0.2f);
         }
-        print("Fish created: "+fishName+". SpeedX: "+ speedX);
+        // print("Fish created: "+fishName+". SpeedX: "+ speedX);
 
         //Applying Gradient Shift
         //TODO
