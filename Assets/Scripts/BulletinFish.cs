@@ -51,7 +51,7 @@ public class BulletinFish : MonoBehaviour
 
     public bool IsDiscovered()
     {
-        return gameState.caughtFishIDs[id];
+        return gameState.CaughtFishIDs[id];
     }
 
 }

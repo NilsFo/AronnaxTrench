@@ -16,9 +16,8 @@ namespace UI.Display
     {
       var diffRotation = (maxRotation - minRotation);
       var newRotation = minRotation +
-                        (diffRotation * (manager.GameState.CurrentDepth / manager.GameState.MaxDivePressure));
-        
-      pointer.transform.localRotation = Quaternion.Euler(0, newRotation-offsetRotation, 0);
+                        (-diffRotation * (-manager.GameState.CurrentDepth / 320f));
+      pointer.transform.localRotation = Quaternion.Euler(0,0, newRotation-offsetRotation);
     }
   }
 }

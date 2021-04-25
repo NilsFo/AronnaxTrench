@@ -12,7 +12,7 @@ public class MoveWithRotation : MonoBehaviour
     
     void FixedUpdate()
     {
-        float newValue = (EndPosX - StartPosX)*(gameState.PlayerRotation/360f);
+        float newValue = (EndPosX - StartPosX)*(manager.GameState.PlayerRotation/360f);
         transform.localPosition = new Vector3(newValue, transform.localPosition.y, transform.localPosition.z);
     }
 }
