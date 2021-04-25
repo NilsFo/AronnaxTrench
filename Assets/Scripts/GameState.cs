@@ -98,6 +98,9 @@ public class GameState : MonoBehaviour
   
   [SerializeField] 
   private MaschienState spotState = MaschienState.Off;
+
+  [SerializeField]
+  public Gradient gradient;
   
   //FuseBox
   [SerializeField] private FuseState mainFuse = FuseState.On;
@@ -316,9 +319,14 @@ public class GameState : MonoBehaviour
         }
     }
 
-    depth += (ExteriorPressure - currentDivePressure) * 0.0001f;
+    depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
 
-    RenderSettings.fogDensity = -depth * 0.0001f + 0.005f;
+
+    // Set fog according to gradient
+    var color = gradient.Evaluate(-depth/380f);
+    Debug.Log(color);
+    RenderSettings.fogDensity = color.a*0.1f;
+    RenderSettings.fogColor = color;
   }
 
 }
