@@ -57,6 +57,7 @@ MonoBehaviour:
   currentCountDown: 0
   possiblePaths:
   - {fileID: 8229744353237473111}
+  applyJitterToSpwawn: 1
 --- !u!1 &4142118842324068480
 GameObject:
   m_ObjectHideFlags: 0
