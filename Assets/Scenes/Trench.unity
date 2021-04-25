@@ -2116,10 +2116,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 883180007}
     - target: {fileID: 1202978376, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
-      propertyPath: interactCursor
-      value: 
-      objectReference: {fileID: 1830944900}
-    - target: {fileID: 1202978376, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
       propertyPath: cameraTargets.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -2274,6 +2270,18 @@ PrefabInstance:
     - target: {fileID: 4906323806630494525, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485750273936154727, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485750273936154727, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485750273936154727, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5863994259455417114, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
       propertyPath: m_IsActive
@@ -3658,11 +3666,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 111.037, y: -13.863007, z: -12.971008}
---- !u!224 &1830944900 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1814814119343707767, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
-  m_PrefabInstance: {fileID: 1116377094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1905099970
 PrefabInstance:
   m_ObjectHideFlags: 0

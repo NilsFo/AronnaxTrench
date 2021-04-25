@@ -57,7 +57,11 @@ MonoBehaviour:
   interactCursor: {fileID: 1814814119343707767}
   cameraCursor: {fileID: 1603861791}
   cameraIdleCursor: {fileID: 1077166798621773817}
-  cameraTargets: []
+  cameraTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cameraFront: {fileID: 0}
   cameraLeft: {fileID: 0}
   cameraRight: {fileID: 0}
@@ -79,7 +83,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1603861791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -164,7 +168,7 @@ RectTransform:
   m_GameObject: {fileID: 183680947031754161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1202978375}
   m_RootOrder: 1
@@ -172,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 192, y: 128}
+  m_SizeDelta: {x: 92, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7880837614689317977
 CanvasRenderer:
@@ -760,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1814814119343707767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -873,10 +877,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
