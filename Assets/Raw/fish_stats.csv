@@ -1,7 +1,12 @@
 ID;Name;MinDepth;MaxDepth;Rarity;SpeedX;JitterY;MagnitudeX;MagnitudeY;AliveTime
-0;Magma Jelly;-100;20;5;0.2;50;0.2;1;5
-1;Fey Monarch;-100;20;4;0.3;51;0.3;1;5
-2;Deep Amnesiac;-100;20;3;0.4;52;0.4;2;5
-3;Foxface;-100;20;2;0.5;53;0.5;1;5
-4;Striped Seaneedle;-100;20;3;0.6;54;0.6;3;5
-5;Svedish Mandarine;-100;20;3;0.7;55;0.7;2;5
+0;Magma Jelly;-400;100;5;0.2;50;0.2;1;5
+1;Fey Monarch;-100;100;4;0.3;51;0.3;1;5
+2;Deep Amnesiac;-100;100;3;0.4;52;0.4;2;5
+3;Foxface;-100;100;2;0.5;53;0.5;1;5
+4;Striped Seaneedle;-100;100;3;0.6;54;0.6;3;5
+5;Svedish Mandarine;-100;100;3;0.7;55;0.7;2;5
+6;Unnamed;-100;100;5;0.4;52;0.3;2;5
+7;Unnamed;-100;100;4;0.4;52;0.4;2;5
+8;Unnamed;-100;100;3;0.5;53;0.5;1;5
+9;Unnamed;-100;100;2;0.6;54;0.6;3;5
+10;Unnamed;-100;100;3;0.7;55;0.7;2;5

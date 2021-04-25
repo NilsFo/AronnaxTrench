@@ -6,7 +6,7 @@ using PathCreation;
 public class FishManagerAI : MonoBehaviour
 {
     public GameState gameState;
-    public List<GameObject> myFish;
+    public List<GameObject> myFish = new List<GameObject>();
 
     public FishDataVault dataVault;
     public GameObject fishPrefab;
@@ -26,8 +26,6 @@ public class FishManagerAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myFish = new List<GameObject>();
-
         InitFishSpawn();
     }
 
@@ -38,16 +36,17 @@ public class FishManagerAI : MonoBehaviour
  
         if(currentCountDown < 0)
         {
-            SpawnNextFish();
+            float currentDepth = gameState.CurrentDepth;
+            SpawnNextFish(playerCamera.transform.position,currentDepth);
             InitFishSpawn();
         }
     }
 
-    public void SpawnNextFish()
+    public void SpawnNextFish(Vector3 targetPosition, float depth)
     {
         int startY = Random.Range(spawnPositionMinY, spawnPositionMaxY);
 
-        List<int> fishIDs = dataVault.GetAllFishForDepth(gameState.CurrentDepth);
+        List<int> fishIDs = dataVault.GetAllFishForDepth(depth);
         //print("Choose one fish from those IDs: " + fishIDs.Count+": "+ System.String.Join(", ", fishIDs.ToArray()));
         if (!(fishIDs.Count == 0))
         {
@@ -57,7 +56,7 @@ public class FishManagerAI : MonoBehaviour
 
             PathCreator path = possiblePaths[Random.Range(0, possiblePaths.Count - 1)];
             path=Instantiate(path);
-            path.transform.position = new Vector3(playerCamera.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+            path.transform.position = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
 
             if (applyJitterToSpwawn)
             {
@@ -65,6 +64,10 @@ public class FishManagerAI : MonoBehaviour
             }
 
             CreateFish(id,startY,path);
+        }
+        else
+        {
+            print("No spawnable fish for this depth: "+depth);
         }
     }
 
@@ -107,7 +110,6 @@ public class FishManagerAI : MonoBehaviour
             path.bezierPath.MovePoint(i, np);
         }
         return path;
-
     }
 
     public void InitFishSpawn()
