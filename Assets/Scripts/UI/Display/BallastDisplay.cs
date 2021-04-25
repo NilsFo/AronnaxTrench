@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Display
 {
@@ -6,20 +7,11 @@ namespace UI.Display
   {
     public ShipUiManager manager;
 
-    public RectTransform myTransform;
-
-    public float posMin;
-    public float posMax;
-
-    public float minHight;
-    public float maxHight;
+    public Slider slider;
 
     void FixedUpdate()
     {
-      var factor = (manager.GameState.CurrentDivePressure / manager.GameState.MaxDivePressure);
-      var rect = myTransform.rect;
-       
-      myTransform.rect.Set(rect.x,factor * (posMax - posMin),rect.y,factor * (maxHight - minHight));
+      slider.value = manager.GameState.CurrentDivePressure / manager.GameState.MaxDivePressure;
     }
   }
 }
