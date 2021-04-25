@@ -21,6 +21,7 @@ public class FishManagerAI : MonoBehaviour
     public float currentCountDown;
     public List<PathCreator> possiblePaths;
 
+    public bool spawnContinuous = false;
     public bool applyJitterToSpwawn = true;
 
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class FishManagerAI : MonoBehaviour
     {
         currentCountDown = currentCountDown - Time.deltaTime;
  
-        if(currentCountDown < 0)
+        if(currentCountDown < 0 && spawnContinuous)
         {
             float currentDepth = gameState.CurrentDepth;
             SpawnNextFish(playerCamera.transform.position,currentDepth);
@@ -123,6 +124,23 @@ public class FishManagerAI : MonoBehaviour
     public int GetSubmarineDepth()
     {
         return 5;
+    }
+
+    public List<GameObject> getFishAtDepth(float depth)
+    {
+        List<GameObject> list = new List<GameObject>();
+
+        for (int i = 0; i < myFish.Count; i++)
+        {
+            GameObject currentFish = myFish[i];
+            FishAI fai = currentFish.GetComponent<FishAI>();
+            if (fai != null)
+            {
+                list.Add(currentFish);
+            }
+        }
+
+        return list;
     }
 
 }
