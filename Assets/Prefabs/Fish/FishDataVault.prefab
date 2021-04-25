@@ -45,17 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishDataCSV: {fileID: 4900000, guid: 1a0959abec9c2fd4fbce413c8d8ff50f, type: 3}
   fishSprites:
-  - {fileID: 21300000, guid: d74013f4fb5b4024ab56d42a526f0fd3, type: 3}
-  - {fileID: 21300000, guid: 1a53397f06ef4444cb96f552032e6fe6, type: 3}
-  - {fileID: 21300000, guid: a9e321cef0510bd4f92742209e103901, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 6d1d25cd937ec9942b19c6eed3566def, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
-  - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
+  - {fileID: 21300000, guid: 532f49225822d4446a6a12b8c95ce7f7, type: 3}
+  - {fileID: 21300000, guid: 2226151f7cba1db49a6b047c012dccac, type: 3}
+  - {fileID: 21300000, guid: 7a5b353fc9b212b4eaf0be9b491b71dc, type: 3}
+  - {fileID: 21300000, guid: 3c9df668b01c8f5418211c2e8af449b8, type: 3}
+  - {fileID: 21300000, guid: 780314afbefa9a849a7b203b1aae96c4, type: 3}
+  - {fileID: 21300000, guid: fb371cdf18d8cee4ab834a849fabf416, type: 3}
+  - {fileID: 21300000, guid: 06ff8ed7fac68b54e8d0c16702326a00, type: 3}
+  - {fileID: 21300000, guid: f159eb07d4ec4f24bb6d74e7e53903ef, type: 3}
+  - {fileID: 21300000, guid: c87dc34b99c38a741b04965fe5e12996, type: 3}
+  - {fileID: 21300000, guid: 85b1172fe44675c4e9f30960222a078a, type: 3}
+  - {fileID: 21300000, guid: 6741b2bae2bae4746b5611cfdd41074b, type: 3}
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
