@@ -160,6 +160,8 @@ public class GameState : MonoBehaviour
     }
 
     depth += (ExteriorPressure - currentDivePressure) * 0.0001f;
+
+    RenderSettings.fogDensity = -depth * 0.0001f + 0.005f;
   }
 
 }
