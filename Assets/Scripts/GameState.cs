@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class GameState : MonoBehaviour
 {
 
+  //Enums
   public enum FuseState
   {
     On,
@@ -20,7 +21,40 @@ public class GameState : MonoBehaviour
     Warning
   }
   
+  public enum CameraState
+  {
+    disarm,
+    armed,
+  }
+  //END Enums
+  
   //private
+  
+  //Tanks 
+  [SerializeField]
+  private float maxFuel = 0;
+
+  [SerializeField]
+  private float currentFuel = 0;
+
+  [SerializeField]
+  private float maxOTwo = 0;
+  
+  [SerializeField]
+  private float currentOTwo = 0;
+  
+  [SerializeField]
+  private float maxBattery = 0;
+  
+  [SerializeField]
+  private float currentBattery = 0;
+  //END Tanks
+  
+  //Kamera
+  [SerializeField]
+  private CameraState cameraState = 0;
+  //END Kamera
+  
   [SerializeField]
   private float depth = 0;
 
@@ -72,6 +106,11 @@ public class GameState : MonoBehaviour
   [SerializeField]
   private float noiseLevel = 0;
   
+  [SerializeField]
+  public Gradient gradient;
+  
+  //MaschienState Dispaly && Warning
+  
   [SerializeField] 
   private MaschienState lifeSupportState = MaschienState.Off;
   
@@ -97,11 +136,17 @@ public class GameState : MonoBehaviour
   private MaschienState lightState = MaschienState.Off;
   
   [SerializeField] 
-  private MaschienState spotState = MaschienState.Off;
-
-  [SerializeField]
-  public Gradient gradient;
+  private MaschienState midSpotState = MaschienState.Off;
   
+  [SerializeField] 
+  private MaschienState leftSpotState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState rightSpotState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState pressureState = MaschienState.Off;
+
   //FuseBox
   [SerializeField] private FuseState mainFuse = FuseState.On;
   
@@ -116,8 +161,29 @@ public class GameState : MonoBehaviour
   [SerializeField] private FuseState fuseFive = FuseState.On;
   
   [SerializeField] private FuseState fuseSix = FuseState.On;
+  //End private
   
-  //public
+  //Public
+  //Public Tanks
+  public float MaxFuel => maxFuel;
+
+  public float CurrentFuel => currentFuel;
+
+  public float MaxOTwo => maxOTwo;
+
+  public float CurrentOTwo => currentOTwo;
+
+  public float MaxBattery => maxBattery;
+
+  public float CurrentBattery => currentBattery;
+  //End Public Tanks
+
+  public CameraState Camera
+  {
+    get => cameraState;
+    set => cameraState = value;
+  }
+
   public float PlayerRotation
   {
     get => playerRotation;
@@ -221,6 +287,8 @@ public class GameState : MonoBehaviour
     set => caughtFishIDs = value;
   }
 
+  //MaschienState
+  
   public MaschienState LifeSupportState => lifeSupportState;
 
   public MaschienState BatteryState => batteryState;
@@ -241,10 +309,29 @@ public class GameState : MonoBehaviour
     set => lightState = value;
   }
 
-  public MaschienState SpotState
+  //Spot Lights
+  public MaschienState MidSpotState
   {
-    get => spotState;
-    set => spotState = value;
+    get => midSpotState;
+    set => midSpotState = value;
+  }
+
+  public MaschienState LeftSpotState
+  {
+    get => leftSpotState;
+    set => leftSpotState = value;
+  }
+
+  public MaschienState RightSpotState
+  {
+    get => rightSpotState;
+    set => rightSpotState = value;
+  }
+
+  public MaschienState PressureState
+  {
+    get => pressureState;
+    set => pressureState = value;
   }
 
   //FuseBox
@@ -309,7 +396,6 @@ public class GameState : MonoBehaviour
     
     //Interior Pressuer
     interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
-
 
     if(currentDivePressure != targetDivePressure) {
         var diveDirection = currentDivePressure < targetDivePressure ? 1:-1;
