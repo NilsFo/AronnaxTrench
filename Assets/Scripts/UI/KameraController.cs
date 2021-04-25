@@ -10,14 +10,14 @@ namespace UI
     
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (manager.GameState.Camera == GameState.CameraState.disarm)
+            if (manager.GameState.Camera == GameState.CameraState.Disarm)
             {
-                manager.GameState.Camera = GameState.CameraState.armed;
+                manager.GameState.Camera = GameState.CameraState.Armed;
             }
         }
         void FixedUpdate()
         {
-            if (manager.GameState.Camera == GameState.CameraState.armed)
+            if (manager.GameState.Camera == GameState.CameraState.Armed)
             {
                 gameObject.SetActive(false);
             }
