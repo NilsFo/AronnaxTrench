@@ -17,7 +17,7 @@ public class VegetationSway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xRot = Mathf.Sin(Time.time * swaySpeed) * swayAmount;
+        float xRot = Mathf.Sin((Time.time + transform.position.magnitude*10) * swaySpeed) * swayAmount;
         transform.rotation = initRot * Quaternion.Euler(xRot, 0, 0);
     }
 }
