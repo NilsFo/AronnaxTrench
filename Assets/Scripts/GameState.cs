@@ -16,7 +16,7 @@ public class GameState : MonoBehaviour
     }
 
     //private
-    [SerializeField]
+  [SerializeField]
   private float depth = 0;
   
   [SerializeField]
@@ -57,8 +57,8 @@ public class GameState : MonoBehaviour
   [SerializeField]
   private float playerRotationSpeed = 0;
 
-    [SerializeField]
-    public bool[] caughtFishIDs;
+  [SerializeField]
+  public bool[] caughtFishIDs;
 
 
   //public

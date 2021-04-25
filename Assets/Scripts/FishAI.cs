@@ -78,6 +78,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     {
         float x = worldX;
         float y = worldY;
+        y = worldY - gameState.CurrentDepth;
 
         float mx = speedX * (Mathf.Sin(aliveTime) + 1) * magnitudeX;
         mx = Mathf.Max(mx, 0.0001f);
@@ -86,15 +87,14 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
             mx = mx * -1;
         }
         float my = jitterY * Mathf.Sin(magnitudeY + aliveTime);
-        float newValue = (EndPosX - StartPosX) * (gameState.PlayerRotation / 360);
+        float rotationFactor = (EndPosX - StartPosX) * (gameState.PlayerRotation / 360);
+        float divingFactor = 2;
 
-        //mx = 0;
         //my = 0;
-
         worldX = mx + x;
         worldY = my + y;
 
-        transform.position = new Vector3(worldX + newValue, worldY, transform.position.z);
+        transform.position = new Vector3(worldX + rotationFactor, worldY, transform.position.z);
     }
 
 
