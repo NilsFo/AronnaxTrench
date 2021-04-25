@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 8514870886137147833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.3959374, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8514870886531302887}
   m_RootOrder: 0
@@ -102,7 +102,7 @@ RectTransform:
   m_GameObject: {fileID: 8514870886258193979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.3959374, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8514870886531302887}
   m_RootOrder: 2
@@ -159,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8514870886531302887}
+  - component: {fileID: 5621779681096770869}
   m_Layer: 5
   m_Name: LightSwitch
   m_TagString: Untagged
@@ -188,6 +189,22 @@ RectTransform:
   m_AnchoredPosition: {x: 1932.8, y: -300.8}
   m_SizeDelta: {x: 46.3937, y: 46.04}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5621779681096770869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8514870886531302886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc00f81f89ec601428603365f215f8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  off: {fileID: 8514870886258193979}
+  mid: {fileID: 8514870887080618061}
+  on: {fileID: 8514870886258193979}
 --- !u!1 &8514870887080618061
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +232,7 @@ RectTransform:
   m_GameObject: {fileID: 8514870887080618061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.3959374, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8514870886531302887}
   m_RootOrder: 1

@@ -7,7 +7,7 @@ public class SliderSetTargetDivePressure : MonoBehaviour
 {
     public Slider slider;
   
-    public GameState gameState;
+    public ShipUiManager manager;
     public float offset = 0.5f;
 
     void OnEnable () 
@@ -22,6 +22,6 @@ public class SliderSetTargetDivePressure : MonoBehaviour
   
     void ChangeValue(float value)
     {
-        gameState.TargetDivePressure = gameState.MaxDivePressure * value;
+        manager.GameState.TargetDivePressure = manager.GameState.MaxDivePressure * value;
     }
 }

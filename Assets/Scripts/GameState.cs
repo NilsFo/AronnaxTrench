@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +7,17 @@ using UnityEngine.Serialization;
 public class GameState : MonoBehaviour
 {
 
-    void Start()
-    {
-        caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
-        for (int i = 0; i < FishDataVault.FISH_ID_MAX; i++)
-        {
-            caughtFishIDs[i] = false;
-        }
-    }
-
-    //private
+  public enum MaschienState
+  {
+    On, 
+    Off, 
+    Warning
+  }
+  
+  //private
   [SerializeField]
   private float depth = 0;
-  
-  [SerializeField]
-  private float maxDepthInM = 10000;
-  
+
   [SerializeField]
   private float maxDivePressure = 1000f;
   
@@ -39,18 +35,16 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float exteriorPressureFactor = 1f;
-  
+
+  [SerializeField]
+  private float submarineRotation = 0;
   
   [SerializeField]
-  private  float submarineRotation = 0;
+  private float submarineMaxThrust = 20f;
   
-  [SerializeField]
-  private  float submarineMaxThrust = 20f;
-  
-  [SerializeField]
-  private  float submarineThrust = 0;
-  
-  
+  [SerializeField] 
+  private float submarineThrust = 0;
+
   [SerializeField]
   private float playerRotation = 0;
   
@@ -58,11 +52,40 @@ public class GameState : MonoBehaviour
   private float playerRotationSpeed = 0;
 
   [SerializeField]
-  public bool[] caughtFishIDs;
+  private bool[] caughtFishIDs;
 
+  [SerializeField]
+  private float noiseLevel = 0;
+  
+  [SerializeField] 
+  private MaschienState lifeSupportState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState batteryState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState generatorState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState oTwoTankState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState oTwoInteriorState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState radioState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState engienState = MaschienState.Off;
 
+  [SerializeField] 
+  private MaschienState lightState = MaschienState.Off;
+  
+  [SerializeField] 
+  private MaschienState spotState = MaschienState.Off;
+  
   //public
-    public float PlayerRotation
+  public float PlayerRotation
   {
     get => playerRotation;
     set
@@ -141,6 +164,49 @@ public class GameState : MonoBehaviour
   public float ExteriorPressure
   {
     get => (depth - 20) * exteriorPressureFactor;
+  }
+
+  public float NoiseLevel => noiseLevel;
+
+  public bool[] CaughtFishIDs
+  {
+    get => caughtFishIDs;
+    set => caughtFishIDs = value;
+  }
+
+  public MaschienState LifeSupportState => lifeSupportState;
+
+  public MaschienState BatteryState => batteryState;
+
+  public MaschienState GeneratorState => generatorState;
+
+  public MaschienState OTwoTankState => oTwoTankState;
+
+  public MaschienState OTwoInteriorState => oTwoInteriorState;
+
+  public MaschienState RadioState => radioState;
+
+  public MaschienState EngienState => engienState;
+
+  public MaschienState LightState
+  {
+    get => lightState;
+    set => lightState = value;
+  }
+
+  public MaschienState SpotState
+  {
+    get => spotState;
+    set => spotState = value;
+  }
+  
+  void Start()
+  {
+    caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX];
+    for (int i = 0; i < FishDataVault.FISH_ID_MAX; i++)
+    {
+      caughtFishIDs[i] = false;
+    }
   }
 
   void Update()
