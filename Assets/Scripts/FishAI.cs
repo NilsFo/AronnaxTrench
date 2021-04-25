@@ -142,7 +142,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         Catch();
     }
 
-    public void Catch()
+    public bool Catch()
     { 
         bool[] caughtList = gameState.CaughtFishIDs;
         bool alreadyCaught = caughtList[id];
@@ -150,6 +150,9 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         {
             caughtList[id] = true;
             print("New Catch!!");
+            return true;
+        } else {
+            return false;
         }
     }
 

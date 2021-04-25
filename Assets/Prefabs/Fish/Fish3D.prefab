@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 59705166722234152}
   - component: {fileID: 6515624661722579138}
   - component: {fileID: 2598875380060520845}
+  - component: {fileID: 4983950018228322107}
   m_Layer: 0
   m_Name: Fish3D
   m_TagString: Untagged
@@ -139,3 +140,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!65 &4983950018228322107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59705166722234159}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

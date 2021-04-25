@@ -7,6 +7,11 @@ namespace UI
     public class KameraController : MonoBehaviour, IPointerClickHandler
     {
         public ShipUiManager manager;
+        private UnityEngine.UI.Image camImage;
+
+        void Start() {
+            camImage = GetComponentInChildren<UnityEngine.UI.Image>();
+        }
     
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -19,11 +24,11 @@ namespace UI
         {
             if (manager.GameState.Camera == GameState.CameraState.Armed)
             {
-                gameObject.SetActive(false);
+                camImage.enabled = false;
             }
             else
             {
-                gameObject.SetActive(true);
+                camImage.enabled = true;
             }
         }
     }
