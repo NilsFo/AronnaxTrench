@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class FishAI : MonoBehaviour, IPointerClickHandler
 {
+
+    public static readonly bool SELF_CATCH_ENABLED = true;
+
     public float movementSeedX;
     public float movementSeedY;
     public FishManagerAI myManager;
@@ -37,6 +40,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     public float worldX;
     public float worldY;
+    public float SelfCatchTimer = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +80,19 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     void FixedUpdate()
     {
+        // Self Catching
+        if (SELF_CATCH_ENABLED)
+        {
+            SelfCatchTimer = SelfCatchTimer - Time.deltaTime;
+            if(SelfCatchTimer < 0)
+            {
+                Catch();
+                RemoveFish();
+            }
+        }
+
+
+        // Movement
         float x = worldX;
         float y = worldY;
         y = worldY - gameState.CurrentDepth;
@@ -88,13 +105,19 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         }
         float my = jitterY * Mathf.Sin(magnitudeY + aliveTime);
         float rotationFactor = (EndPosX - StartPosX) * (gameState.PlayerRotation / 360);
-        float divingFactor = 2;
 
         //my = 0;
+        //mx = 0;
+        
         worldX = mx + x;
         worldY = my + y;
+        //float newX = worldX + rotationFactor;
+        //float newY = worldY;
 
-        transform.position = new Vector3(worldX + rotationFactor, worldY, transform.position.z);
+        float newX = mx + x + 1500;
+        float newY = my + y;
+
+        transform.position = new Vector3(newX, newY, transform.position.z);
     }
 
 
@@ -107,6 +130,11 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         print("Player click: "+fishName);
+        Catch();
+    }
+
+    public void Catch()
+    { 
         bool[] caughtList = gameState.caughtFishIDs;
         bool alreadyCaught = caughtList[id];
         if (!alreadyCaught)
