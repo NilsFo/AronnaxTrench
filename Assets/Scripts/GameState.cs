@@ -103,12 +103,16 @@ public class GameState : MonoBehaviour
 
   [SerializeField]
   private float submarineRotation = 0;
-  
+
   [SerializeField]
   private float submarineMaxThrust = 20f;
   
   [SerializeField] 
   private float submarineThrust = 0;
+
+  [SerializeField]
+  private float submarineRotationDampening = 0.2f;
+  private float submarineRotationSpeed = 0f;
 
   [SerializeField]
   private float playerRotation = 0;
@@ -449,8 +453,10 @@ public class GameState : MonoBehaviour
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
     
+    submarineRotationSpeed += submarineThrust * Time.deltaTime;
+    submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
     //Submarine Player
-    SubmarineRotation += SubmarineThrust * Time.deltaTime;
+    SubmarineRotation += submarineRotationSpeed * Time.deltaTime;
     
     //Interior Pressuer
     interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
