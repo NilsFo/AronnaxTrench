@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class FishManagerAI : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class FishManagerAI : MonoBehaviour
     public int spawnPositionMaxY = 650;
 
     public float currentCountDown;
+    public List<PathCreator> possiblePaths;
+
+    public bool applyJitterToSpwawn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -50,18 +54,28 @@ public class FishManagerAI : MonoBehaviour
             int index = Random.Range(0,fishIDs.Count-1);
             //print("Reqesting ID index: " + index);
             int id = fishIDs[index];
-            CreateFish(id,startY);
+
+            PathCreator path = possiblePaths[Random.Range(0, possiblePaths.Count - 1)];
+            path=Instantiate(path);
+            path.transform.position = new Vector3(playerCamera.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+
+            if (applyJitterToSpwawn)
+            {
+                path = JitterPath(path);
+            }
+
+            CreateFish(id,startY,path);
         }
     }
 
-    public void CreateFish(int id, int startY)
+    public void CreateFish(int id, int startY, PathCreator path)
     {
         bool reversed = Random.value >= 0.5;
         float startX = Random.Range(-250, -550);
 
         //print("Spawning fish with ID: " + id);
-        GameObject fish = Instantiate(fishPrefab, new Vector3(startX, startY, 0), Quaternion.identity);
-        fish.transform.SetParent(submarineCanvas.transform);
+        GameObject fish = Instantiate(fishPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        // fish.transform.SetParent(submarineCanvas.transform);
         myFish.Add(fish.gameObject);
 
         FishAI fai = fish.GetComponent<FishAI>();
@@ -71,13 +85,30 @@ public class FishManagerAI : MonoBehaviour
         fai.startDepth = gameState.CurrentDepth;
         fai.worldX = startX;
         fai.worldY = startY;
+        fai.myPath = path;
+        fai.endOfPathBehaviour = EndOfPathInstruction.Loop;
+        fai.myBillBoard.target = playerCamera.transform;
+        fai.dstTravelled = Random.Range(0f, 100f);
+        fai.applyJitterToSpwawn = applyJitterToSpwawn;
 
         if (reversed)
         {
             fai.reverseDirection = true;
             fai.transform.localScale = new Vector3(fai.transform.localScale.x*-1, fai.transform.localScale.y, fai.transform.localScale.z);
         }
+    }
+
+    public PathCreator JitterPath(PathCreator path)
+    {
         
+        for(int i=0;i< path.bezierPath.NumPoints; i++)
+        {
+            Vector3 p = path.bezierPath.GetPoint(i);
+            Vector3 np = new Vector3(p.x*Random.Range(-0.8f,3.2f), p.y * Random.Range(-0.8f, 3.2f), p.z * Random.Range(-0.8f, 3.2f));
+            path.bezierPath.MovePoint(i, np);
+        }
+        return path;
+
     }
 
     public void InitFishSpawn()

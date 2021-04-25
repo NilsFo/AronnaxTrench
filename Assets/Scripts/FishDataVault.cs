@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class FishDataVault : MonoBehaviour
@@ -59,12 +60,12 @@ public class FishDataVault : MonoBehaviour
 
     public float GetMinDepth(int id)
     {
-        return float.Parse(GetAllData(id)[2]);
+        return float.Parse(GetAllData(id)[2], CultureInfo.InvariantCulture);
     }
 
     public float GetMaxDepth(int id)
     {
-        return float.Parse(GetAllData(id)[3]);
+        return float.Parse(GetAllData(id)[3], CultureInfo.InvariantCulture);
     }
 
     public List<int> GetAllFishForDepth(float depth)
@@ -89,32 +90,36 @@ public class FishDataVault : MonoBehaviour
 
     public int GetRarity(int id)
     {
-        return int.Parse(GetAllData(id)[4]);
+        return int.Parse(GetAllData(id)[4], CultureInfo.InvariantCulture);
     }
 
     public float GetSpeedX(int id)
     {
-        return float.Parse(GetAllData(id)[5]);
+        return float.Parse(GetAllData(id)[5], CultureInfo.InvariantCulture);
     }
 
     public float GetAliveTime(int id)
     {
-        return float.Parse(GetAllData(id)[9]);
+        return float.Parse(GetAllData(id)[9], CultureInfo.InvariantCulture);
     }
 
     public float GetMagnitudeY(int id)
     {
-        return float.Parse(GetAllData(id)[8]);
+        return float.Parse(GetAllData(id)[8], CultureInfo.InvariantCulture);
     }
 
     public float GetMagnitudeX(int id)
     {
-        return float.Parse(GetAllData(id)[7]);
+        string[] s =GetAllData(id);
+        print("s:" + s[7]);
+        float f = float.Parse(s[7],CultureInfo.InvariantCulture);
+        print("f:" + f);
+        return f;
     }
 
     public float GetJitterY(int id)
     {
-        return float.Parse(GetAllData(id)[6]);
+        return float.Parse(GetAllData(id)[6], CultureInfo.InvariantCulture);
     }
 
 
