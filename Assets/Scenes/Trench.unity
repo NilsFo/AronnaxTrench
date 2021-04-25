@@ -692,11 +692,11 @@ MonoBehaviour:
   cameraState: 0
   generatorConsumptionOfFuelPerSecond: 21
   generatorRFOutputPerSecond: 1000
-  depth: -10
+  depth: -2
   maxDivePressure: 3800
-  pumpPressure: 20
-  targetDivePressure: 100
-  currentDivePressure: 100
+  maxPumpPressure: 80
+  pressureDelta: 0
+  currentDivePressure: 300
   interiorPressure: 0
   maxInteriorPressurePumpPressure: 20
   interiorPressurePumpPressure: 0

@@ -78,10 +78,10 @@ public class GameState : MonoBehaviour
   private float maxDivePressure = 1000f;
   
   [SerializeField]
-  private float pumpPressure = 20f;
+  private float maxPumpPressure = 20f;
   
   [SerializeField]
-  private float targetDivePressure = 0f;  // 
+  private float pressureDelta = 0f;  // 
   
   [SerializeField]
   private float currentDivePressure = 0f;
@@ -268,10 +268,10 @@ public class GameState : MonoBehaviour
   
   public float CurrentDivePressure => currentDivePressure;
 
-  public float TargetDivePressure
+  public float PressureDelta
   {
-    get => targetDivePressure;
-    set => targetDivePressure = value;
+    get => pressureDelta;
+    set => pressureDelta = value;
   }
 
   public float InteriorPressure
@@ -291,6 +291,7 @@ public class GameState : MonoBehaviour
 
   public float MaxInteriorPressurePumpPressure => maxInteriorPressurePumpPressure;
 
+  public float MaxPumpPressure {get => maxPumpPressure; set => maxPumpPressure = value;}
   public float InteriorPressurePumpPressure
   {
     get => interiorPressurePumpPressure;
@@ -455,13 +456,8 @@ public class GameState : MonoBehaviour
     interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
 
     //Pressure Magic?!
-    if(currentDivePressure != targetDivePressure) {
-        var diveDirection = currentDivePressure < targetDivePressure ? 1:-1;
-        currentDivePressure += pumpPressure * diveDirection * Time.deltaTime;
-        if(diveDirection > 0 != currentDivePressure < targetDivePressure) {
-          currentDivePressure = targetDivePressure;
-        }
-    }
+    
+    currentDivePressure += pressureDelta * Time.deltaTime;
     depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
     
     // Set fog according to gradient

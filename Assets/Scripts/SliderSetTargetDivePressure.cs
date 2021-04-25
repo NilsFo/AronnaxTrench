@@ -22,6 +22,6 @@ public class SliderSetTargetDivePressure : MonoBehaviour
   
     void ChangeValue(float value)
     {
-        manager.GameState.TargetDivePressure = manager.GameState.MaxDivePressure * value;
+        manager.GameState.PressureDelta = manager.GameState.MaxPumpPressure * (value - 0.5f) * 2;
     }
 }
