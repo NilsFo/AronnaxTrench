@@ -295,7 +295,11 @@ public class GameState : MonoBehaviour
 
   public MaschienState BatteryState => batteryState;
 
-  public MaschienState GeneratorState => generatorState;
+  public MaschienState GeneratorState
+  {
+    get => generatorState;
+    set => generatorState = value;
+  }
 
   public MaschienState OTwoTankState => oTwoTankState;
 
