@@ -111,9 +111,9 @@ public class FishDataVault : MonoBehaviour
     public float GetMagnitudeX(int id)
     {
         string[] s =GetAllData(id);
-        print("s:" + s[7]);
+        //print("s:" + s[7]);
         float f = float.Parse(s[7],CultureInfo.InvariantCulture);
-        print("f:" + f);
+        //print("f:" + f);
         return f;
     }
 

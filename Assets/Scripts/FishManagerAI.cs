@@ -100,11 +100,10 @@ public class FishManagerAI : MonoBehaviour
 
     public PathCreator JitterPath(PathCreator path)
     {
-        
         for(int i=0;i< path.bezierPath.NumPoints; i++)
         {
             Vector3 p = path.bezierPath.GetPoint(i);
-            Vector3 np = new Vector3(p.x*Random.Range(-0.8f,3.2f), p.y * Random.Range(-0.8f, 3.2f), p.z * Random.Range(-0.8f, 3.2f));
+            Vector3 np = new Vector3(p.x*Random.Range(0.9f,1.337f), p.y * Random.Range(0.69f, 4.20f), p.z * Random.Range(0.8f, 1.69f));
             path.bezierPath.MovePoint(i, np);
         }
         return path;
