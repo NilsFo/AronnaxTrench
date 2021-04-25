@@ -135,7 +135,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
 
     public void Catch()
     { 
-        bool[] caughtList = gameState.caughtFishIDs;
+        bool[] caughtList = gameState.CaughtFishIDs;
         bool alreadyCaught = caughtList[id];
         if (!alreadyCaught)
         {

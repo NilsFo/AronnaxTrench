@@ -8,7 +8,7 @@ public class SliderSetSubThrust : MonoBehaviour
 
   public Slider slider;
   
-  public GameState gameState;
+  public ShipUiManager manager;
   public float offset = 0.5f;
 
   void OnEnable () 
@@ -23,7 +23,7 @@ public class SliderSetSubThrust : MonoBehaviour
   
   void ChangeValue(float value)
   {
-    gameState.SubmarineThrust = gameState.SubmarineMaxThrust * ((value - offset) * 2);
+    manager.GameState.SubmarineThrust = manager.GameState.SubmarineMaxThrust * ((value - offset) * 2);
   }
 
 }

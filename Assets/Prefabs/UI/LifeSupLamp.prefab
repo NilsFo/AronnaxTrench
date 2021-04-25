@@ -84,8 +84,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 586096967590761539}
+  - component: {fileID: 7486477553111526699}
   m_Layer: 5
-  m_Name: LifeSupportLamp
+  m_Name: LifeSupLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +114,22 @@ RectTransform:
   m_AnchoredPosition: {x: 2128.0369, y: -183.89294}
   m_SizeDelta: {x: 46.3937, y: 46.04}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7486477553111526699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586096967590761538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1662205e8ee9e864d97f23258c0c51eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
+  off: {fileID: 586096967899950681}
+  on: {fileID: 586096968783120467}
+  warn: {fileID: 586096966766088372}
 --- !u!1 &586096967899950681
 GameObject:
   m_ObjectHideFlags: 0

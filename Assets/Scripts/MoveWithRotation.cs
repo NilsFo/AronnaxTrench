@@ -7,8 +7,8 @@ public class MoveWithRotation : MonoBehaviour
 
     public float StartPosX;
     public float EndPosX;
-
-    public GameState gameState;
+    
+    public ShipUiManager manager;
     
     void FixedUpdate()
     {
