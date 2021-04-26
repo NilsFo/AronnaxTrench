@@ -117,9 +117,13 @@ public class GameState : MonoBehaviour
   private float submarineRotationDampening = 0.2f;
   private float _submarineRotationSpeed = 0f;
 
-  //END Sub Position && Movement
-  
   [SerializeField]
+  private float playerVelocity = 0;
+
+
+    //END Sub Position && Movement
+
+    [SerializeField]
   private float playerRotation = 0;
   
   [SerializeField]
@@ -291,7 +295,13 @@ public class GameState : MonoBehaviour
     set => interiorPressure = value;
   }
 
-  public float MaxInteriorPressure => maxDivePressure;
+    public float PlayerVelocity
+    {
+        get => playerVelocity;
+        set => playerVelocity = value;
+    }
+
+    public float MaxInteriorPressure => maxDivePressure;
 
   public float ExteriorPressure
   {
@@ -542,10 +552,10 @@ public class GameState : MonoBehaviour
       }
     }
   }
-  //END Spot Lights
+//END Spot Lights
 
-  //FuseBox
-  public FuseState MainFuse
+//FuseBox
+public FuseState MainFuse
   {
     get => mainFuse;
     set => mainFuse = value;
