@@ -73,7 +73,7 @@ public class GameState : MonoBehaviour
 
   [SerializeField] private float maxPumpPressure = 20f;
 
-  [SerializeField] private float pressureDelta = 0f;
+  [SerializeField] public float pressureDelta = 0f;
 
   [SerializeField] private float currentDivePressure = 0f;
 
