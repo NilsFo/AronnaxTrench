@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class BulletinFish : MonoBehaviour
+public class BulletinFish : MonoBehaviour, IPointerDownHandler
 {
 
     public int id=0;
@@ -55,6 +56,50 @@ public class BulletinFish : MonoBehaviour
             return manager.GameState.CaughtFishIDs[id];
         }
         return false;
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        float depth = manager.GameState.CurrentDepth;
+        string text;
+        if (id != 17)
+        {
+            if (IsDiscovered())
+            {
+                text = dataVault.GetName(id);
+            }
+            else
+            {
+                if (dataVault.GetRarity(id) == 0)
+                {
+                    text = "We have no information about this species. It might be deep in the trench?";
+                }
+                else
+                {
+                    if (dataVault.IsDepthAboveMinDepth(id,depth))
+                    {
+                        if (dataVault.IsDepthBelowMax(id, depth))
+                        {
+                            text = "It should be nearby. Keep looking.";
+                        }
+                        else
+                        {
+                            text = "Sensors indicate you are close to the surface for this fish. You need to go deeper.";
+                        }
+                    }
+                    else
+                    {
+                        text = "Sensors indicate you are too low for this fish. Keep rising.";
+                    }
+                }
+            }
+        }else
+        {
+            text = "We have no information about this species. It might be very deep in the trench?";
+        }
+        
+        //Output the name of the GameObject that is being clicked
+        Debug.Log(text);
     }
 
 }
