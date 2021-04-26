@@ -15,6 +15,8 @@ public class UISceneChangerButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        Cursor.visible = true;
         operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false;
 

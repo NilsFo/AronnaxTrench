@@ -46,12 +46,12 @@ MonoBehaviour:
   playState: 0
   tookFotoOfMonster: 0
   cameraState: 0
-  maxFuel: 10000
-  currentFuel: 10000
-  maxBattery: 240000
-  currentBattery: 240000
+  maxFuel: 60000
+  currentFuel: 60000
+  maxBattery: 192000
+  currentBattery: 192000
   generatorConsumptionOfFuelPerSecond: 21
-  generatorRFOutputPerSecond: 1000
+  generatorRFOutputPerSecond: 1800
   totalConsumptionAlL: 1600
   depth: -2
   maxDivePressure: 3800
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   currentCarbon: 0
-  maxCarbon: 12000
+  maxCarbon: 6000
   carbonPerSec: 100
   lifeSupportState: 0
   batteryState: 0

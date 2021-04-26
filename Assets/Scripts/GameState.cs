@@ -843,7 +843,7 @@ public class GameState : MonoBehaviour
       }
       else
       {
-        lifeSupportState = MaschienState.On;
+        oTwoInteriorState = MaschienState.On;
       }
       //END LifeSupport
 
@@ -913,12 +913,11 @@ public class GameState : MonoBehaviour
       {
         batteryState = MaschienState.On;
       }
-
-      if (IsOTwoEmpty >= 1f)
+      if (IsOTwoEmpty <= 0f)
       {
         oTwoTankState = MaschienState.Defective;
       }
-      else if (IsOTwoEmpty >= 0.5f)
+      else if (IsOTwoEmpty <= 0.5f)
       {
         oTwoTankState = MaschienState.Warning;
       }
