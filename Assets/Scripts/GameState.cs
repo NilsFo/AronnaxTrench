@@ -415,12 +415,10 @@ public class GameState : MonoBehaviour
       {
         if (isRFSaturation)
         {
-          return oTwoTankState;
+          return MaschienState.On;
         }
-
-        return MaschienState.Warning;
+        return MaschienState.On;
       }
-
       return MaschienState.Off;
     }
   }
