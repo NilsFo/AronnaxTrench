@@ -105,11 +105,14 @@ public class Finale : MonoBehaviour
         // TODO disable all non critical sounds here
         // TODO make UI elements go crazy here
         // TODO play music and chanting over 
+        GetComponent<AudioSource>().Play();
     }
 
     public void StartFadeOut()
     {
         print("Starting to fade out.");
+        
+        GetComponent<AudioSource>().Stop();
         fadingOut = true;
         overlayImage.color = new Color(1, 1, 1, 1);
     }

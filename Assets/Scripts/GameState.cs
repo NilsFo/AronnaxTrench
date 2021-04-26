@@ -930,6 +930,7 @@ public class GameState : MonoBehaviour
     else if(PlayState == GameplayState.End)
     {
       //TODO Fuck UP State
+      LightState = MaschienState.Warning;
     }
     else if (PlayState == GameplayState.Gameover)
     {
