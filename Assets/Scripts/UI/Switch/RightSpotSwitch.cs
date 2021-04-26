@@ -13,6 +13,10 @@ public class RightSpotSwitch : Interactible, IPointerClickHandler
     
     public static bool isOn = true;
     
+    private float _maxTime = Mathf.PI * 2;
+    private float _timer = 0;
+    private float speed = 4f;
+    
     void Start()
     {
         if (manager.GameState.MidSpotState == GameState.MaschienState.On)
@@ -32,19 +36,50 @@ public class RightSpotSwitch : Interactible, IPointerClickHandler
   
     void FixedUpdate()
     {
-        if (isOn)
+        _timer += Time.deltaTime;
+        if (_timer > _maxTime)
         {
-            off.SetActive(false);
-            on.SetActive(true);
-            mid.SetActive(false);
-            manager.GameState.RightSpotState = GameState.MaschienState.On;
+            _timer = 0;
+        }
+
+        if (manager.GameState.GeneralState == GameState.MaschienState.Defective)
+        {
+            float diff = Mathf.Sin(_timer * speed);
+            if (diff > 0.33f)
+            {
+                off.SetActive(true);
+                on.SetActive(false);
+                mid.SetActive(false);
+            }
+            else if (diff < -0.33f)
+            {
+                off.SetActive(false);
+                on.SetActive(true);
+                mid.SetActive(false);
+            }
+            else
+            {
+                off.SetActive(false);
+                on.SetActive(false);
+                mid.SetActive(true);
+            }
         }
         else
         {
-            off.SetActive(true);
-            on.SetActive(false);
-            mid.SetActive(false);
-            manager.GameState.RightSpotState = GameState.MaschienState.Off;
+            if (isOn)
+            {
+                off.SetActive(false);
+                on.SetActive(true);
+                mid.SetActive(false);
+                manager.GameState.RightSpotState = GameState.MaschienState.On;
+            }
+            else
+            {
+                off.SetActive(true);
+                on.SetActive(false);
+                mid.SetActive(false);
+                manager.GameState.RightSpotState = GameState.MaschienState.Off;
+            }
         }
     }
 }

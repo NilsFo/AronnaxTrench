@@ -29,12 +29,7 @@ public class SonarAI : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (!IsFunctioning())
-        {
-            clearBleps();
-            return;
-        }
-
+        
         if (IsFinale())
         {
             if (!chaosInvoked)
@@ -43,6 +38,11 @@ public class SonarAI : MonoBehaviour
                 chaosInvoked = true;
             }
         }
+        else if (!IsFunctioning())
+        {
+            clearBleps();
+        }
+
         else
         {
             clearBleps();

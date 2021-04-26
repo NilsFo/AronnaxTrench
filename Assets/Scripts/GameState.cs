@@ -183,15 +183,15 @@ public class GameState : MonoBehaviour
     set => cameraState = value;
   }
 
-  public bool Ghosts
+  public MaschienState GeneralState
   {
     get
     {
       if (playState == GameplayState.End)
       {
-        return true;
+        return MaschienState.Defective;
       }
-      return false;
+      return MaschienState.Defective;
     }
   }
 
@@ -269,6 +269,23 @@ public class GameState : MonoBehaviour
   {
     get => interiorPressure;
     set => interiorPressure = value;
+  }
+
+  public MaschienState PlayerVelocityState
+  {
+    get
+    {
+      float diff = Mathf.Abs(PlayerVelocity);
+      if (diff > 20f)
+      {
+        return MaschienState.Defective;
+      }
+      if (diff > 5f)
+      {
+        return MaschienState.On;
+      }
+      return MaschienState.Off;
+    }
   }
 
   public float PlayerVelocity
