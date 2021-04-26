@@ -84,7 +84,7 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
                         }
                         else
                         {
-                            text = "Sensors indicate you are close to the surface for this fish. You need to go deeper.";
+                            text = "Sensors indicate you are too close to the surface for this fish. You need to go deeper.";
                         }
                     }
                     else
