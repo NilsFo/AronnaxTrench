@@ -68,11 +68,16 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
             
             // Annihilate the fishes with a barrage of deadly raytraces
             int fishcount = 0;
-            for(int i = -320; i <= 320; i+=64) {
-                for(int j = -192; j <= 192; j+=64) {
-                    var rayScreenPos = localPos + new Vector2(i,j);
-                    if(newRect.Contains(rayScreenPos + rectPos)) {
-                        var ray = activeCamera.ScreenPointToRay(rayScreenPos);
+            //for(int i = -320; i <= 320; i+=64) {
+                //for(int j = -192; j <= 192; j+=64) {
+                    //var rayScreenPos = localPos + new Vector2(i,j);
+                    //var rayScreenPos = localPos + new Vector2(i+activeCamera.pixelWidth/2,j+activeCamera.pixelHeight/2);
+            for(int i = -4; i <= 4; i++) {
+                for(int j = -2; j <= 2; j++) {
+                    
+                    //if(newRect.Contains(rayScreenPos + rectPos)) {
+                        //var ray = activeCamera.ScreenPointToRay(rayScreenPos);
+                        var ray = new Ray(activeCamera.transform.position, activeCamera.transform.forward*5+activeCamera.transform.localToWorldMatrix.MultiplyVector(new Vector3(i, j, 0)));
                         Debug.DrawRay(ray.origin, ray.direction*20, Color.magenta, 20f);
                         //Debug.Log(ray);
                         var hits = Physics.RaycastAll(ray.origin, ray.direction, 100);
@@ -93,7 +98,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                                 gameState.Camera = GameState.CameraState.Disarm;
                             }
                         }
-                    }
+                    //}
                 }
             }
             // Debug.Log("Hit fish " + fishcount + " times while taking a picture");
@@ -159,6 +164,6 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
 
     void Start() {
         
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 }

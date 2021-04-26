@@ -4394,6 +4394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2835684199864002007, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3289925487060559281, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4950,10 +4954,6 @@ PrefabInstance:
     - target: {fileID: 8311880152269176772, guid: eb8813c54f481e84aaa45917d87c877f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8311880152295972017, guid: eb8813c54f481e84aaa45917d87c877f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -238.555
       objectReference: {fileID: 0}
     - target: {fileID: 8311880152787454461, guid: eb8813c54f481e84aaa45917d87c877f, type: 3}
       propertyPath: gameState
