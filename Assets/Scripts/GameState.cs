@@ -18,7 +18,8 @@ public class GameState : MonoBehaviour
   {
     On, 
     Off, 
-    Warning
+    Warning,
+    Defective
   }
   
   public enum CameraState
@@ -68,9 +69,11 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float generatorRFOutputPerSecond = 1000; //in RF
-  
+
+  private bool isRFSaturation = true;
   //END Generator
   
+  //Sub Position && Movement
   [SerializeField]
   private float depth = 0;
 
@@ -81,7 +84,7 @@ public class GameState : MonoBehaviour
   private float maxPumpPressure = 20f;
   
   [SerializeField]
-  private float pressureDelta = 0f;  // 
+  private float pressureDelta = 0f; 
   
   [SerializeField]
   private float currentDivePressure = 0f;
@@ -112,8 +115,10 @@ public class GameState : MonoBehaviour
 
   [SerializeField]
   private float submarineRotationDampening = 0.2f;
-  private float submarineRotationSpeed = 0f;
+  private float _submarineRotationSpeed = 0f;
 
+  //END Sub Position && Movement
+  
   [SerializeField]
   private float playerRotation = 0;
   
@@ -131,9 +136,11 @@ public class GameState : MonoBehaviour
   [SerializeField]
   public Gradient envGradient;
   
+  
+  
   //PlayState
   private PlayState playState;
-  
+
   //MaschienState Dispaly && Warning
   [SerializeField] 
   private MaschienState lifeSupportState = MaschienState.Off;
@@ -172,19 +179,19 @@ public class GameState : MonoBehaviour
   private MaschienState pressureState = MaschienState.Off;
 
   //FuseBox
-  [SerializeField] private FuseState mainFuse = FuseState.On;
+  [SerializeField] private FuseState mainFuse = FuseState.On; //All
+
+  [SerializeField] private FuseState fuseOne = FuseState.On; //Pumps
   
-  [SerializeField] private FuseState fuseOne = FuseState.On;
+  [SerializeField] private FuseState fuseTwo = FuseState.On; //Jets
   
-  [SerializeField] private FuseState fuseTwo = FuseState.On;
+  [SerializeField] private FuseState fuseThree = FuseState.On; //Lamps
   
-  [SerializeField] private FuseState fuseThree = FuseState.On;
+  [SerializeField] private FuseState fuseFour = FuseState.On; //Spots
   
-  [SerializeField] private FuseState fuseFour = FuseState.On;
+  [SerializeField] private FuseState fuseFive = FuseState.On; //Life
   
-  [SerializeField] private FuseState fuseFive = FuseState.On;
-  
-  [SerializeField] private FuseState fuseSix = FuseState.On;
+  [SerializeField] private FuseState fuseSix = FuseState.On; //Sonar
   //End private
   
   //Public
@@ -313,54 +320,227 @@ public class GameState : MonoBehaviour
   }
 
   //MaschienState
-  public MaschienState LifeSupportState => lifeSupportState;
+  public MaschienState LifeSupportState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On && fuseFive == FuseState.On)
+      {
+        return lifeSupportState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
 
-  public MaschienState BatteryState => batteryState;
+  public MaschienState BatteryState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return batteryState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
 
   public MaschienState GeneratorState
   {
-    get => generatorState;
-    set => generatorState = value;
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return generatorState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && generatorState != value)
+      {
+        generatorState = value;
+      }
+    }
   }
 
-  public MaschienState OTwoTankState => oTwoTankState;
+  public MaschienState OTwoTankState {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return OTwoTankState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
 
-  public MaschienState OTwoInteriorState => oTwoInteriorState;
+  public MaschienState OTwoInteriorState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return oTwoInteriorState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
 
-  public MaschienState RadioState => radioState;
+  public MaschienState RadioState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return radioState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && lightState != value)
+      {
+        radioState = value;
+      }
+    }
+  }
 
-  public MaschienState EngienState => engienState;
+  public MaschienState EngienState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return engienState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
 
   public MaschienState LightState
   {
-    get => lightState;
-    set => lightState = value;
+    get
+    {
+      if (mainFuse == FuseState.On && fuseThree == FuseState.On)
+      {
+        return lightState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && lightState != value)
+      {
+        lightState = value;
+      }
+    }
+  }
+  
+  public MaschienState PressureState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On)
+      {
+        return midSpotState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
   }
   //END MaschienState
 
   //Spot Lights
   public MaschienState MidSpotState
   {
-    get => midSpotState;
-    set => midSpotState = value;
+    get
+    {
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      {
+        return midSpotState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && midSpotState != value)
+      {
+        midSpotState = value;
+      }
+    }
   }
 
   public MaschienState LeftSpotState
   {
-    get => leftSpotState;
-    set => leftSpotState = value;
+    get
+    {
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      {
+        return leftSpotState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && leftSpotState != value)
+      {
+        leftSpotState = value;
+      }
+    }
   }
 
   public MaschienState RightSpotState
   {
-    get => rightSpotState;
-    set => rightSpotState = value;
-  }
-
-  public MaschienState PressureState
-  {
-    get => pressureState;
-    set => pressureState = value;
+    get
+    {
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      {
+        return rightSpotState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+    set
+    {
+      if (value != MaschienState.Warning && value != MaschienState.Defective && rightSpotState != value)
+      {
+        rightSpotState = value;
+      }
+    }
   }
   //END Spot Lights
 
@@ -450,19 +630,19 @@ public class GameState : MonoBehaviour
     //Consume Energy
     
     
+    
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
     
-    submarineRotationSpeed += submarineThrust * Time.deltaTime;
-    submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
+    _submarineRotationSpeed += submarineThrust * Time.deltaTime;
+    _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
     //Submarine Player
-    SubmarineRotation += submarineRotationSpeed * Time.deltaTime;
+    SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
     
     //Interior Pressuer
     interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
 
     //Pressure Magic?!
-    
     currentDivePressure += pressureDelta * Time.deltaTime;
     depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
     
