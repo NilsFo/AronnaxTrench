@@ -4233,10 +4233,6 @@ PrefabInstance:
       propertyPath: fishManager
       value: 
       objectReference: {fileID: 1051954993}
-    - target: {fileID: 4222766365523445023, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
-      propertyPath: creationCount
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 4550284926503417912, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: gameState
       value: 
