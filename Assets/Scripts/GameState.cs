@@ -417,10 +417,8 @@ public class GameState : MonoBehaviour
         {
           return oTwoTankState;
         }
-
-        return MaschienState.Warning;
+        return MaschienState.On;
       }
-
       return MaschienState.Off;
     }
   }
@@ -913,24 +911,16 @@ public class GameState : MonoBehaviour
       {
         batteryState = MaschienState.On;
       }
-      if (IsOTwoEmpty <= 0f)
-      {
-        oTwoTankState = MaschienState.Defective;
-      }
-      else if (IsOTwoEmpty <= 0.5f)
-      {
-        oTwoTankState = MaschienState.Warning;
-      }
-      else
-      {
-        oTwoTankState = MaschienState.On;
-      }
       //END Warning Lamps
     }
     else if(PlayState == GameplayState.End)
     {
-      //TODO Fuck UP State
-      LightState = MaschienState.Warning;
+      LightState = MaschienState.Defective;
+      oTwoInteriorState = MaschienState.Defective;
+      oTwoTankState = MaschienState.Defective;
+      batteryState = MaschienState.Defective;
+      generatorState = MaschienState.Defective;
+      radioState = MaschienState.Defective;
     }
     else if (PlayState == GameplayState.Gameover)
     {
