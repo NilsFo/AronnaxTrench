@@ -368,7 +368,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ba347d827b609da49a9151acf51349bd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.366
+  m_Volume: 0.095
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   metalHit: {fileID: 6930545422647524703}
   glassCrack: {fileID: 6631426004426469343}
   alarm: {fileID: 547522736}
-  click: {fileID: 0}
+  click: {fileID: 8826633595692969812}
 --- !u!1 &4123874590669666039
 GameObject:
   m_ObjectHideFlags: 0

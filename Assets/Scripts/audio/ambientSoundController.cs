@@ -39,6 +39,10 @@ public class ambientSoundController : MonoBehaviour
     }
 
     public void PlayClick() {
+        PlayClick(1.0f);
+    }
+    public void PlayClick(float pitch) {
+        click.pitch = pitch;
         click.Play();
     }
 
