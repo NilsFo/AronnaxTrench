@@ -530,6 +530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnBlockers
       objectReference: {fileID: 0}
+    - target: {fileID: 6720787472922749702, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6919592233633683492, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -901,6 +905,7 @@ MonoBehaviour:
   submarineMaxThrust: 15
   submarineThrust: 0
   submarineRotationDampening: 0.8
+  playerVelocity: 0
   playerRotation: 0
   playerRotationSpeed: 0
   caughtFishIDs: 0000000000

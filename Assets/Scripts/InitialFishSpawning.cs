@@ -21,7 +21,7 @@ public class InitialFishSpawning : MonoBehaviour
             float y = spawnOrigin.position.y - (maxDepth / creationCount) * i;
             float z = spawnOrigin.position.z;
             
-            fishManager.SpawnNextFish(new Vector3(x,y,z), y);
+            fishManager.SpawnNextFish(new Vector3(x,y,z), y, false);
         }
     }
 

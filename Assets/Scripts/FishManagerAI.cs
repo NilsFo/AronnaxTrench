@@ -7,6 +7,7 @@ public class FishManagerAI : MonoBehaviour
 {
     public GameState gameState;
     public List<GameObject> myFish = new List<GameObject>();
+    public List<GameObject> idleFish = new List<GameObject>();
 
     public FishDataVault dataVault;
     public GameObject fishPrefab;
@@ -14,6 +15,7 @@ public class FishManagerAI : MonoBehaviour
     public Canvas submarineCanvas;
     public int spawnDelay = 3;
     public int spawnDelayJitter = 2;
+    public int maxIdleFishCount = 8;
 
     public int spawnPositionMinY = 50;
     public int spawnPositionMaxY = 650;
@@ -21,7 +23,6 @@ public class FishManagerAI : MonoBehaviour
     public float currentCountDown;
     public List<PathCreator> possiblePaths;
 
-    public bool spawnContinuous = false;
     public bool applyJitterToSpwawn = true;
 
     public List<GameObject> blockingCubes;
@@ -29,25 +30,49 @@ public class FishManagerAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitFishSpawn();
+        ResetFishSpawnTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentCountDown = currentCountDown - Time.deltaTime;
- 
-        if(currentCountDown < 0 && spawnContinuous)
+        if (gameState.IsPlayerMovingSlowly())
         {
-            float currentDepth = gameState.CurrentDepth;
-            SpawnNextFish(playerCamera.transform.position,currentDepth);
-            InitFishSpawn();
+            currentCountDown = currentCountDown - Time.deltaTime;
+            if (currentCountDown < 0)
+            {
+                float currentDepth = gameState.CurrentDepth;
+                Vector3 pos = playerCamera.transform.position;
+                pos.y = pos.y + 2f * Random.Range(0.8f, 1.337f);
+
+                SpawnNextFish(pos, currentDepth, true);
+                ResetFishSpawnTimer();
+            }
+        }
+        else
+        {
+            ResetFishSpawnTimer();
+        }
+
+        // Remove this later
+        if (gameState.IsPlayerMovingVeryFast())
+        {
+            print("Slow down! You are very fast!");
         }
     }
 
-    public void SpawnNextFish(Vector3 targetPosition, float depth)
+    public void SpawnNextFish(Vector3 targetPosition, float depth, bool allowAutoDespawn)
     {
         int startY = Random.Range(spawnPositionMinY, spawnPositionMaxY);
+
+        if (allowAutoDespawn)
+        {
+            if(idleFish.Count > maxIdleFishCount)
+            {
+                print("Player is standing still, but the max idle fish cap has already been reached: "+ maxIdleFishCount);
+                return;
+            }
+        }
 
         foreach(GameObject blocker in blockingCubes)
         {
@@ -76,7 +101,7 @@ public class FishManagerAI : MonoBehaviour
                 path = JitterPath(path);
             }
 
-            CreateFish(id,startY,path);
+            CreateFish(id,startY,path, allowAutoDespawn);
         }
         else
         {
@@ -84,7 +109,7 @@ public class FishManagerAI : MonoBehaviour
         }
     }
 
-    public void CreateFish(int id, int startY, PathCreator path)
+    public void CreateFish(int id, int startY, PathCreator path, bool allowAutoDespawn)
     {
         bool reversed = Random.value >= 0.5;
         float startX = Random.Range(-250, -550);
@@ -92,7 +117,12 @@ public class FishManagerAI : MonoBehaviour
         //print("Spawning fish with ID: " + id);
         GameObject fish = Instantiate(fishPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         // fish.transform.SetParent(submarineCanvas.transform);
-        myFish.Add(fish.gameObject);
+        myFish.Add(fish);
+
+        if (allowAutoDespawn)
+        {
+            idleFish.Add(fish);
+        }
 
         FishAI fai = fish.GetComponent<FishAI>();
         fai.id = id;
@@ -106,6 +136,7 @@ public class FishManagerAI : MonoBehaviour
         fai.myBillBoard.target = playerCamera.transform;
         fai.dstTravelled = Random.Range(0f, 100f);
         fai.applyJitterToSpwawn = applyJitterToSpwawn;
+        fai.allowAutoDespawn = allowAutoDespawn;
 
         if (reversed)
         {
@@ -125,7 +156,7 @@ public class FishManagerAI : MonoBehaviour
         return path;
     }
 
-    public void InitFishSpawn()
+    public void ResetFishSpawnTimer()
     {
         var jitter = Random.Range(spawnDelayJitter * -1, spawnDelayJitter);
 

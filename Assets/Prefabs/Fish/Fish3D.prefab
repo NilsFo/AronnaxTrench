@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -76,6 +77,7 @@ MonoBehaviour:
   myPath: {fileID: 0}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 9093050299219885661, guid: 04e5d0a7582e66044866490fb955078a, type: 3}
 --- !u!212 &6515624661722579138
 SpriteRenderer:
   m_ObjectHideFlags: 0

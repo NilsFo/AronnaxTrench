@@ -301,6 +301,16 @@ public class GameState : MonoBehaviour
         set => playerVelocity = value;
     }
 
+    public bool IsPlayerMovingSlowly()
+    {
+        return Mathf.Abs(PlayerVelocity) <= 2f;
+    }
+
+    public bool IsPlayerMovingVeryFast()
+    {
+        return Mathf.Abs(PlayerVelocity) >= 20f;
+    }
+
     public float MaxInteriorPressure => maxDivePressure;
 
   public float ExteriorPressure

@@ -10,6 +10,7 @@ public class FishAI : MonoBehaviour
 
     public static readonly bool SELF_CATCH_ENABLED = false;
 
+    public bool allowAutoDespawn = false;
     public float movementSeedX;
     public float movementSeedY;
     public FishManagerAI myManager;
@@ -44,11 +45,12 @@ public class FishAI : MonoBehaviour
 
     public float worldX;
     public float worldY;
-    public float SelfCatchTimer = 3;
+    public float selfCatchTimer = 3;
 
     public PathCreator myPath;
     public float dstTravelled;
     public EndOfPathInstruction endOfPathBehaviour;
+    public SonarAI defaultSonar;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,8 @@ public class FishAI : MonoBehaviour
         startY = t.position.y;
         StartPosX = -250;
         EndPosX = -3753;
+
+        selfCatchTimer = 2 + Random.Range(0f, 5f);
     }
 
     // Update is called once per frame
@@ -87,6 +91,18 @@ public class FishAI : MonoBehaviour
         {
             despawnTimer = 3;
         }*/
+
+        if (allowAutoDespawn)
+        {
+            float currentDepth = gameState.CurrentDepth;
+            float disty = Mathf.Abs(currentDepth - transform.position.y);
+            if (disty > defaultSonar.rangeY * 2)
+            {
+                print("Removing an idle fish because the player is too far away.");
+                RemoveFish();
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -94,11 +110,10 @@ public class FishAI : MonoBehaviour
         // Self Catching
         if (SELF_CATCH_ENABLED)
         {
-            SelfCatchTimer = SelfCatchTimer - Time.deltaTime;
-            if (SelfCatchTimer < 0)
+            selfCatchTimer = selfCatchTimer - Time.deltaTime;
+            if (selfCatchTimer < 0)
             {
                 Catch();
-                RemoveFish();
             }
         }
 
@@ -220,6 +235,7 @@ public class FishAI : MonoBehaviour
     public void RemoveFish()
     {
         myManager.myFish.Remove(this.gameObject);
+        myManager.idleFish.Remove(this.gameObject);
         Destroy(this.gameObject);
     }
 
