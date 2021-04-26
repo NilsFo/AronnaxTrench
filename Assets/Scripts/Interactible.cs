@@ -14,16 +14,4 @@ public class Interactible : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         FindObjectOfType<PlayerCursor>().canInteract = false;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

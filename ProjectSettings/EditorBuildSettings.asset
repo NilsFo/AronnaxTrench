@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Trench PQ.unity
-    guid: f696b3fefd96ea849b27f3aff52734c7
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 930eb91d1cd112e4488713d8cc2eda19
   - enabled: 1
     path: Assets/Scenes/Trench.unity
     guid: fee19cb9f1c8dd6449db9e24fff61454

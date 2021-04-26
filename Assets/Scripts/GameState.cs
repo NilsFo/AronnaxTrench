@@ -275,16 +275,16 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      float diff = Mathf.Abs(PlayerVelocity);
-      if (diff > 20f)
+      float diff = Mathf.Abs((ExteriorPressure - currentDivePressure) * Time.deltaTime);
+      if (diff > 6f)
       {
         return MaschienState.Defective;
       }
-      if (diff > 5f)
+      if (diff > 3f)
       {
-        return MaschienState.On;
+        return MaschienState.Warning;
       }
-      return MaschienState.Off;
+      return MaschienState.On;
     }
   }
 
