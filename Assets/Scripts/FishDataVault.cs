@@ -87,6 +87,18 @@ public class FishDataVault : MonoBehaviour
         return ids;
     }
 
+    public bool IsDepthAboveMinDepth(int id,float depth)
+    {
+        float minDepth = GetMinDepth(id);
+        return depth >= minDepth;
+    }
+
+    public bool IsDepthBelowMax(int id, float depth)
+    {
+        float maxDepth = GetMaxDepth(id);
+        return depth <= maxDepth;
+    }
+
     public int GetRarity(int id)
     {
         return int.Parse(GetAllData(id)[4], CultureInfo.InvariantCulture);

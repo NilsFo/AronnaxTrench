@@ -7,12 +7,19 @@ using UnityEngine.UI;
 
 public class UISceneChangerButton : MonoBehaviour
 {
+
+    public AsyncOperation operation;
     public Button loadSceneBtn;
     public string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        Cursor.visible = true;
+        operation = SceneManager.LoadSceneAsync(sceneName);
+        operation.allowSceneActivation = false;
+
         loadSceneBtn.onClick.AddListener(ChangeScene);
     }
 
@@ -24,10 +31,13 @@ public class UISceneChangerButton : MonoBehaviour
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene("Trench", LoadSceneMode.Single);
+        //operation.allowSceneActivation = true;
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void ChangeScene() { SceneManager.LoadSceneAsync(sceneName); }
-
+    public void ChangeScene() {
+        operation.allowSceneActivation = true;
+        //SceneManager.LoadSceneAsync(sceneName); 
+    }
 
 }

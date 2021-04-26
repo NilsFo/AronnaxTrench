@@ -17,6 +17,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
     public Image camFlashOverlay;
 
     public GameObject monsterFish;
+    public bool canInteract;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -67,14 +68,19 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
             
             // Annihilate the fishes with a barrage of deadly raytraces
             int fishcount = 0;
-            for(int i = -320; i <= 320; i+=64) {
-                for(int j = -192; j <= 192; j+=64) {
-                    var rayScreenPos = localPos + new Vector2(i,j);
-                    if(newRect.Contains(rayScreenPos + rectPos)) {
-                        var ray = activeCamera.ScreenPointToRay(rayScreenPos);
+            //for(int i = -320; i <= 320; i+=64) {
+                //for(int j = -192; j <= 192; j+=64) {
+                    //var rayScreenPos = localPos + new Vector2(i,j);
+                    //var rayScreenPos = localPos + new Vector2(i+activeCamera.pixelWidth/2,j+activeCamera.pixelHeight/2);
+            for(int i = -8; i <= 8; i++) {
+                for(int j = -4; j <= 4; j++) {
+                    
+                    //if(newRect.Contains(rayScreenPos + rectPos)) {
+                        //var ray = activeCamera.ScreenPointToRay(rayScreenPos);
+                        var ray = new Ray(activeCamera.transform.position, activeCamera.transform.forward*5+activeCamera.transform.localToWorldMatrix.MultiplyVector(new Vector3(i/2, j/2, 0)));
                         Debug.DrawRay(ray.origin, ray.direction*20, Color.magenta, 20f);
                         //Debug.Log(ray);
-                        var hits = Physics.RaycastAll(ray.origin, ray.direction, 100);
+                        var hits = Physics.RaycastAll(ray.origin, ray.direction, 500);
                         foreach(var hit in hits) {
                             print(hit.transform.gameObject.name);
 
@@ -92,7 +98,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                                 gameState.Camera = GameState.CameraState.Disarm;
                             }
                         }
-                    }
+                    //}
                 }
             }
             // Debug.Log("Hit fish " + fishcount + " times while taking a picture");
@@ -135,15 +141,29 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                 cameraCursor.gameObject.SetActive(false);
             }
         } else {
-            defaultCursor.gameObject.SetActive(true);
-            interactCursor.gameObject.SetActive(false);
-            cameraIdleCursor.gameObject.SetActive(false);
-            cameraCursor.gameObject.SetActive(false);
+            if(canInteract) {
+
+                defaultCursor.gameObject.SetActive(false);
+                interactCursor.gameObject.SetActive(true);
+                cameraIdleCursor.gameObject.SetActive(false);
+                cameraCursor.gameObject.SetActive(false);
+            } else {
+                
+                defaultCursor.gameObject.SetActive(true);
+                interactCursor.gameObject.SetActive(false);
+                cameraIdleCursor.gameObject.SetActive(false);
+                cameraCursor.gameObject.SetActive(false);
+            }
         }
 
         if(camFlash > 0) {
             camFlashOverlay.color = new Color(1,1,1,camFlash);
             camFlash -= 0.4f*Time.deltaTime;
         }
+    }
+
+    void Start() {
+        
+        Cursor.visible = false;
     }
 }

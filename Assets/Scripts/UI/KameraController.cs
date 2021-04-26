@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace UI
 {
-    public class KameraController : MonoBehaviour, IPointerClickHandler
+    public class KameraController : Interactible, IPointerClickHandler
     {
         public ShipUiManager manager;
         private UnityEngine.UI.Image camImage;

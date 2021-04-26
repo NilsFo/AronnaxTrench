@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class SliderSetTargetDivePressure : MonoBehaviour
+public class SliderSetTargetDivePressure : Interactible
 {
     public static float myValue = 0;
     

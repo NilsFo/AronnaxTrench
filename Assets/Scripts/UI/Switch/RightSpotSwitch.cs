@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RightSpotSwitch : MonoBehaviour, IPointerClickHandler
+public class RightSpotSwitch : Interactible, IPointerClickHandler
 {
     public ShipUiManager manager;
   

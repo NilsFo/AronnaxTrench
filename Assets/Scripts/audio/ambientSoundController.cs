@@ -8,14 +8,16 @@ public class ambientSoundController : MonoBehaviour
     public AudioSource engine;
     public AudioSource metalHit;
     public AudioSource glassCrack;
+    public AudioSource alarm;
+    public AudioSource click;
 
     void Start() {
-        InvokeRepeating("MetalHitSound", 0, 5.125f);
-        InvokeRepeating("GlassCrackSound", 0, 7.25f);
+        InvokeRepeating("probMetalHitSound", 0, 5.125f);
+        InvokeRepeating("probGlassCrackSound", 0, 7.25f);
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if(!engine.isPlaying && gameState.EngienState == GameState.MaschienState.On) {
             engine.Play();
@@ -23,28 +25,54 @@ public class ambientSoundController : MonoBehaviour
         else if(engine.isPlaying && gameState.EngienState != GameState.MaschienState.On) {
             engine.Stop();
         }
+        if(!alarm.isPlaying && 
+            (gameState.PressureState == GameState.MaschienState.Defective
+            || gameState.OTwoInteriorState == GameState.MaschienState.Defective)) {
+                alarm.loop = true;
+                alarm.Play();
+            }
+            else if(alarm.isPlaying && 
+                (gameState.PressureState != GameState.MaschienState.Defective
+                && gameState.OTwoInteriorState != GameState.MaschienState.Defective)) {
+                    alarm.loop = false;
+                }
     }
 
+    public void PlayClick() {
+        PlayClick(1.0f);
+    }
+    public void PlayClick(float pitch) {
+        click.pitch = pitch;
+        click.Play();
+    }
 
-    private void MetalHitSound() {
+    private void probMetalHitSound() {
         if(gameState.HullIntegrity > 0.5f) {
-            if(!metalHit.isPlaying) {
-                if(Random.Range(0f,1f) < 0.2f) {
-                    metalHit.pitch = Random.Range(0.7f, 1.1f);
-                    metalHit.panStereo = Random.Range(-0.5f, 0.5f);
-                    metalHit.Play();
-                }
+            if(Random.Range(0f,1f) < 0.2f) {
+                PlayMetalHitSound();
             }
         }
     }
-    private void GlassCrackSound() {
+    public void PlayMetalHitSound() {
+        if(!metalHit.isPlaying) {
+            metalHit.pitch = Random.Range(0.7f, 1.1f);
+            metalHit.panStereo = Random.Range(-0.5f, 0.5f);
+            metalHit.Play();
+        }
+    }
+    private void probGlassCrackSound() {
         if(gameState.HullIntegrity > 0.8f) {
-            if(!glassCrack.isPlaying) {
-                if(Random.Range(0f,1f) < 0.2f) {
-                    glassCrack.pitch = Random.Range(0.9f, 1.1f);
-                    glassCrack.Play();
-                }
+        
+            if(Random.Range(0f,1f) < 0.2f) {
+                PlayGlassCrack();
             }
+        }
+    }
+
+    public void PlayGlassCrack() {
+        if(!glassCrack.isPlaying) {
+            glassCrack.pitch = Random.Range(0.9f, 1.1f);
+            glassCrack.Play();
         }
     }
 }

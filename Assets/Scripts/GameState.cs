@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class GameState : MonoBehaviour
 
   [SerializeField] private float maxPumpPressure = 20f;
 
-  [SerializeField] private float pressureDelta = 0f;
+  [SerializeField] public float pressureDelta = 0f;
 
   [SerializeField] private float currentDivePressure = 0f;
 
@@ -275,16 +276,16 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      float diff = Mathf.Abs(PlayerVelocity);
-      if (diff > 20f)
+      float diff = Mathf.Abs((ExteriorPressure - currentDivePressure) * Time.deltaTime);
+      if (diff > 6f)
       {
         return MaschienState.Defective;
       }
-      if (diff > 5f)
+      if (diff > 3f)
       {
-        return MaschienState.On;
+        return MaschienState.Warning;
       }
-      return MaschienState.Off;
+      return MaschienState.On;
     }
   }
 
@@ -710,7 +711,18 @@ public class GameState : MonoBehaviour
 
   void Update()
   {
-    if (playState == GameplayState.New)
+        // Pressing ESC
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(playState != GameplayState.End)
+            {
+                SceneManager.LoadScene("MainMenu");
+                return;
+            }
+        }
+
+        if (playState == GameplayState.New)
     {
       playState = GameplayState.Playing;
     }
@@ -804,7 +816,8 @@ public class GameState : MonoBehaviour
       //BEGIN Carbon
       if (LifeSupportState == MaschienState.On)
       {
-        currentCarbon = 0;
+        currentCarbon -= 5*carbonPerSec * Time.deltaTime;
+        currentCarbon = Mathf.Max(currentCarbon, 0);
       }
       else
       {
@@ -815,20 +828,22 @@ public class GameState : MonoBehaviour
       //BEGIN LifeSupport
       if (IsSuffocation >= 1f)
       {
-        //TODO Gameover
-        Debug.Log("Dead");
+        // Death by suffocation
+        FindObjectOfType<RadioManager>()?.RadioMessage("Your oxygen levels are too low! We are pulling you back out!", 7.0f);
+
+        PlayState = GameplayState.Gameover;
       }
-      else if (IsSuffocation >= 0.75f)
+      else if (IsSuffocation >= 0.5f)
       {
-        lifeSupportState = MaschienState.Defective;
+        oTwoInteriorState = MaschienState.Defective;
       }
-      else if (IsSuffocation >= 0.25f)
+      else if (IsSuffocation >= 0.2f)
       {
-        lifeSupportState = MaschienState.Warning;
+        oTwoInteriorState = MaschienState.Warning;
       }
       else
       {
-        lifeSupportState = MaschienState.On;
+        oTwoInteriorState = MaschienState.On;
       }
       //END LifeSupport
 
@@ -869,8 +884,11 @@ public class GameState : MonoBehaviour
       //BEGIN Warning lamps
       if (HullIntegrity >= 1f)
       {
-        // TODO: Game over
-        Debug.Log("Dead");
+        // Death by Crushing
+        FindObjectOfType<RadioManager>()?.RadioMessage("Your pressure sensors are going crazy! We are pulling you back out!", 7.0f);
+        FindObjectOfType<ambientSoundController>().PlayGlassCrack();
+        FindObjectOfType<ambientSoundController>().PlayMetalHitSound();
+        PlayState = GameplayState.Gameover;
       }
       else if (HullIntegrity > 0.5f)
       {
@@ -895,12 +913,11 @@ public class GameState : MonoBehaviour
       {
         batteryState = MaschienState.On;
       }
-
-      if (IsOTwoEmpty >= 1f)
+      if (IsOTwoEmpty <= 0f)
       {
         oTwoTankState = MaschienState.Defective;
       }
-      else if (IsOTwoEmpty >= 0.5f)
+      else if (IsOTwoEmpty <= 0.5f)
       {
         oTwoTankState = MaschienState.Warning;
       }
@@ -916,6 +933,11 @@ public class GameState : MonoBehaviour
     }
     else if (PlayState == GameplayState.Gameover)
     {
+      currentDivePressure-=200*Time.deltaTime;
+      depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
+
+      _submarineRotationSpeed *= (1 - submarineRotationDampening * Time.deltaTime);
+      SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
       //TODO Back
     }
 

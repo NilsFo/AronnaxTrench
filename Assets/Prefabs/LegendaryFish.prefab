@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -72,10 +73,11 @@ MonoBehaviour:
   startDepth: 0
   worldX: 0
   worldY: 0
-  SelfCatchTimer: 3
+  selfCatchTimer: 3
   myPath: {fileID: 8311880151181628169}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 0}
 --- !u!212 &8311880150877760459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -341,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -367,10 +370,11 @@ MonoBehaviour:
   startDepth: 0
   worldX: 0
   worldY: 0
-  SelfCatchTimer: 3
+  selfCatchTimer: 3
   myPath: {fileID: 0}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 0}
 --- !u!212 &8311880151164997678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -694,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -720,10 +725,11 @@ MonoBehaviour:
   startDepth: 0
   worldX: 0
   worldY: 0
-  SelfCatchTimer: 3
+  selfCatchTimer: 3
   myPath: {fileID: 8311880151113301616}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 0}
 --- !u!212 &8311880151942841796
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -799,8 +805,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.6151314, y: 2.5806656, z: 0.2}
+  m_Center: {x: 0.08542156, y: 0.052928925, z: 0}
 --- !u!1 &8311880152269176771
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -911,10 +918,11 @@ MonoBehaviour:
   startDepth: 0
   worldX: 0
   worldY: 0
-  SelfCatchTimer: 3
+  selfCatchTimer: 3
   myPath: {fileID: 8311880151349813167}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 0}
 --- !u!212 &8311880152787454460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -990,8 +998,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.71388, y: 3.097285, z: 0.2}
+  m_Center: {x: 0.08206813, y: -0.061609905, z: 0}
 --- !u!1 &8311880152888239782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8311880152888239782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.738, y: -237.38, z: 4.27}
+  m_LocalPosition: {x: -8.738, y: -238.555, z: 4.27}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 8311880152269176772}
@@ -1038,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb79575e8266b41b5bd575d94894e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAutoDespawn: 0
   movementSeedX: 0
   movementSeedY: 0
   myManager: {fileID: 0}
@@ -1064,10 +1073,11 @@ MonoBehaviour:
   startDepth: 0
   worldX: 0
   worldY: 0
-  SelfCatchTimer: 3
+  selfCatchTimer: 3
   myPath: {fileID: 0}
   dstTravelled: 0
   endOfPathBehaviour: 0
+  defaultSonar: {fileID: 0}
 --- !u!212 &8311880152888239785
 SpriteRenderer:
   m_ObjectHideFlags: 0

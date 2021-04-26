@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class SliderSetSubThrust : MonoBehaviour
+public class SliderSetSubThrust : Interactible
 {
 
   public Slider slider;

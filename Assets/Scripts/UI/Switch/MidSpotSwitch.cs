@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace UI.Switch
 {
-  public class MidSpotSwitch : MonoBehaviour, IPointerClickHandler
+  public class MidSpotSwitch : Interactible, IPointerClickHandler
   {
     public ShipUiManager manager;
 

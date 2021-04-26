@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace UI.Switch
 {
-  public class FuseFive : MonoBehaviour, IPointerClickHandler
+  public class FuseFive : Interactible, IPointerClickHandler
   {
     public ShipUiManager manager;
 
@@ -64,10 +64,12 @@ namespace UI.Switch
         if (manager.GameState.FuseFive == GameState.FuseState.Off)
         {
           manager.GameState.FuseFive = GameState.FuseState.On;
+          FindObjectOfType<ambientSoundController>()?.PlayClick(1.1f);
         }
         else
         {
           manager.GameState.FuseFive = GameState.FuseState.Off;
+          FindObjectOfType<ambientSoundController>()?.PlayClick(0.9f);
         }
       }
     }

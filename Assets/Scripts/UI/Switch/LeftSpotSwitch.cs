@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace UI.Switch
 {
-  public class LeftSpotSwitch : MonoBehaviour, IPointerClickHandler
+  public class LeftSpotSwitch : Interactible, IPointerClickHandler
   {
     public ShipUiManager manager;
 
