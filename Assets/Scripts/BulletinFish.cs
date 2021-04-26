@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class BulletinFish : MonoBehaviour, IPointerDownHandler
 {
@@ -13,15 +14,13 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
     public ShipUiManager manager;
 
     public Image myImage;
-    public Text myText;
-
+    public GameObject myText;
+    
     private bool unlockCache = false;
 
     void Start()
     {
         myImage.gameObject.SetActive(false);
-
-        myText.text = "???";
         myText.gameObject.SetActive(true);
     }
 
@@ -34,14 +33,14 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
                 Unlock();
                 unlockCache = true;
                 myImage.gameObject.SetActive(true);
-                myText.gameObject.SetActive(true);
+                myText.gameObject.SetActive(false);
             }
         }
     }
 
     public void Unlock()
     {
-        myText.text = dataVault.GetName(id);
+        myText.SetActive(false);
         myImage.gameObject.SetActive(true);
 
         var tempColor = myImage.color;
