@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI.Slieder
 {
-    public class InteriorPerssureSilder : MonoBehaviour
+    public class InteriorPerssureSilder : Interactible
     {
         public ShipUiManager manager;
         public Slider slider;

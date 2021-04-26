@@ -58,7 +58,7 @@ public class RadioManager : MonoBehaviour
     }
     public void DialogueLine2() {
         if(!breakerTutorial)
-            textBubbleManager.Say(transform, "It looks like the drop knocked out some of your breakers, at least your radio is still online.", 7);
+            textBubbleManager.Say(transform, "It looks like the drop knocked out some of your breakers. At least your radio is still online.", 7);
     }
     public void DialogueLine3() {
         if(!breakerTutorial)

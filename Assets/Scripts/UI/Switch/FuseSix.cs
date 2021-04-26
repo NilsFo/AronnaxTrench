@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace UI.Switch
 {
-    public class FuseSix : MonoBehaviour, IPointerClickHandler
+    public class FuseSix : Interactible, IPointerClickHandler
     {
         public ShipUiManager manager;
   

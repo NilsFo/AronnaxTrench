@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderSetTargetDivePressure : MonoBehaviour
+public class SliderSetTargetDivePressure : Interactible
 {
     public Slider slider;
   

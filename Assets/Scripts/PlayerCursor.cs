@@ -17,6 +17,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
     public Image camFlashOverlay;
 
     public GameObject monsterFish;
+    public bool canInteract;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -135,15 +136,29 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                 cameraCursor.gameObject.SetActive(false);
             }
         } else {
-            defaultCursor.gameObject.SetActive(true);
-            interactCursor.gameObject.SetActive(false);
-            cameraIdleCursor.gameObject.SetActive(false);
-            cameraCursor.gameObject.SetActive(false);
+            if(canInteract) {
+
+                defaultCursor.gameObject.SetActive(false);
+                interactCursor.gameObject.SetActive(true);
+                cameraIdleCursor.gameObject.SetActive(false);
+                cameraCursor.gameObject.SetActive(false);
+            } else {
+                
+                defaultCursor.gameObject.SetActive(true);
+                interactCursor.gameObject.SetActive(false);
+                cameraIdleCursor.gameObject.SetActive(false);
+                cameraCursor.gameObject.SetActive(false);
+            }
         }
 
         if(camFlash > 0) {
             camFlashOverlay.color = new Color(1,1,1,camFlash);
             camFlash -= 0.4f*Time.deltaTime;
         }
+    }
+
+    void Start() {
+        
+        Cursor.visible = false;
     }
 }

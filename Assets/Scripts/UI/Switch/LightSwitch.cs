@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace UI.Switch
 {
-  public class LightSwitch : MonoBehaviour, IPointerClickHandler 
+  public class LightSwitch : Interactible, IPointerClickHandler 
   {
     public ShipUiManager manager;
   

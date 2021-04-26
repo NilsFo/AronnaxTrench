@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderSetSubThrust : MonoBehaviour
+public class SliderSetSubThrust : Interactible
 {
 
   public Slider slider;
