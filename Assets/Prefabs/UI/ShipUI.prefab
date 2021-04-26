@@ -6516,12 +6516,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: Keep a look at these gauges. The pressures inside and outside must align
-        or we have to abort the mission!
+      value: Keep these gauges in view. Adjust the interior pressure to be close
+        to the exterior pressure. Too much pressure difference and we will have to
+        get you out of there!
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -6848,12 +6849,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: Keep a look at these gauges. The pressures inside and outside must align
-        or we have to abort the mission!
+      value: Keep these gauges in view. Adjust the interior pressure to be close
+        to the exterior pressure. Too much pressure difference and we will have to
+        get you out of there!
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -7070,12 +7072,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: Keep a look at these gauges. The pressures inside and outside must align
-        or we have to abort the mission!
+      value: Keep these gauges in view. Adjust the interior pressure to be close
+        to the exterior pressure. Too much pressure difference and we will have to
+        get you out of there!
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -7181,12 +7184,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: These are status lamps. While green everything is good. If they blink
-        or are red, check the corresponding system.
+      value: These are the system status lamps. While green everything is good. If
+        they are blinking or red, check the corresponding system.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -7292,7 +7295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: You need oxigen to survive. If this tank is empty we'll aboard the mission.
+      value: You need oxygen to survive. If this tank is empty we'll abort the mission.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
@@ -7402,7 +7405,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: You can view the state of your ballast tanks here.
+      value: You can view the state of your ballast tanks here. The higher the fill
+        rate, the deeper you go.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
@@ -7512,7 +7516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: These tanks control your boyancy. Fill them via the switch in the cockpit
+      value: These tanks control your buoyancy. Fill them via the switch in the cockpit
         labeled "Ballast Tank".
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
@@ -7734,12 +7738,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: These are status lamps. While green everything is good. If they blink
-        or are red, check the corresponding system.
+      value: These are the system status lamps. While green everything is good. If
+        they are blinking or red, check the corresponding system.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -7845,7 +7849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: These tanks control your boyancy. Fill them via the switch in the cockpit
+      value: These tanks control your buoyancy. Fill them via the switch in the cockpit
         labeled "Ballast Tank".
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
@@ -7956,8 +7960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: This is the subs gas. We fuled you up so good, you have enough for two
-        journeys.
+      value: This is the subs fuel. You're filled up, you should have more than enough.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
@@ -8067,12 +8070,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: Keep a look at these gauges. The pressures inside and outside must align
-        or we have to abort the mission!
+      value: Keep these gauges in view. Adjust the interior pressure to be close
+        to the exterior pressure. Too much pressure difference and we will have to
+        get you out of there!
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463981, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: m_Name
@@ -8178,8 +8182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: This is the subs gas. We fuled you up so good, you have enough for two
-        journeys.
+      value: This is the subs fuel. You're filled up, you should have more than enough.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
@@ -8400,7 +8403,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: You can view the state of your ballast tanks here.
+      value: You can view the state of your ballast tanks here. The higher the fill
+        rate, the deeper you go.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime
@@ -9243,7 +9247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: text
-      value: You need oxigen to survive. If this tank is empty we'll aboard the mission.
+      value: You need oxygen to survive. If this tank is empty we'll abort the mission.
       objectReference: {fileID: 0}
     - target: {fileID: 1691550585176463971, guid: b1d9b8b1f979d564583f1855a43322b5, type: 3}
       propertyPath: displayTime

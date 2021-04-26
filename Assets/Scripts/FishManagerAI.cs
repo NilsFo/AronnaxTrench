@@ -69,7 +69,7 @@ public class FishManagerAI : MonoBehaviour
         {
             if(idleFish.Count > maxIdleFishCount)
             {
-                print("Player is standing still, but the max idle fish cap has already been reached: "+ maxIdleFishCount);
+                //print("Player is standing still, but the max idle fish cap has already been reached: "+ maxIdleFishCount);
                 return;
             }
         }
@@ -79,7 +79,7 @@ public class FishManagerAI : MonoBehaviour
             BoxCollider col = blocker.GetComponent<BoxCollider>();
             if(col.bounds.Contains(new Vector3(0, depth, 0)))
             {
-                print("Cannot spawn fish at depth: "+depth+". There's a blocker here!");
+                //print("Cannot spawn fish at depth: "+depth+". There's a blocker here!");
                 return;
             }
         }
