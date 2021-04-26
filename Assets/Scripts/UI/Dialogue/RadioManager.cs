@@ -12,6 +12,8 @@ public class RadioManager : MonoBehaviour
     
     private bool breakerTutorial;
     private TextBubbleManager textBubbleManager;
+
+    private float buisyTimer = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -28,10 +30,11 @@ public class RadioManager : MonoBehaviour
         textBubbleManager.Say(transform, message, duration);
     }
     
-
     // Update is called once per frame
     void Update()
     {
+        buisyTimer = buisyTimer - Time.deltaTime;
+
         float closestX;
         if(Mathf.Abs(radioPos.position.x - transform.position.x) < Mathf.Abs(radioPos2.position.x - transform.position.x)) {
             closestX = radioPos.position.x;
@@ -54,39 +57,57 @@ public class RadioManager : MonoBehaviour
 
     public bool AcceptsAmbientMessages()
     {
-        return gameState.PlayState == GameState.GameplayState.Playing;
+        return gameState.PlayState == GameState.GameplayState.Playing && buisyTimer < 0f;
     }
 
     public void ReuqestRadioMessage(string text, float time)
     {
         if (AcceptsAmbientMessages())
         {
+            buisyTimer = time;
             RadioMessage(text, time);
         }
     }
 
     public void DialogueLine1() {
         if(!breakerTutorial)
+        {
             textBubbleManager.Say(transform, "Radio check. Do you read, Olivaris One?", 5);
+            buisyTimer = 8;
+        }
     }
     public void DialogueLine2() {
         if(!breakerTutorial)
+        {
             textBubbleManager.Say(transform, "It looks like the drop knocked out some of your breakers. At least your radio is still online.", 7);
-    }
+                buisyTimer = 8;
+            }
+        }
     public void DialogueLine3() {
-        if(!breakerTutorial)
+        if (!breakerTutorial)
+        {
             textBubbleManager.Say(transform, "Take a look around, find the fuse box and get the sub back online.", 7);
+            buisyTimer = 8;
+        }
     }
-    public void DialogueLine4() {
+    
+    public void DialogueLine4()
+    {
+        buisyTimer = 8;
         textBubbleManager.Say(transform, "Alright, your pumps should be ready to go, expedition of the Arronax Trench is underway.", 7);
     }
-    public void DialogueLine5() {
+    public void DialogueLine5()
+    {
+        buisyTimer = 8;
         textBubbleManager.Say(transform, "I hope you brought your camera. Get us some good pictures of the local wildlife if you can.", 7);
     }
-    public void DialogueLine6() {
+    public void DialogueLine6()
+    {
+        buisyTimer = 8;
         textBubbleManager.Say(transform, "Keep an eye on your interior pressure. We don't want you crushed at the bottom of the trench.", 7);
     }
     public void DialogueLine7() {
+        buisyTimer = 8;
         textBubbleManager.Say(transform, "The interior pressure should always be close to the exterior pressure.", 7);
     }
 }
