@@ -122,7 +122,7 @@ public class SonarAI : MonoBehaviour
     public bool IsFinale()
     {
         // TODO check this
-        return gameState.PlayState == GameState.GameplayState.End ||true;
+        return gameState.PlayState == GameState.GameplayState.End;
     }
 
     public bool IsFunctioning()
