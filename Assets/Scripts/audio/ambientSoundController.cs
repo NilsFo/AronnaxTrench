@@ -12,6 +12,7 @@ public class ambientSoundController : MonoBehaviour
     public AudioSource click;
     public AudioSource sonar;
     public AudioSource camera;
+    public AudioSource success;
 
     void Start() {
         InvokeRepeating("probMetalHitSound", 0, 5.125f);
@@ -92,5 +93,13 @@ public class ambientSoundController : MonoBehaviour
     {
         camera.pitch = pitch;
         camera.Play();
+    }
+    
+    public void PlaySuccess()
+    {
+        if(!success.isPlaying) {
+
+            success.Play();
+        }
     }
 }

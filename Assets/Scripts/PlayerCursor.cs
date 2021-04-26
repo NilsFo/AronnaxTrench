@@ -34,6 +34,9 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
             // camera flash
             FireCameraFlash();
 
+            // camera sound
+            FindObjectOfType<ambientSoundController>()?.PlayCamera();
+
             // Find out which window we are taking a pic from
             RectTransform camTarget = null;
             Rect newRect = new Rect();
@@ -86,8 +89,11 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
 
                             FishAI fish = hit.transform.GetComponent<FishAI>();
                             if(fish != null) {
-                                fish.Catch();  // TODO: sound if something is catched?
+                                bool newCatch = fish.Catch();  // TODO: sound if something is catched?
                                 fishcount++;
+                                if(newCatch) {
+                                    FindObjectOfType<ambientSoundController>()?.PlaySuccess();
+                                }
                             }
 
                             MoveAlongPath monsterPath = hit.transform.GetComponent<MoveAlongPath>();

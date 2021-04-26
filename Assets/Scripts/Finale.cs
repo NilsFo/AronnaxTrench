@@ -29,6 +29,7 @@ public class Finale : MonoBehaviour
     private float fadeoutCurrent = 0f;
     public float fadeoutTarget = 8f;
     public float textDelay = 10;
+    public AudioSource shutterReverb;
 
     // Start is called before the first frame update
     void Start()
@@ -113,6 +114,7 @@ public class Finale : MonoBehaviour
         print("Starting to fade out.");
         
         GetComponent<AudioSource>().Stop();
+        shutterReverb.Play();
         fadingOut = true;
         overlayImage.color = new Color(1, 1, 1, 1);
     }
