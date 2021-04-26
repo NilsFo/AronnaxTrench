@@ -7,6 +7,7 @@ public class SwitchableLamp : MonoBehaviour
 
     
     public GameState gameState;
+    public Gradient flickerGradient;
     public enum LampPos {
         Front,
         RearLeft,
@@ -16,10 +17,14 @@ public class SwitchableLamp : MonoBehaviour
     public LampPos lampPos;
     private Light _light;
 
+    private float flickerTimer = 20f;
+    private float brightness;
+
     // Update is called once per frame
     private void Start()
     {
         _light = GetComponent<Light>();
+        brightness = _light.intensity;
     }
 
     void Update()
@@ -36,6 +41,13 @@ public class SwitchableLamp : MonoBehaviour
                 break;
             
 
+        }
+        flickerTimer -= Time.deltaTime;
+        if(flickerTimer < 0) {
+            flickerTimer = Random.Range(20f, 40f);
+        }
+        else if(flickerTimer <= 1f) {
+            _light.intensity = flickerGradient.Evaluate(1-flickerTimer).a * brightness;
         }
     }
 }
