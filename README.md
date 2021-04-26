@@ -1,3 +1,5 @@
+### Repository Overview
+
 [![GitHub stars](https://img.shields.io/github/stars/NilsFo/AronnaxTrench.svg?style=social&label=Star)](https://github.com/NilsFo/AronnaxTrench) 
 
 ***
@@ -8,9 +10,15 @@
 
 ***
 
+### Social Media & Contact
+
 [![Follow us Twitter](https://img.shields.io/twitter/follow/NilsFoer?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=NilsFoer)
 
 [![Follow us Twitter](https://img.shields.io/twitter/follow/ParkuhrMD?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=ParkuhrMD)
+
+[![Follow us Twitter](https://img.shields.io/twitter/follow/HerbersAdrian?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=HerbersAdrian)
+
+[![Follow us Twitter](https://img.shields.io/twitter/follow/PatrickQuiskamp?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=PatrickQuiskamp)
 
 
 # LudumDare48

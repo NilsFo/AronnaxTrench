@@ -24,6 +24,8 @@ public class FishManagerAI : MonoBehaviour
     public bool spawnContinuous = false;
     public bool applyJitterToSpwawn = true;
 
+    public List<GameObject> blockingCubes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,16 @@ public class FishManagerAI : MonoBehaviour
     public void SpawnNextFish(Vector3 targetPosition, float depth)
     {
         int startY = Random.Range(spawnPositionMinY, spawnPositionMaxY);
+
+        foreach(GameObject blocker in blockingCubes)
+        {
+            BoxCollider col = blocker.GetComponent<BoxCollider>();
+            if(col.bounds.Contains(new Vector3(0, depth, 0)))
+            {
+                print("Cannot spawn fish at depth: "+depth+". There's a blocker here!");
+                return;
+            }
+        }
 
         List<int> fishIDs = dataVault.GetAllFishForDepth(depth);
         //print("Choose one fish from those IDs: " + fishIDs.Count+": "+ System.String.Join(", ", fishIDs.ToArray()));

@@ -52,6 +52,7 @@ public class SonarAI : MonoBehaviour
             float distY = Mathf.Abs(playerCamera.transform.position.y - localFish.y);
             float sonarY = distY / rangeY;
             float a = 1 - sonarY;
+            a = Mathf.Max(a * a, 1);
 
             Image newBlep;
             if(i < (blepCache.Count))
