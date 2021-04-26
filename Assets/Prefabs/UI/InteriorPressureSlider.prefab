@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   slider: {fileID: 8104826878846609462}
+  index: 1
 --- !u!1 &2084465516085801256
 GameObject:
   m_ObjectHideFlags: 0
