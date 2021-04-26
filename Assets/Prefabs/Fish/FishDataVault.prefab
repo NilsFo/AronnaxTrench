@@ -65,4 +65,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
   - {fileID: 21300000, guid: 7876fd1458fa1c24b889e5aa4d42bc27, type: 3}
+  fishMaterials:
+  - {fileID: 2100000, guid: f7d30d44a6cfced40811ba41e36c8cf9, type: 2}
+  - {fileID: 2100000, guid: 4c779164ad86287459eb606bcfa59153, type: 2}
+  - {fileID: 2100000, guid: a8adf0bc9f0211648b80d10412ea11f5, type: 2}
+  - {fileID: 2100000, guid: ef34ee49a31ba8b4d9d5f8d800fa6ebc, type: 2}
+  - {fileID: 2100000, guid: 9d2b3616fc0be014cae300a0f189cbda, type: 2}
+  - {fileID: 2100000, guid: d39dfff9efc068a44a95f4a29a404e16, type: 2}
+  - {fileID: 2100000, guid: f7f769c367ea5d040a19db2dcd67bc20, type: 2}
+  - {fileID: 2100000, guid: 5fc4f93b88077f14e82fa3b95ad503f6, type: 2}
+  - {fileID: 2100000, guid: 8ea8528fd3407f440b63bb8e00b89624, type: 2}
+  - {fileID: 2100000, guid: 865eed2c89d541544a90f975854b9c16, type: 2}
+  - {fileID: 2100000, guid: a040c547d011ad545bcd7bbc2685edf9, type: 2}
+  - {fileID: 2100000, guid: 4f03d1a09960aca4ba0bfbb70392c3ac, type: 2}
+  - {fileID: 2100000, guid: 8fcbd0d599b0ad745971245b8998ebd3, type: 2}
+  - {fileID: 2100000, guid: 4580c45ec43c6434fba5b3053e827240, type: 2}
+  - {fileID: 2100000, guid: 9e6efe34585791645b8c2b238de9bbb5, type: 2}
+  - {fileID: 2100000, guid: e50cd5c19051bfd4b886b30d1ec85e1f, type: 2}
+  - {fileID: 2100000, guid: e50cd5c19051bfd4b886b30d1ec85e1f, type: 2}
+  - {fileID: 2100000, guid: e50cd5c19051bfd4b886b30d1ec85e1f, type: 2}
+  - {fileID: 2100000, guid: e50cd5c19051bfd4b886b30d1ec85e1f, type: 2}
+  - {fileID: 2100000, guid: e50cd5c19051bfd4b886b30d1ec85e1f, type: 2}
   fishGradients: []

@@ -188,6 +188,7 @@ public class FishAI : MonoBehaviour
             myImage.sprite = dataVault.GetSprite(id);
         }
         sprite.sprite = dataVault.GetSprite(id);
+        sprite.material = dataVault.GetMaterial(id);
     }
 
     public bool IsInPlayerView()

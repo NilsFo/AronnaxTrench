@@ -10,6 +10,7 @@ public class FishDataVault : MonoBehaviour
     public TextAsset fishDataCSV;
     private string[] rows;
     public List<Sprite> fishSprites;
+    public List<Material> fishMaterials;
     public List<Gradient> fishGradients;
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class FishDataVault : MonoBehaviour
     public Sprite GetSprite(int id)
     {
         return fishSprites[id];
+    }
+    public Material GetMaterial(int id)
+    {
+        return fishMaterials[id];
     }
 
     // Update is called once per frame
