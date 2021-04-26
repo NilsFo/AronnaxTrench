@@ -43,7 +43,7 @@ public class FishManagerAI : MonoBehaviour
             {
                 float currentDepth = gameState.CurrentDepth;
                 Vector3 pos = playerCamera.transform.position;
-                pos.y = pos.y + 2f * Random.Range(0.8f, 1.337f);
+                pos.y = pos.y + 2f * Random.Range(-1.69f, 1.337f);
 
                 SpawnNextFish(pos, currentDepth, true);
                 ResetFishSpawnTimer();

@@ -324,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6741b2bae2bae4746b5611cfdd41074b, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (4)
@@ -432,6 +436,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &7527466774794383262 stripped
@@ -446,6 +466,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f159eb07d4ec4f24bb6d74e7e53903ef, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (1)
@@ -554,6 +578,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &8340611808909497741 stripped
@@ -568,6 +608,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5479088304908398322}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 599e1a0f888c50a4181eaf5076984188, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (4)
@@ -676,6 +720,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &8244083192953813516 stripped
@@ -690,6 +750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5479088304908398322}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d81f324f63e7e6341808b1d795f4cf2d, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (1)
@@ -798,6 +862,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &8238885843799224016 stripped
@@ -812,6 +892,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 85b1172fe44675c4e9f30960222a078a, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (3)
@@ -920,6 +1004,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &9101016501914880975 stripped
@@ -934,6 +1034,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a2aad0684742ad040859f528cd5a655f, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (5)
@@ -1042,6 +1146,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 127
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &9101427224836119135 stripped
@@ -1056,6 +1176,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5479088304908398322}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c62459a1af3208547ab3d3a7e7404197, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (3)
@@ -1164,6 +1288,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 437
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 204
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &4740933682801102312 stripped
@@ -1178,6 +1318,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5479088304908398322}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 988db652657cf914285dda39837b1a7e, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (2)
@@ -1285,6 +1429,22 @@ PrefabInstance:
     - target: {fileID: 7902780817949830174, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: manager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
@@ -1400,6 +1560,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7819691290008555788, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7902780817949830174, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: id
       value: 17
@@ -1422,6 +1586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c9df668b01c8f5418211c2e8af449b8, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (3)
@@ -1530,6 +1698,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &2335870673559426876 stripped
@@ -1544,6 +1728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c87dc34b99c38a741b04965fe5e12996, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (2)
@@ -1652,6 +1840,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &3232711852471875682 stripped
@@ -1666,6 +1870,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fb371cdf18d8cee4ab834a849fabf416, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (5)
@@ -1774,6 +1982,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &3909784774328891521 stripped
@@ -1788,6 +2012,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8417930512170322840}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 06ff8ed7fac68b54e8d0c16702326a00, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox
@@ -1896,6 +2124,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &4087693797097333434 stripped
@@ -1910,6 +2154,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a5b353fc9b212b4eaf0be9b491b71dc, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (2)
@@ -2018,6 +2270,38 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &116445732297887465 stripped
@@ -2032,6 +2316,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 780314afbefa9a849a7b203b1aae96c4, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (4)
@@ -2140,6 +2428,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &927998797334015561 stripped
@@ -2154,6 +2458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2226151f7cba1db49a6b047c012dccac, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox (1)
@@ -2262,6 +2570,22 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &616841123064122186 stripped
@@ -2276,6 +2600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4332554114549978320}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 532f49225822d4446a6a12b8c95ce7f7, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox
@@ -2315,18 +2643,6 @@ PrefabInstance:
     - target: {fileID: 7450259512887152266, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_SizeDelta.y
       value: 113.4328
-      objectReference: {fileID: 0}
-    - target: {fileID: 7450259512887152266, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2331
-      objectReference: {fileID: 0}
-    - target: {fileID: 7450259512887152266, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2331
-      objectReference: {fileID: 0}
-    - target: {fileID: 7450259512887152266, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2331
       objectReference: {fileID: 0}
     - target: {fileID: 7450259512887152266, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2376,6 +2692,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
 --- !u!224 &1429837600023417323 stripped
@@ -2390,6 +2742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5479088304908398322}
     m_Modifications:
+    - target: {fileID: 4568689990715459199, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5d22825f3cc8bd44ad265bdc630b6d5, type: 3}
     - target: {fileID: 6192971693206324772, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: m_Name
       value: BulletinFishBox
@@ -2497,6 +2853,22 @@ PrefabInstance:
     - target: {fileID: 7902780817949830174, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
       propertyPath: manager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 439
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712913088450501847, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bcea9b5ed9fa754189cf6bee89c4139, type: 3}

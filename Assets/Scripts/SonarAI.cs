@@ -16,6 +16,8 @@ public class SonarAI : MonoBehaviour
     public Camera playerCamera;
     public List<Image> currentBleps;
     public List<Image> blepCache;
+    private float chaosTimer = 0;
+    private bool chaosInvoked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,66 @@ public class SonarAI : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (!IsFunctioning())
+        {
+            clearBleps();
+            return;
+        }
+
+        if (IsFinale())
+        {
+            if (!chaosInvoked)
+            {
+                InvokeRepeating("InvokeChaos", 0, 1.337f);
+                chaosInvoked = true;
+            }
+        }
+        else
+        {
+            clearBleps();
+            UpdateNormally();
+        }
+    }
+
+    private void InvokeChaos()
+    {
+        clearBleps();
+        UpdateChaos();
+    }
+
+    private void UpdateChaos()
+    {
+        print("chaos");
+        chaosTimer = chaosTimer + Time.deltaTime;
+
+        for (int i = 0; i < Random.Range(3,8); i++)
+        {
+            Image newBlep = getNextBlep(i);
+
+            float w = rect.rect.width;
+            float x = Random.Range(w, w * -1) * 0.3f;
+            float y = Random.Range(w, w * -1) * 0.3f;
+            newBlep.transform.localPosition = new Vector3(x, y, this.transform.position.z);
+
+            var tempColor = newBlep.color;
+            tempColor.a = 1f;
+            newBlep.color = tempColor;
+            currentBleps.Add(newBlep);
+        }
+    }
+
+    private void clearBleps()
+    {
         // Deleting old bleps
-        foreach(Image i in currentBleps)
+        foreach (Image i in currentBleps)
         {
             i.enabled = false;
         }
         currentBleps.Clear();
+    }
 
+    
+    private void UpdateNormally() { 
         // Looking for nearby fish
         float depth = gameState.CurrentDepth;
         List<GameObject> fish = GetNearbyFish(depth);
@@ -46,25 +101,15 @@ public class SonarAI : MonoBehaviour
             float fishX = currentFish.transform.position.x - playerCamera.transform.position.x;
             float fishZ = currentFish.transform.position.z - playerCamera.transform.position.z;
 
-            float sonarX = localFish.x / rangeX * (rect.rect.width*0.75f);
-            float sonarZ = localFish.z / rangeX * (rect.rect.height*0.75f);
+            float sonarX = localFish.x / rangeX * (rect.rect.width * 0.75f);
+            float sonarZ = localFish.z / rangeX * (rect.rect.height * 0.75f);
 
             float distY = Mathf.Abs(playerCamera.transform.position.y - localFish.y);
             float sonarY = distY / rangeY;
             float a = 1 - sonarY;
             a = Mathf.Max(a * a, 1);
 
-            Image newBlep;
-            if(i < (blepCache.Count))
-            {
-                newBlep = blepCache[i];
-                newBlep.enabled = true;
-            }
-            else
-            {
-                newBlep = Instantiate(myBlep, this.transform);
-                blepCache.Add(newBlep);
-            }
+            Image newBlep = getNextBlep(i);
             newBlep.transform.localPosition = new Vector3(sonarX, sonarZ, this.transform.position.z);
 
             var tempColor = newBlep.color;
@@ -72,7 +117,32 @@ public class SonarAI : MonoBehaviour
             newBlep.color = tempColor;
             currentBleps.Add(newBlep);
         }
+    }
 
+    public bool IsFinale()
+    {
+        return gameState.PlayState == GameState.GameplayState.End;
+    }
+
+    public bool IsFunctioning()
+    {
+        return gameState.SonarState == GameState.MaschienState.On;
+    }
+
+    public Image getNextBlep(int i)
+    {
+        Image newBlep;
+        if (i < (blepCache.Count))
+        {
+            newBlep = blepCache[i];
+            newBlep.enabled = true;
+        }
+        else
+        {
+            newBlep = Instantiate(myBlep, this.transform);
+            blepCache.Add(newBlep);
+        }
+        return newBlep;
     }
 
     public List<GameObject> GetNearbyFish(float depth)

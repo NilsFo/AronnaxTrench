@@ -4329,6 +4329,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6720787473675638935, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
   m_PrefabInstance: {fileID: 184669187}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2141152265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 530020976, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+  m_PrefabInstance: {fileID: 2835684199538949513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2835684199538949513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4336,6 +4347,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37116703, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_RootOrder
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058044315, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: m_RootOrder
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 1325218963929540541, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4536,6 +4555,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8421074975650311988, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 255106378}
     - target: {fileID: 8599022505081126176, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: interiorImages.Array.data[62]
       value: 
@@ -4609,6 +4632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finale
       objectReference: {fileID: 0}
+    - target: {fileID: 6948522490407944516, guid: 2f2e2190d227af045abf68993e8c3806, type: 3}
+      propertyPath: fishText
+      value: 
+      objectReference: {fileID: 2141152265}
     - target: {fileID: 6948522490407944516, guid: 2f2e2190d227af045abf68993e8c3806, type: 3}
       propertyPath: gameState
       value: 
@@ -4706,6 +4733,14 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 255106378}
+    - target: {fileID: 2288023457337102607, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: fishManager
+      value: 
+      objectReference: {fileID: 1051954993}
+    - target: {fileID: 2612369165234855392, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: fishManager
+      value: 
+      objectReference: {fileID: 1051954993}
     - target: {fileID: 2686799810890272587, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: gameState
       value: 
