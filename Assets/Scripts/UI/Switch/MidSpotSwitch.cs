@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,7 +13,19 @@ namespace UI.Switch
         public GameObject on;
 
         public static bool isOn = true;
-        
+
+        void Start()
+        {
+            if (manager.GameState.MidSpotState == GameState.MaschienState.On)
+            {
+                isOn = true;
+            }
+            else
+            {
+                isOn = false;
+            }
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             isOn = !isOn;

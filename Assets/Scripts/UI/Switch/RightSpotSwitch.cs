@@ -13,6 +13,18 @@ public class RightSpotSwitch : MonoBehaviour, IPointerClickHandler
     
     public static bool isOn = true;
     
+    void Start()
+    {
+        if (manager.GameState.MidSpotState == GameState.MaschienState.On)
+        {
+            isOn = true;
+        }
+        else
+        {
+            isOn = false;
+        }
+    }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         isOn = !isOn;

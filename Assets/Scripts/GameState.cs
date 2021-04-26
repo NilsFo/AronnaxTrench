@@ -6,210 +6,170 @@ using UnityEngine.Serialization;
 
 public class GameState : MonoBehaviour
 {
-
   //Enums
   public enum FuseState
   {
     On,
     Off
   }
-  
+
   public enum MaschienState
   {
-    On, 
-    Off, 
+    On,
+    Off,
     Warning,
     Defective
   }
-  
+
   public enum CameraState
   {
     Disarm,
     Armed,
   }
 
-  public enum PlayState
+  public enum GameplayState
   {
     New,
     Playing,
     End,
+    Gameover
   }
   //END Enums
-  
+
   //private
-  
-  //Tanks 
-  [SerializeField]
-  private float maxFuel = 10000; //in ml ~ 8 min @ 21 ml/s
 
-  [SerializeField]
-  private float currentFuel = 10000; //in ml
+  //PlayState
+  [Header("PlayState")] [SerializeField] private GameplayState playState;
 
-  [SerializeField]
-  private float maxOTwo = 0;
-  
-  [SerializeField]
-  private float currentOTwo = 0;
-  
-  [SerializeField]
-  private float maxBattery = 240000; //in RF
-  
-  [SerializeField]
-  private float currentBattery = 240000; //in RF
-  //END Tanks 
-  
   //Kamera
-  [SerializeField]
-  private CameraState cameraState = 0;
-  //END Kamera
-  
+  [Header("Kamera")] [SerializeField] private CameraState cameraState = 0;
+
+  //Tanks
+  [Header("Tanks")] [SerializeField] private float maxFuel = 10000; //in ml ~ 8 min @ 21 ml/s
+
+  [SerializeField] private float currentFuel = 10000; //in ml
+
+  [SerializeField] private float maxBattery = 240000; //in RF
+
+  [SerializeField] private float currentBattery = 240000; //in RF
+  //END Tanks 
+
   //Generator
-  [SerializeField]
-  private float generatorConsumptionOfFuelPerSecond = 21; //in ml
-  
-  [SerializeField]
-  private float generatorRFOutputPerSecond = 1000; //in RF
-  
-  [SerializeField]
-  private float totalConsumptionAlL = 1600; 
+  [Header("Generator")] [SerializeField] private float generatorConsumptionOfFuelPerSecond = 21; //in ml
+
+  [SerializeField] private float generatorRFOutputPerSecond = 1000; //in RF
+
+  [SerializeField] private float totalConsumptionAlL = 1600;
 
   private bool isRFSaturation = true;
   //END Generator
-  
+
   //Sub Position && Movement
-  [SerializeField]
+  [Header("Submarine Movement")] [SerializeField]
   private float depth = 0;
 
-  [SerializeField]
-  private float maxDivePressure = 1000f;
-  
-  [SerializeField]
-  private float maxPumpPressure = 20f;
-  
-  [SerializeField]
-  private float pressureDelta = 0f; 
-  
-  [SerializeField]
-  private float currentDivePressure = 0f;
-  
-  [SerializeField]
-  private float interiorPressure = 0f;
-  
-  [SerializeField]
-  private float maxInteriorPressurePumpPressure = 20f;
-  
-  [SerializeField]
-  private float interiorPressurePumpPressure = 0f;
-  
-  [SerializeField]
-  private float maxPressureDifference = 250f;
-  
-  [SerializeField]
-  private float exteriorPressureFactor = 1f;
+  [SerializeField] private float maxDivePressure = 1000f;
 
-  [SerializeField]
-  private float submarineRotation = 0;
+  [SerializeField] private float maxPumpPressure = 20f;
 
-  [SerializeField]
-  private float submarineMaxThrust = 20f;
-  
-  [SerializeField] 
-  private float submarineThrust = 0;
+  [SerializeField] private float pressureDelta = 0f;
 
-  [SerializeField]
-  private float submarineRotationDampening = 0.2f;
+  [SerializeField] private float currentDivePressure = 0f;
+
+  [SerializeField] private float interiorPressure = 0f;
+
+  [SerializeField] private float maxInteriorPressurePumpPressure = 20f;
+
+  [SerializeField] private float interiorPressurePumpPressure = 0f;
+
+  [SerializeField] private float maxPressureDifference = 250f;
+
+  [SerializeField] private float exteriorPressureFactor = 1f;
+
+  [SerializeField] private float submarineRotation = 0;
+
+  [SerializeField] private float submarineMaxThrust = 20f;
+
+  [SerializeField] private float submarineThrust = 0;
+
+  [SerializeField] private float submarineRotationDampening = 0.2f;
   private float _submarineRotationSpeed = 0f;
 
-  [SerializeField]
-  private float playerVelocity = 0;
+  [SerializeField] private float playerVelocity = 0;
+  //END Sub Position && Movement
 
+  [Header("Player")] [SerializeField] private float playerRotation = 0;
 
-    //END Sub Position && Movement
+  [SerializeField] private float playerRotationSpeed = 0;
 
-    [SerializeField]
-  private float playerRotation = 0;
-  
-  [SerializeField]
-  private float playerRotationSpeed = 0;
+  [Header("Fish")] [SerializeField] private bool[] caughtFishIDs;
 
-  [SerializeField]
-  private bool[] caughtFishIDs;
+  [Header("Enviomnet")] [SerializeField] public Gradient fogGradient;
+  [SerializeField] public Gradient envGradient;
 
-  [SerializeField]
-  private float noiseLevel = 0;
-  
-  [SerializeField]
-  public Gradient fogGradient;
-  [SerializeField]
-  public Gradient envGradient;
-  
-  
-  
-  //PlayState
-  private PlayState playState;
+  [Header("Carbon")] [SerializeField] private float currentCarbon = 0;
+
+  [SerializeField] private float maxCarbon = 12000;
+
+  [SerializeField] private float carbonPerSec = 100;
 
   //MaschienState Dispaly && Warning
-  [SerializeField] 
-  private MaschienState lifeSupportState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState batteryState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState generatorState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState oTwoTankState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState oTwoInteriorState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState radioState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState engienState = MaschienState.Off;
+  [Header("Dispaly && Warning")] [SerializeField]
+  private MaschienState lifeSupportState = MaschienState.On;
 
-  [SerializeField] 
-  private MaschienState lightState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState midSpotState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState leftSpotState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState rightSpotState = MaschienState.Off;
-  
-  [SerializeField] 
-  private MaschienState pressureState = MaschienState.Off;
+  [SerializeField] private MaschienState batteryState = MaschienState.On;
+
+  [SerializeField] private MaschienState generatorState = MaschienState.On;
+
+  [SerializeField] private MaschienState oTwoTankState = MaschienState.On;
+
+  [SerializeField] private MaschienState oTwoInteriorState = MaschienState.On;
+
+  [SerializeField] private MaschienState radioState = MaschienState.On;
+
+  [SerializeField] private MaschienState engienState = MaschienState.Off;
+
+  [SerializeField] private MaschienState lightState = MaschienState.On;
+
+  [SerializeField] private MaschienState midSpotState = MaschienState.Off;
+
+  [SerializeField] private MaschienState leftSpotState = MaschienState.Off;
+
+  [SerializeField] private MaschienState rightSpotState = MaschienState.Off;
+
+  [SerializeField] private MaschienState pressureState = MaschienState.Off;
 
   //FuseBox
-  [SerializeField] private FuseState mainFuse = FuseState.On; //All
+  [Header("FuseBox")] [SerializeField] private FuseState mainFuse = FuseState.On; //All
 
   [SerializeField] private FuseState fuseOne = FuseState.On; //Pumps
-  
+
   [SerializeField] private FuseState fuseTwo = FuseState.On; //Jets
-  
+
   [SerializeField] private FuseState fuseThree = FuseState.On; //Lamps
-  
+
   [SerializeField] private FuseState fuseFour = FuseState.On; //Spots
-  
+
   [SerializeField] private FuseState fuseFive = FuseState.On; //Life
-  
+
   [SerializeField] private FuseState fuseSix = FuseState.On; //Sonar
   //End private
-  
+
   //Public
   //Public Tanks
   public float MaxFuel => maxFuel;
 
   public float CurrentFuel => currentFuel;
 
-  public float MaxOTwo => maxOTwo;
+  public float MaxOTwo
+  {
+    get { return maxDivePressure; }
+  }
 
-  public float CurrentOTwo => currentOTwo;
+  public float CurrentOTwo
+  {
+    get { return maxDivePressure - currentDivePressure; }
+  }
 
   public float MaxBattery => maxBattery;
 
@@ -222,6 +182,18 @@ public class GameState : MonoBehaviour
     set => cameraState = value;
   }
 
+  public bool Ghosts
+  {
+    get
+    {
+      if (playState == GameplayState.End)
+      {
+        return true;
+      }
+      return false;
+    }
+  }
+
   public float PlayerRotation
   {
     get => playerRotation;
@@ -231,7 +203,7 @@ public class GameState : MonoBehaviour
       {
         playerRotation = value - 360;
       }
-      else if(value < 0)
+      else if (value < 0)
       {
         playerRotation = value + 360;
       }
@@ -247,7 +219,7 @@ public class GameState : MonoBehaviour
     get => playerRotationSpeed;
     set => playerRotationSpeed = value;
   }
-  
+
   public float CurrentDepth
   {
     get => depth;
@@ -269,7 +241,7 @@ public class GameState : MonoBehaviour
       {
         submarineRotation = value - 360;
       }
-      else if(value < 0)
+      else if (value < 0)
       {
         submarineRotation = value + 360;
       }
@@ -283,7 +255,7 @@ public class GameState : MonoBehaviour
   public float SubmarineMaxThrust => submarineMaxThrust;
 
   public float MaxDivePressure => maxDivePressure;
-  
+
   public float CurrentDivePressure => currentDivePressure;
 
   public float PressureDelta
@@ -298,23 +270,23 @@ public class GameState : MonoBehaviour
     set => interiorPressure = value;
   }
 
-    public float PlayerVelocity
-    {
-        get => playerVelocity;
-        set => playerVelocity = value;
-    }
+  public float PlayerVelocity
+  {
+    get => playerVelocity;
+    set => playerVelocity = value;
+  }
 
-    public bool IsPlayerMovingSlowly()
-    {
-        return Mathf.Abs(PlayerVelocity) <= 2f;
-    }
+  public bool IsPlayerMovingSlowly()
+  {
+    return Mathf.Abs(PlayerVelocity) <= 2f;
+  }
 
-    public bool IsPlayerMovingVeryFast()
-    {
-        return Mathf.Abs(PlayerVelocity) >= 20f;
-    }
+  public bool IsPlayerMovingVeryFast()
+  {
+    return Mathf.Abs(PlayerVelocity) >= 20f;
+  }
 
-    public float MaxInteriorPressure => maxDivePressure;
+  public float MaxInteriorPressure => maxDivePressure;
 
   public float ExteriorPressure
   {
@@ -325,7 +297,12 @@ public class GameState : MonoBehaviour
 
   public float MaxInteriorPressurePumpPressure => maxInteriorPressurePumpPressure;
 
-  public float MaxPumpPressure {get => maxPumpPressure; set => maxPumpPressure = value;}
+  public float MaxPumpPressure
+  {
+    get => maxPumpPressure;
+    set => maxPumpPressure = value;
+  }
+
   public float InteriorPressurePumpPressure
   {
     get => interiorPressurePumpPressure;
@@ -340,7 +317,11 @@ public class GameState : MonoBehaviour
 
   public float HullIntegrity => (Mathf.Abs(interiorPressure - ExteriorPressure) / maxPressureDifference);
 
-  public float NoiseLevel => noiseLevel;
+  public float IsSuffocation => (Mathf.Abs(currentCarbon / maxCarbon));
+
+  public float IsCharged => (Mathf.Abs(currentBattery / maxBattery));
+
+  public float IsOTwoEmpty => (Mathf.Abs(CurrentOTwo / MaxOTwo));
 
   public bool[] CaughtFishIDs
   {
@@ -348,19 +329,22 @@ public class GameState : MonoBehaviour
     set => caughtFishIDs = value;
   }
 
-  //MaschienState
+  //Visible MaschienState
   public MaschienState LifeSupportState
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseFive == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return lifeSupportState;
+        if (fuseFive == FuseState.On && isRFSaturation)
+        {
+          return lifeSupportState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -368,14 +352,17 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return batteryState;
+        if (isRFSaturation)
+        {
+          return batteryState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -401,17 +388,21 @@ public class GameState : MonoBehaviour
     }
   }
 
-  public MaschienState OTwoTankState {
+  public MaschienState OTwoTankState
+  {
     get
     {
-      if (mainFuse == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return oTwoTankState;
+        if (isRFSaturation)
+        {
+          return oTwoTankState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -419,14 +410,17 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return oTwoInteriorState;
+        if (isRFSaturation)
+        {
+          return oTwoInteriorState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -434,14 +428,17 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return radioState;
+        if (isRFSaturation)
+        {
+          return radioState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
     set
     {
@@ -456,14 +453,17 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && isRFSaturation)
+      if (mainFuse == FuseState.On)
       {
-        return engienState;
+        if (isRFSaturation)
+        {
+          return engienState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -488,19 +488,22 @@ public class GameState : MonoBehaviour
       }
     }
   }
-  
+
   public MaschienState PressureState
   {
     get
     {
       if (mainFuse == FuseState.On)
       {
-        return pressureState;
+        if (isRFSaturation)
+        {
+          return pressureState;
+        }
+
+        return MaschienState.Warning;
       }
-      else
-      {
-        return MaschienState.Off;
-      }
+
+      return MaschienState.Off;
     }
   }
 
@@ -619,7 +622,7 @@ public class GameState : MonoBehaviour
 //END Spot Lights
 
 //FuseBox
-public FuseState MainFuse
+  public FuseState MainFuse
   {
     get => mainFuse;
     set => mainFuse = value;
@@ -660,18 +663,27 @@ public FuseState MainFuse
     get => fuseSix;
     set => fuseSix = value;
   }
+
+  public GameplayState PlayState
+  {
+    get => playState;
+    set => playState = value;
+  }
   //End FuseBox
 
-  public Color GetCurrentEnvironmentColor() {
-    return envGradient.Evaluate(-depth/380f);
+  public Color GetCurrentEnvironmentColor()
+  {
+    return envGradient.Evaluate(-depth / 380f);
   }
-  public Color GetCurrentFogColor() {
-    return fogGradient.Evaluate(-depth/380f);
+
+  public Color GetCurrentFogColor()
+  {
+    return fogGradient.Evaluate(-depth / 380f);
   }
 
   void Start()
   {
-    caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX+1];
+    caughtFishIDs = new bool[FishDataVault.FISH_ID_MAX + 1];
     for (int i = 0; i <= FishDataVault.FISH_ID_MAX; i++)
     {
       caughtFishIDs[i] = false;
@@ -680,148 +692,231 @@ public FuseState MainFuse
 
   void Update()
   {
-    //Generate Energy
-    if (GeneratorState == MaschienState.On)
+    if (playState == GameplayState.New)
     {
-      float fuelConsumption = Time.deltaTime * generatorConsumptionOfFuelPerSecond;
-      if (currentFuel < fuelConsumption)
+      if (mainFuse == FuseState.On 
+      && fuseOne == FuseState.On
+      && fuseTwo == FuseState.On
+      && fuseThree == FuseState.On
+      && fuseFour == FuseState.On
+      && fuseFive == FuseState.On
+      && fuseSix == FuseState.On
+      && generatorState == MaschienState.On)
       {
-        //wenig Fuel
-        generatorState = MaschienState.Warning;
+        playState = GameplayState.Playing;
+      }
+    }
+    else if (playState == GameplayState.Playing)
+    {
+      //Generate Energy
+      if (GeneratorState == MaschienState.On)
+      {
+        float fuelConsumption = Time.deltaTime * generatorConsumptionOfFuelPerSecond;
+        if (currentFuel < fuelConsumption)
+        {
+          //wenig Fuel
+          generatorState = MaschienState.Warning;
+        }
+        else
+        {
+          //genug Fuel 
+          currentFuel -= fuelConsumption;
+          currentBattery += generatorRFOutputPerSecond * Time.deltaTime;
+          if (currentBattery > maxBattery)
+          {
+            currentBattery = maxBattery;
+          }
+        }
+      }
+
+      //Consume Energy
+      int currentPowerUnits = 0;
+      if (mainFuse == FuseState.On)
+      {
+        float diffPressure = Mathf.Abs(0 - interiorPressurePumpPressure);
+        if (fuseOne == FuseState.On && diffPressure > 0)
+        {
+          currentPowerUnits += 10;
+        }
+
+        float diffThrust = Mathf.Abs(0 - submarineThrust);
+        if (fuseTwo == FuseState.On && diffPressure > 0)
+        {
+          currentPowerUnits += 10;
+        }
+
+        if (fuseThree == FuseState.On && lightState != MaschienState.Off)
+        {
+          currentPowerUnits += 2;
+        }
+
+        if (fuseFour == FuseState.On)
+        {
+          if (leftSpotState != MaschienState.Off)
+          {
+            currentPowerUnits += 3;
+          }
+
+          if (midSpotState != MaschienState.Off)
+          {
+            currentPowerUnits += 3;
+          }
+
+          if (rightSpotState != MaschienState.Off)
+          {
+            currentPowerUnits += 3;
+          }
+        }
+
+        if (fuseFive == FuseState.On)
+        {
+          currentPowerUnits += 6;
+        }
+
+        if (fuseSix == FuseState.On)
+        {
+          currentPowerUnits += 6;
+        }
+      }
+
+      float currentPowerInRfPerTick = (totalConsumptionAlL * (currentPowerUnits / 43f)) * Time.deltaTime;
+
+      if (currentPowerInRfPerTick < currentBattery)
+      {
+        isRFSaturation = true;
+        currentBattery -= currentPowerInRfPerTick;
       }
       else
       {
-        //genug Fuel 
-        currentFuel -= fuelConsumption;
-        currentBattery += generatorRFOutputPerSecond * Time.deltaTime;
-        if (currentBattery > maxBattery)
+        isRFSaturation = false;
+        currentBattery = 0;
+      }
+      //END Consume Energy
+
+      //BEGIN Carbon
+      if (LifeSupportState == MaschienState.On)
+      {
+        currentCarbon = 0;
+      }
+      else
+      {
+        currentCarbon += carbonPerSec * Time.deltaTime;
+      }
+      //END Carbon
+
+      //BEGIN LifeSupport
+      if (IsSuffocation >= 1f)
+      {
+        //TODO Gameover
+        Debug.Log("Dead");
+      }
+      else if (IsSuffocation >= 0.75f)
+      {
+        lifeSupportState = MaschienState.Defective;
+      }
+      else if (IsSuffocation >= 0.25f)
+      {
+        lifeSupportState = MaschienState.Warning;
+      }
+      else
+      {
+        lifeSupportState = MaschienState.On;
+      }
+      //END LifeSupport
+
+      //Moving Submarine
+      if (JetState != MaschienState.Off)
+      {
+        _submarineRotationSpeed += submarineThrust * Time.deltaTime;
+      }
+
+      _submarineRotationSpeed *= (1 - submarineRotationDampening * Time.deltaTime);
+      //Submarine Player
+      SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
+
+      if (PumpState != MaschienState.Off)
+      {
+        //Interior Pressuer
+        interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
+        if (interiorPressure < 0)
         {
-          currentBattery = maxBattery;
+          interiorPressure = 0;
         }
-      }
-    }
-    
-    //Consume Energy
-    int currentPowerUnits = 0;
-    if (mainFuse == FuseState.On)
-    {
-      float diffPressure = Mathf.Abs(0 - interiorPressurePumpPressure);
-      if (fuseOne == FuseState.On && diffPressure > 0)
-      {
-        currentPowerUnits += 10;
-      }
-
-      float diffThrust = Mathf.Abs(0 - submarineThrust);
-      if (fuseTwo == FuseState.On && diffPressure > 0)
-      {
-        currentPowerUnits += 10;
-      }
-
-      if (fuseThree == FuseState.On && lightState != MaschienState.Off)
-      {
-        currentPowerUnits += 2;
-      }
-      
-      if (fuseFour == FuseState.On)
-      {
-        if (leftSpotState != MaschienState.Off)
+        else if (interiorPressure > maxDivePressure)
         {
-          currentPowerUnits += 3;
+          interiorPressure = maxDivePressure;
         }
-        if (midSpotState != MaschienState.Off)
-        {
-          currentPowerUnits += 3;
-        }
-        if (rightSpotState != MaschienState.Off)
-        {
-          currentPowerUnits += 3;
-        }
+
+        currentDivePressure += pressureDelta * Time.deltaTime;
       }
 
-      if (fuseFive == FuseState.On)
+      //Pressure Magic?!
+      depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
+      if (depth > 0)
       {
-        currentPowerUnits += 6;
+        depth = 0;
+      }
+      //END Moving Submarine
+
+      //BEGIN Warning lamps
+      if (HullIntegrity >= 1f)
+      {
+        // TODO: Game over
+        Debug.Log("Dead");
+      }
+      else if (HullIntegrity > 0.5f)
+      {
+        // Alarm
+        pressureState = MaschienState.Defective;
+      }
+      else if (HullIntegrity > 0.25)
+      {
+        pressureState = MaschienState.Warning;
+      }
+      else
+      {
+        pressureState = MaschienState.On;
       }
 
-      if (fuseSix == FuseState.On)
+
+      if (IsCharged <= 0.2f)
       {
-        currentPowerUnits += 6;
+        batteryState = MaschienState.Warning;
       }
-    }
-
-    float currentPowerInRfPerTick = (totalConsumptionAlL * (currentPowerUnits / 43f)) * Time.deltaTime;
-    
-    if (currentPowerInRfPerTick  < currentBattery)
-    {
-      isRFSaturation = true;
-      batteryState = MaschienState.Off;
-      currentBattery -= currentPowerInRfPerTick;
-    }
-    else
-    {
-      isRFSaturation = false;
-      batteryState = MaschienState.Warning;
-      currentBattery = 0;
-    }
-    //END Consume Energy
-    
-    //Moving Submarine
-    if (JetState != MaschienState.Off)
-    {
-      _submarineRotationSpeed += submarineThrust * Time.deltaTime;
-    }
-    _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
-    //Submarine Player
-    SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
-
-    if (PumpState != MaschienState.Off)
-    {
-      //Interior Pressuer
-      interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
-      if (interiorPressure < 0)
+      else
       {
-        interiorPressure = 0;
-      } 
-      else if (interiorPressure > maxDivePressure)
-      {
-        interiorPressure = maxDivePressure;
+        batteryState = MaschienState.On;
       }
-      
-      
-      currentDivePressure += pressureDelta * Time.deltaTime;
-    }
 
-    //Pressure Magic?!
-    depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
-    if (depth > 0)
+      if (IsOTwoEmpty >= 1f)
+      {
+        oTwoTankState = MaschienState.Defective;
+      }
+      else if (IsOTwoEmpty >= 0.5f)
+      {
+        oTwoTankState = MaschienState.Warning;
+      }
+      else
+      {
+        oTwoTankState = MaschienState.On;
+      }
+      //END Warning Lamps
+    }
+    else if(PlayState == GameplayState.End)
     {
-      depth = 0;
+      //TODO Fuck UP State
     }
-    //END Moving Submarine
-
-    //BEGIN Warning lamps
-
-    if(HullIntegrity >= 1f) {
-      // TODO: Game over
-      Debug.Log("Dead");
-    } else if (HullIntegrity > 0.5f) {
-      // Alarm
-      pressureState = MaschienState.Warning;
-    } else if(HullIntegrity > 0.25) {
-      pressureState = MaschienState.On;
-    } else {
-      pressureState = MaschienState.Off;
+    else if (PlayState == GameplayState.Gameover)
+    {
+      //TODO Back
     }
-
-    //END Warning Lamps
 
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
-    
+
     // Set fog according to gradient
     var color = GetCurrentFogColor();
-    RenderSettings.fogDensity = color.a*0.1f;
+    RenderSettings.fogDensity = color.a * 0.1f;
     RenderSettings.fogColor = color;
   }
-
 }
