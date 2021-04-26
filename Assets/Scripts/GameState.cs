@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -693,7 +694,18 @@ public class GameState : MonoBehaviour
 
   void Update()
   {
-    if (playState == GameplayState.New)
+        // Pressing ESC
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(playState != GameplayState.End)
+            {
+                SceneManager.LoadScene("MainMenu");
+                return;
+            }
+        }
+
+        if (playState == GameplayState.New)
     {
       playState = GameplayState.Playing;
     }
