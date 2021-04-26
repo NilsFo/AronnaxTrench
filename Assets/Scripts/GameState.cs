@@ -377,7 +377,7 @@ public class GameState : MonoBehaviour
     {
       if (mainFuse == FuseState.On)
       {
-        return OTwoTankState;
+        return oTwoTankState;
       }
       else
       {
