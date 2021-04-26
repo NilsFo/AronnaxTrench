@@ -91,15 +91,20 @@ public class ambientSoundController : MonoBehaviour
     
     public void PlayCamera(float pitch)
     {
-        camera.pitch = pitch;
-        camera.Play();
+        if(gameState.PlayState != GameState.GameplayState.End) {
+            camera.pitch = pitch;
+            camera.Play();
+        }
     }
     
     public void PlaySuccess()
     {
-        if(!success.isPlaying) {
+        if(gameState.PlayState != GameState.GameplayState.End) {
 
-            success.Play();
+            if(!success.isPlaying) {
+
+                success.Play();
+            }
         }
     }
 }

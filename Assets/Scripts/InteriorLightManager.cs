@@ -40,6 +40,8 @@ public class InteriorLightManager : MonoBehaviour
             InteriorLightStatus = IntLightStatus.On;
         if(manager.GameState.LightState == GameState.MaschienState.Warning)
             InteriorLightStatus = IntLightStatus.Alarm;
+        if(manager.GameState.PlayState == GameState.GameplayState.End)
+            InteriorLightStatus = IntLightStatus.Alarm;
         
         if(interiorLightStatus == IntLightStatus.Alarm) {
             t += Time.deltaTime;

@@ -16,6 +16,8 @@ public class EquipmentFailureTrigger : MonoBehaviour
             triggered = true;
             if(failureType == FailureType.Tier1) {
                 Debug.Log("Triggering failure Tier 1");
+                FindObjectOfType<ambientSoundController>().PlayMetalHitSound();
+                FindObjectOfType<ambientSoundController>().PlayClick();
                 gameState.FuseOne = GameState.FuseState.Off;
                 gameState.FuseThree = GameState.FuseState.Off;
                 gameState.FuseFour = GameState.FuseState.Off;
@@ -23,6 +25,9 @@ public class EquipmentFailureTrigger : MonoBehaviour
 
             } else if (failureType == FailureType.Tier2) {
                 Debug.Log("Triggering failure Tier 2");
+                FindObjectOfType<ambientSoundController>().PlayMetalHitSound();
+                FindObjectOfType<ambientSoundController>().PlayGlassCrack();
+                FindObjectOfType<ambientSoundController>().PlayClick();
                 gameState.FuseOne = GameState.FuseState.Off;
                 gameState.FuseTwo = GameState.FuseState.Off;
                 gameState.FuseThree = GameState.FuseState.Off;
