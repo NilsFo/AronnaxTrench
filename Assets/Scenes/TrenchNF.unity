@@ -842,6 +842,7 @@ MonoBehaviour:
   submarineMaxThrust: 20
   submarineThrust: 0
   submarineRotationDampening: 0.2
+  playerVelocity: 0
   playerRotation: 0
   playerRotationSpeed: 0
   caughtFishIDs: 0000000000
@@ -1758,6 +1759,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49b5c5a1cfd816b4d8f2674152912b8d, type: 3}
+--- !u!1001 &862285900
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1191595344}
+    m_Modifications:
+    - target: {fileID: 59705166722234152, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: id
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234152, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 255106378}
+    - target: {fileID: 59705166722234152, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: myManager
+      value: 
+      objectReference: {fileID: 1051954993}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.105335
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -42.588127
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -76.472305
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59705166722234159, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+      propertyPath: m_Name
+      value: Fish3D
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+--- !u!4 &862285901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 59705166722234153, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
+  m_PrefabInstance: {fileID: 862285900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &875253742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7f4f7cb1e0ea8b441866a67df3ed0583, type: 3}
@@ -2306,6 +2381,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2afb01f942017b45a36f694a363f20f, type: 3}
+--- !u!1 &1191595343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191595344}
+  m_Layer: 0
+  m_Name: Temp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191595344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191595343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 862285901}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1246910876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3660,6 +3766,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5140647055826262003, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 255106378}
+    - target: {fileID: 5140647055826262003, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 2091851761}
     - target: {fileID: 5350577694708613593, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3692,6 +3806,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8784101517755923399, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 255106378}
+    - target: {fileID: 8784101517755923399, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 2091851761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: befa48ee0d12a4c41af6c546ef02ccb5, type: 3}
 --- !u!1001 &4550284927100037028

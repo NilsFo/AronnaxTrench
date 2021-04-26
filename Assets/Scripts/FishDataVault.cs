@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FishDataVault : MonoBehaviour
 {
-    public static readonly int FISH_ID_MAX = 15;
+    public static readonly int FISH_ID_MAX = 16;
 
     public TextAsset fishDataCSV;
     private string[] rows;
@@ -57,12 +57,6 @@ public class FishDataVault : MonoBehaviour
         return fishMaterials[id];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetMinDepth(int id)
     {
         return float.Parse(GetAllData(id)[2], CultureInfo.InvariantCulture);
@@ -77,7 +71,7 @@ public class FishDataVault : MonoBehaviour
     {
         List<int> ids = new List<int>();
 
-        for (int i = 0; i < FISH_ID_MAX; i++)
+        for (int i = 0; i <= FISH_ID_MAX; i++)
         {
             float minDepth = GetMinDepth(i);
             float maxDepth = GetMaxDepth(i);
