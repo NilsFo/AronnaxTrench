@@ -19,10 +19,12 @@ namespace UI.Switch
             if (manager.GameState.GeneratorState == GameState.MaschienState.Off)
             {
                 manager.GameState.GeneratorState = GameState.MaschienState.On;
+                FindObjectOfType<ambientSoundController>()?.PlayClick(1.1f);
             }
             else if(manager.GameState.GeneratorState == GameState.MaschienState.On)
             {
                 manager.GameState.GeneratorState = GameState.MaschienState.Off;
+                FindObjectOfType<ambientSoundController>()?.PlayClick(0.9f);
             }
         }
   

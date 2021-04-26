@@ -63,10 +63,12 @@ namespace UI.Switch
         if (manager.GameState.FuseOne == GameState.FuseState.Off)
         {
           manager.GameState.FuseOne = GameState.FuseState.On;
+          FindObjectOfType<ambientSoundController>()?.PlayClick(1.1f);
         }
         else
         {
           manager.GameState.FuseOne = GameState.FuseState.Off;
+          FindObjectOfType<ambientSoundController>()?.PlayClick(0.9f);
         }
       }
     }
