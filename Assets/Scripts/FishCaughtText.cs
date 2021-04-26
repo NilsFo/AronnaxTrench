@@ -18,14 +18,24 @@ public class FishCaughtText : MonoBehaviour
     public void UpdateText()
     {
         bool[] caughtList =  gameState.CaughtFishIDs;
-        int count = 0;
-        foreach(bool b in caughtList)
+        int caughtCount = 0;
+        int maxCount = caughtList.Length + 1;
+
+        foreach (bool b in caughtList)
         {
-            if (b) count = count + 1;
+            if (b) caughtCount = caughtCount + 1;
+        }
+        if (gameState.tookFotoOfMonster)
+        {
+            caughtCount = caughtCount + 1;
         }
 
-        text.text = "Discovered "+count+" out of "+caughtList.Length+" fish.";
+        text.text = "Discovered "+ caughtCount + " out of "+ maxCount + " fish.";
     }
+
+
+
+
 
 
 }
