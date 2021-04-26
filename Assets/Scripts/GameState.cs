@@ -69,6 +69,9 @@ public class GameState : MonoBehaviour
   
   [SerializeField]
   private float generatorRFOutputPerSecond = 1000; //in RF
+  
+  [SerializeField]
+  private float totalConsumptionAlL = 1600; 
 
   private bool isRFSaturation = true;
   //END Generator
@@ -306,7 +309,13 @@ public class GameState : MonoBehaviour
   public float InteriorPressurePumpPressure
   {
     get => interiorPressurePumpPressure;
-    set => interiorPressurePumpPressure = value;
+    set
+    {
+      if (Mathf.Abs(value) < maxInteriorPressurePumpPressure)
+      {
+        interiorPressurePumpPressure = value;
+      }
+    }
   }
 
   public float HullIntegrity => (Mathf.Abs(interiorPressure - ExteriorPressure) / maxPressureDifference);
@@ -324,7 +333,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseFive == FuseState.On)
+      if (mainFuse == FuseState.On && fuseFive == FuseState.On && isRFSaturation)
       {
         return lifeSupportState;
       }
@@ -339,7 +348,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On)
+      if (mainFuse == FuseState.On && isRFSaturation)
       {
         return batteryState;
       }
@@ -375,7 +384,7 @@ public class GameState : MonoBehaviour
   public MaschienState OTwoTankState {
     get
     {
-      if (mainFuse == FuseState.On)
+      if (mainFuse == FuseState.On && isRFSaturation)
       {
         return oTwoTankState;
       }
@@ -390,7 +399,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On)
+      if (mainFuse == FuseState.On && isRFSaturation)
       {
         return oTwoInteriorState;
       }
@@ -405,7 +414,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On)
+      if (mainFuse == FuseState.On && isRFSaturation)
       {
         return radioState;
       }
@@ -427,7 +436,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On)
+      if (mainFuse == FuseState.On && isRFSaturation)
       {
         return engienState;
       }
@@ -442,7 +451,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseThree == FuseState.On)
+      if (mainFuse == FuseState.On && fuseThree == FuseState.On && isRFSaturation)
       {
         return lightState;
       }
@@ -466,7 +475,52 @@ public class GameState : MonoBehaviour
     {
       if (mainFuse == FuseState.On)
       {
-        return midSpotState;
+        return pressureState;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
+
+  public MaschienState PumpState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On && fuseOne == FuseState.On && isRFSaturation)
+      {
+        return MaschienState.On;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
+
+  public MaschienState JetState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On && fuseTwo == FuseState.On && isRFSaturation)
+      {
+        return MaschienState.On;
+      }
+      else
+      {
+        return MaschienState.Off;
+      }
+    }
+  }
+
+  public MaschienState SonarState
+  {
+    get
+    {
+      if (mainFuse == FuseState.On && fuseSix == FuseState.On && isRFSaturation)
+      {
+        return MaschienState.On;
       }
       else
       {
@@ -481,7 +535,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On && isRFSaturation)
       {
         return midSpotState;
       }
@@ -503,7 +557,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On && isRFSaturation)
       {
         return leftSpotState;
       }
@@ -525,7 +579,7 @@ public class GameState : MonoBehaviour
   {
     get
     {
-      if (mainFuse == FuseState.On && fuseFour == FuseState.On)
+      if (mainFuse == FuseState.On && fuseFour == FuseState.On && isRFSaturation)
       {
         return rightSpotState;
       }
@@ -607,7 +661,7 @@ public class GameState : MonoBehaviour
   void Update()
   {
     //Generate Energy
-    if (generatorState == MaschienState.On)
+    if (GeneratorState == MaschienState.On)
     {
       float fuelConsumption = Time.deltaTime * generatorConsumptionOfFuelPerSecond;
       if (currentFuel < fuelConsumption)
@@ -628,23 +682,108 @@ public class GameState : MonoBehaviour
     }
     
     //Consume Energy
+    int currentPowerUnits = 0;
+    if (mainFuse == FuseState.On)
+    {
+      float diffPressure = Mathf.Abs(0 - interiorPressurePumpPressure);
+      if (fuseOne == FuseState.On && diffPressure > 0)
+      {
+        currentPowerUnits += 10;
+      }
+
+      float diffThrust = Mathf.Abs(0 - submarineThrust);
+      if (fuseTwo == FuseState.On && diffPressure > 0)
+      {
+        currentPowerUnits += 10;
+      }
+
+      if (fuseThree == FuseState.On && lightState != MaschienState.Off)
+      {
+        currentPowerUnits += 2;
+      }
+      
+      if (fuseFour == FuseState.On)
+      {
+        if (leftSpotState != MaschienState.Off)
+        {
+          currentPowerUnits += 3;
+        }
+        if (midSpotState != MaschienState.Off)
+        {
+          currentPowerUnits += 3;
+        }
+        if (rightSpotState != MaschienState.Off)
+        {
+          currentPowerUnits += 3;
+        }
+      }
+
+      if (fuseFive == FuseState.On)
+      {
+        currentPowerUnits += 6;
+      }
+
+      if (fuseSix == FuseState.On)
+      {
+        currentPowerUnits += 6;
+      }
+    }
+
+    float currentPowerInRfPerTick = (totalConsumptionAlL * (currentPowerUnits / 43f)) * Time.deltaTime;
     
+    if (currentPowerInRfPerTick  < currentBattery)
+    {
+      isRFSaturation = true;
+      batteryState = MaschienState.Off;
+      currentBattery -= currentPowerInRfPerTick;
+    }
+    else
+    {
+      isRFSaturation = false;
+      batteryState = MaschienState.Warning;
+      currentBattery = 0;
+    }
+    //END Consume Energy
     
-    
+    //Moving Submarine
+    if (JetState != MaschienState.Off)
+    {
+      _submarineRotationSpeed += submarineThrust * Time.deltaTime;
+      _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
+      //Submarine Player
+      SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
+    }
+
+    if (PumpState != MaschienState.Off)
+    {
+      //Interior Pressuer
+      interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
+      if (interiorPressure < 0)
+      {
+        interiorPressure = 0;
+      } 
+      else if (interiorPressure < maxDivePressure)
+      {
+        interiorPressure = maxDivePressure;
+      }
+  
+      //Pressure Magic?!
+      currentDivePressure += pressureDelta * Time.deltaTime;
+      depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
+      if (depth < 0)
+      {
+        depth = 0;
+      } 
+      else if (depth < maxDivePressure)
+      {
+        depth = maxDivePressure;
+      }
+      
+    }
+    //END Moving Submarine
+
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
-    
-    _submarineRotationSpeed += submarineThrust * Time.deltaTime;
-    _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
-    //Submarine Player
-    SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
-    
-    //Interior Pressuer
-    interiorPressure += interiorPressurePumpPressure * Time.deltaTime;
-
-    //Pressure Magic?!
-    currentDivePressure += pressureDelta * Time.deltaTime;
-    depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
     
     // Set fog according to gradient
     var color = GetCurrentFogColor();

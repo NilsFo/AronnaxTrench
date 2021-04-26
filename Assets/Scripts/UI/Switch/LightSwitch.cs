@@ -1,47 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LightSwitch : MonoBehaviour, IPointerClickHandler 
+namespace UI.Switch
 {
-  public ShipUiManager manager;
+  public class LightSwitch : MonoBehaviour, IPointerClickHandler 
+  {
+    public ShipUiManager manager;
   
-  public GameObject off;
-  public GameObject mid;
-  public GameObject on;
+    public GameObject off;
+    public GameObject mid;
+    public GameObject on;
 
-  public void OnPointerClick(PointerEventData eventData)
-  {
-    if (manager.GameState.LightState == GameState.MaschienState.Off)
-    {
-      manager.GameState.LightState = GameState.MaschienState.On;
-    }
-    else
-    {
-      manager.GameState.LightState = GameState.MaschienState.Off;
-    }
-  }
+    public static bool isOn = true;
   
-  void FixedUpdate()
-  {
-    if (manager.GameState.LightState == GameState.MaschienState.On)
+    public void OnPointerClick(PointerEventData eventData)
     {
-      off.SetActive(false);
-      on.SetActive(true);
-      mid.SetActive(false);
+      isOn = !isOn;
     }
-    else if (manager.GameState.LightState == GameState.MaschienState.Off)
+  
+    void FixedUpdate()
     {
-      off.SetActive(true);
-      on.SetActive(false);
-      mid.SetActive(false);
-    }
-    else
-    {
-      off.SetActive(false);
-      on.SetActive(false);
-      mid.SetActive(true);
+      if (isOn)
+      {
+        off.SetActive(false);
+        on.SetActive(true);
+        mid.SetActive(false);
+        manager.GameState.LightState = GameState.MaschienState.On;
+      }
+      else
+      {
+        off.SetActive(true);
+        on.SetActive(false);
+        mid.SetActive(false);
+        manager.GameState.LightState = GameState.MaschienState.Off;
+      }
     }
   }
 }

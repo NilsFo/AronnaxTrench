@@ -11,37 +11,28 @@ public class RightSpotSwitch : MonoBehaviour, IPointerClickHandler
     public GameObject mid;
     public GameObject on;
     
+    public static bool isOn = true;
+    
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (manager.GameState.RightSpotState == GameState.MaschienState.Off)
-        {
-            manager.GameState.RightSpotState = GameState.MaschienState.On;
-        }
-        else
-        {
-            manager.GameState.RightSpotState = GameState.MaschienState.Off;
-        }
+        isOn = !isOn;
     }
   
     void FixedUpdate()
     {
-        if (manager.GameState.RightSpotState == GameState.MaschienState.On)
+        if (isOn)
         {
             off.SetActive(false);
             on.SetActive(true);
             mid.SetActive(false);
+            manager.GameState.RightSpotState = GameState.MaschienState.On;
         }
-        else if (manager.GameState.RightSpotState == GameState.MaschienState.Off)
+        else
         {
             off.SetActive(true);
             on.SetActive(false);
             mid.SetActive(false);
-        }
-        else
-        {
-            off.SetActive(false);
-            on.SetActive(false);
-            mid.SetActive(true);
+            manager.GameState.RightSpotState = GameState.MaschienState.Off;
         }
     }
 }

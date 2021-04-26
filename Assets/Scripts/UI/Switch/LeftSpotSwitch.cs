@@ -11,37 +11,28 @@ namespace UI.Switch
         public GameObject mid;
         public GameObject on;
     
+        public static bool isOn = true;
+        
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (manager.GameState.LeftSpotState == GameState.MaschienState.Off)
-            {
-                manager.GameState.LeftSpotState = GameState.MaschienState.On;
-            }
-            else
-            {
-                manager.GameState.LeftSpotState = GameState.MaschienState.Off;
-            }
+            isOn = !isOn;
         }
   
         void FixedUpdate()
         {
-            if (manager.GameState.LeftSpotState == GameState.MaschienState.On)
+            if (isOn)
             {
                 off.SetActive(false);
                 on.SetActive(true);
                 mid.SetActive(false);
+                manager.GameState.LeftSpotState = GameState.MaschienState.On;
             }
-            else if (manager.GameState.LeftSpotState == GameState.MaschienState.Off)
+            else
             {
                 off.SetActive(true);
                 on.SetActive(false);
                 mid.SetActive(false);
-            }
-            else
-            {
-                off.SetActive(false);
-                on.SetActive(false);
-                mid.SetActive(true);
+                manager.GameState.LeftSpotState = GameState.MaschienState.Off;
             }
         }
     }

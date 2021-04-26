@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,11 @@ public class SliderSetSubThrust : MonoBehaviour
   
   public ShipUiManager manager;
   public float offset = 0.5f;
+  public int index;
 
+  public static float myValue = 0;
+  public static int changeIndex = 0;
+  
   void OnEnable () 
   {
     slider.onValueChanged.AddListener(ChangeValue);
@@ -23,7 +28,17 @@ public class SliderSetSubThrust : MonoBehaviour
   
   void ChangeValue(float value)
   {
-    manager.GameState.SubmarineThrust = manager.GameState.SubmarineMaxThrust * ((value - offset) * 2);
+    myValue = value;
+    changeIndex = index;
+    manager.GameState.SubmarineThrust = manager.GameState.SubmarineMaxThrust * ((myValue - offset) * 2);
   }
 
+  void Update()
+  {
+    float diff = Mathf.Abs(slider.value = myValue);
+    if (changeIndex != index && diff >= 0)
+    {
+      slider.value = myValue;
+    }
+  }
 }
