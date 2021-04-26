@@ -16,6 +16,8 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
     private float camFlash;
     public Image camFlashOverlay;
 
+    public GameObject monsterFish;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if(cameraIdleCursor.gameObject.activeInHierarchy) {
@@ -74,10 +76,20 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                         //Debug.Log(ray);
                         var hits = Physics.RaycastAll(ray.origin, ray.direction, 100);
                         foreach(var hit in hits) {
+                            print(hit.transform.gameObject.name);
+
                             FishAI fish = hit.transform.GetComponent<FishAI>();
                             if(fish != null) {
                                 fish.Catch();  // TODO: sound if something is catched?
                                 fishcount++;
+                            }
+
+                            MoveAlongPath monsterPath = hit.transform.GetComponent<MoveAlongPath>();
+                            if (monsterPath != null && !gameState.tookFotoOfMonster)
+                            {
+                                print("You took a picture of the monster! Ending game...");
+                                gameState.tookFotoOfMonster = true;
+                                gameState.Camera = GameState.CameraState.Disarm;
                             }
                         }
                     }

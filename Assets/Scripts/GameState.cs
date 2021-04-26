@@ -146,7 +146,9 @@ public class GameState : MonoBehaviour
   
   
   //PlayState
-  private PlayState playState;
+  public PlayState playState;
+
+  public bool tookFotoOfMonster = false;
 
   //MaschienState Dispaly && Warning
   [SerializeField] 
@@ -803,7 +805,7 @@ public FuseState MainFuse
 
     if(HullIntegrity >= 1f) {
       // TODO: Game over
-      Debug.Log("Dead");
+      // Debug.Log("Dead");
     } else if (HullIntegrity > 0.5f) {
       // Alarm
       pressureState = MaschienState.Warning;

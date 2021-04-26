@@ -57,7 +57,7 @@ public class FishManagerAI : MonoBehaviour
         // Remove this later
         if (gameState.IsPlayerMovingVeryFast())
         {
-            print("Slow down! You are very fast!");
+            // print("Slow down! You are very fast!");
         }
     }
 
@@ -184,6 +184,16 @@ public class FishManagerAI : MonoBehaviour
         }
 
         return list;
+    }
+
+    public void deleteAllFish()
+    {
+        foreach(GameObject fish in myFish)
+        {
+            Destroy(fish);
+        }
+        myFish.Clear();
+        idleFish.Clear();
     }
 
 }
