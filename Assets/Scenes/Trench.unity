@@ -882,24 +882,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669697a211a37bd48af9bba02eee047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuel: 1000
-  currentFuel: 1000
-  maxOTwo: 1000
-  currentOTwo: 1000
-  maxBattery: 1000
-  currentBattery: 1000
+  maxFuel: 10000
+  currentFuel: 10000
+  maxOTwo: 20000
+  currentOTwo: 20000
+  maxBattery: 240000
+  currentBattery: 240000
   cameraState: 0
   generatorConsumptionOfFuelPerSecond: 21
   generatorRFOutputPerSecond: 1000
+  totalConsumptionAlL: 1600
   depth: -2
   maxDivePressure: 3800
   maxPumpPressure: 80
   pressureDelta: 0
   currentDivePressure: 300
-  interiorPressure: 0
+  interiorPressure: 300
   maxInteriorPressurePumpPressure: 20
   interiorPressurePumpPressure: 0
-  maxPressureDifference: 250
+  maxPressureDifference: 1000
   exteriorPressureFactor: -10
   submarineRotation: 0
   submarineMaxThrust: 15
@@ -986,7 +987,7 @@ MonoBehaviour:
   fuseThree: 0
   fuseFour: 0
   fuseFive: 0
-  fuseSix: 0
+  fuseSix: 1
 --- !u!4 &255106379
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,7 +1460,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 641f74de9d3d6944d82446aae2da55fb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.707
   m_Pitch: 1
   Loop: 0
   Mute: 0

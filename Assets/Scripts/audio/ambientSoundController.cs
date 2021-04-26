@@ -27,7 +27,7 @@ public class ambientSoundController : MonoBehaviour
 
 
     private void MetalHitSound() {
-        if(Mathf.Abs(gameState.ExteriorPressure - gameState.InteriorPressure) > 200) {
+        if(gameState.HullIntegrity > 0.5f) {
             if(!metalHit.isPlaying) {
                 if(Random.Range(0f,1f) < 0.2f) {
                     metalHit.pitch = Random.Range(0.7f, 1.1f);
@@ -38,9 +38,9 @@ public class ambientSoundController : MonoBehaviour
         }
     }
     private void GlassCrackSound() {
-        if(Mathf.Abs(gameState.ExteriorPressure - gameState.InteriorPressure) > 500) {
+        if(gameState.HullIntegrity > 0.8f) {
             if(!glassCrack.isPlaying) {
-                if(Random.Range(0f,1f) < 0.1f) {
+                if(Random.Range(0f,1f) < 0.2f) {
                     glassCrack.pitch = Random.Range(0.9f, 1.1f);
                     glassCrack.Play();
                 }

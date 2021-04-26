@@ -769,10 +769,10 @@ public FuseState MainFuse
     if (JetState != MaschienState.Off)
     {
       _submarineRotationSpeed += submarineThrust * Time.deltaTime;
-      _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
-      //Submarine Player
-      SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
     }
+    _submarineRotationSpeed *= (1 - submarineRotationDampening*Time.deltaTime);
+    //Submarine Player
+    SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
 
     if (PumpState != MaschienState.Off)
     {
@@ -782,25 +782,38 @@ public FuseState MainFuse
       {
         interiorPressure = 0;
       } 
-      else if (interiorPressure < maxDivePressure)
+      else if (interiorPressure > maxDivePressure)
       {
         interiorPressure = maxDivePressure;
       }
-  
-      //Pressure Magic?!
-      currentDivePressure += pressureDelta * Time.deltaTime;
-      depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
-      if (depth < 0)
-      {
-        depth = 0;
-      } 
-      else if (depth < maxDivePressure)
-      {
-        depth = maxDivePressure;
-      }
       
+      
+      currentDivePressure += pressureDelta * Time.deltaTime;
+    }
+
+    //Pressure Magic?!
+    depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
+    if (depth > 0)
+    {
+      depth = 0;
     }
     //END Moving Submarine
+
+    //BEGIN Warning lamps
+
+    if(HullIntegrity >= 1f) {
+      // TODO: Game over
+      Debug.Log("Dead");
+    } else if (HullIntegrity > 0.5f) {
+      // Alarm
+      pressureState = MaschienState.Warning;
+    } else if(HullIntegrity > 0.25) {
+      pressureState = MaschienState.On;
+    } else {
+      pressureState = MaschienState.Off;
+    }
+
+    //END Warning Lamps
 
     //Rotated Player 
     PlayerRotation = PlayerRotationSpeed * Time.deltaTime + PlayerRotation;
