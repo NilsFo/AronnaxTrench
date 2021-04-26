@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using PathCreation;
 
-public class FishAI : MonoBehaviour, IPointerClickHandler
+public class FishAI : MonoBehaviour
 {
 
     public static readonly bool SELF_CATCH_ENABLED = false;
@@ -136,12 +136,6 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         return true;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        print("Player click: "+fishName);
-        Catch();
-    }
-
     public bool Catch()
     { 
         bool[] caughtList = gameState.CaughtFishIDs;
@@ -149,7 +143,7 @@ public class FishAI : MonoBehaviour, IPointerClickHandler
         if (!alreadyCaught)
         {
             caughtList[id] = true;
-            print("New Catch!!");
+            print("New Catch! You just caught a: "+fishName);
             return true;
         } else {
             return false;
