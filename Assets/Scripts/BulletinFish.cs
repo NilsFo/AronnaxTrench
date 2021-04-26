@@ -19,7 +19,9 @@ public class BulletinFish : MonoBehaviour
     void Start()
     {
         myImage.gameObject.SetActive(false);
-        myText.gameObject.SetActive(false);
+
+        myText.text = "???";
+        myText.gameObject.SetActive(true);
     }
 
     private void FixedUpdate()
@@ -39,7 +41,7 @@ public class BulletinFish : MonoBehaviour
     public void Unlock()
     {
         myText.text = dataVault.GetName(id);
-        myImage.sprite = dataVault.GetSprite(id);
+        myImage.gameObject.SetActive(true);
 
         var tempColor = myImage.color;
         tempColor.a = 1f;

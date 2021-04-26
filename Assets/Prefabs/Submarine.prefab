@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 4550284926503417919}
   - component: {fileID: 4550284926503417912}
   - component: {fileID: 4222766365523445023}
+  - component: {fileID: 2288023457337102607}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -506,8 +507,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOrigin: {fileID: 4550284926865933369}
   fishManager: {fileID: 0}
-  creationCount: 20
-  maxDepth: 300
+  creationCount: 25
+  minDepth: 0
+  maxDepth: -300
+--- !u!114 &2288023457337102607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4550284926503417918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb6d335e7e066d40aef99e4ab5a303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOrigin: {fileID: 0}
+  fishManager: {fileID: 0}
+  creationCount: 15
+  minDepth: 0
+  maxDepth: -100
 --- !u!1 &4550284926596789254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,6 +1611,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 729665809859065334, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172335299845288899, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4298067359567724026, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}

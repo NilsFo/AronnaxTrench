@@ -10,6 +10,7 @@ public class Finale : MonoBehaviour
     public Gradient FadeoutColorGradient;
     public Image overlayImage;
     public Text thanksText;
+    public Text fishText;
     public string nextSceneName = "MainMenu";
 
     public float finaleStartDepth = -370;
@@ -76,6 +77,7 @@ public class Finale : MonoBehaviour
                 if(fadeoutCurrent > textDelay)
                 {
                     thanksText.enabled = true;
+                    fishText.enabled = true;
                 }
             }
         }
@@ -84,7 +86,7 @@ public class Finale : MonoBehaviour
         {
             if (fadeoutCurrent > textDelay)
             {
-                print("Loading next szene");
+                print("Loading next scene");
                 SceneManager.LoadSceneAsync(nextSceneName);
             }
         }
