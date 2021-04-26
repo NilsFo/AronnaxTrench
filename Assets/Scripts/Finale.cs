@@ -40,7 +40,7 @@ public class Finale : MonoBehaviour
         //print("state: "+gameState.playState);
 
         // Checking and changing states
-        if (!(gameState.playState == GameState.PlayState.End))
+        if (!(gameState.PlayState == GameState.GameplayState.End))
         {
             if (gameState.CurrentDepth <= finaleStartDepth)
             {
@@ -54,7 +54,7 @@ public class Finale : MonoBehaviour
         }
         
 
-        if (gameState.playState == GameState.PlayState.End)
+        if (gameState.PlayState == GameState.GameplayState.End)
         {
             secondsSinceEnd = secondsSinceEnd + Time.deltaTime;
         }
@@ -93,7 +93,7 @@ public class Finale : MonoBehaviour
     public void InitEnding()
     {
         print("Initiating the end.");
-        gameState.playState = GameState.PlayState.End;
+        gameState.PlayState = GameState.GameplayState.End;
         monsterMover.walking = true;
 
         // TODO spawn tentacles here ??

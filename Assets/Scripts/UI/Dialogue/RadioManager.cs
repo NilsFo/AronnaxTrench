@@ -37,7 +37,6 @@ public class RadioManager : MonoBehaviour
         }
         closestX = Mathf.Min(closestX, rightEdge.position.x-420);
         closestX = Mathf.Max(closestX, leftEdge.position.x+450);
-        Debug.Log(closestX);
         transform.position = new Vector3(closestX, radioPos.position.y, 0);
 
         if(!breakerTutorial && gameState.FuseOne == GameState.FuseState.On) {

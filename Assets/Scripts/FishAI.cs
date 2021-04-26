@@ -8,7 +8,7 @@ using PathCreation;
 public class FishAI : MonoBehaviour
 {
 
-    public static readonly bool SELF_CATCH_ENABLED = true;
+    public static readonly bool SELF_CATCH_ENABLED = false;
 
     public bool allowAutoDespawn = false;
     public float movementSeedX;

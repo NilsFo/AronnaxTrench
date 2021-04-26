@@ -2,34 +2,59 @@ using UnityEngine;
 
 namespace UI.Lamps
 {
-    public class RadioStateLampInteraktions : MonoBehaviour
+  public class RadioStateLampInteraktions : MonoBehaviour
+  {
+    public ShipUiManager manager;
+
+    public GameObject off;
+    public GameObject on;
+    public GameObject warn;
+
+    private float _maxTime = Mathf.PI * 2;
+    private float _timer = 0;
+    private float speed = 4f;
+
+    void FixedUpdate()
     {
-        public ShipUiManager manager;
+      _timer += Time.deltaTime;
+      if (_timer > _maxTime)
+      {
+        _timer = 0;
+      }
 
-        public GameObject off;
-        public GameObject on;
-        public GameObject warn;
-
-        void FixedUpdate()
+      if (manager.GameState.RadioState == GameState.MaschienState.On)
+      {
+        off.SetActive(false);
+        on.SetActive(true);
+        warn.SetActive(false);
+      }
+      else if (manager.GameState.RadioState == GameState.MaschienState.Off)
+      {
+        off.SetActive(true);
+        on.SetActive(false);
+        warn.SetActive(false);
+      }
+      else if (manager.GameState.RadioState == GameState.MaschienState.Defective)
+      {
+        if (Mathf.Sin(_timer * speed) > 0)
         {
-            if (manager.GameState.RadioState == GameState.MaschienState.On)
-            {
-                off.SetActive(false);
-                on.SetActive(true);
-                warn.SetActive(false);
-            }
-            else if (manager.GameState.RadioState == GameState.MaschienState.Off)
-            {
-                off.SetActive(true);
-                on.SetActive(false);
-                warn.SetActive(false);
-            }
-            else
-            {
-                off.SetActive(false);
-                on.SetActive(false);
-                warn.SetActive(true);
-            }
+          off.SetActive(true);
+          warn.SetActive(false);
         }
+        else
+        {
+          off.SetActive(false);
+          warn.SetActive(true);
+        }
+
+        on.SetActive(false);
+      }
+      else
+      {
+        off.SetActive(false);
+        on.SetActive(false);
+        warn.SetActive(true);
+      }
     }
+  }
 }

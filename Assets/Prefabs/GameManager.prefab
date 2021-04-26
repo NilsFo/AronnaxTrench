@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5308028110753970524
+--- !u!1 &7831480891767134432
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5308028110753970526}
-  - component: {fileID: 5308028110753970527}
+  - component: {fileID: 7831480891767134434}
+  - component: {fileID: 7831480891767134435}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5308028110753970526
+--- !u!4 &7831480891767134434
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308028110753970524}
+  m_GameObject: {fileID: 7831480891767134432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 739.9344, y: 156.89183, z: 1830.0466}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,25 +31,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5308028110753970527
+--- !u!114 &7831480891767134435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308028110753970524}
+  m_GameObject: {fileID: 7831480891767134432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669697a211a37bd48af9bba02eee047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playState: 0
+  tookFotoOfMonster: 0
+  cameraState: 0
   maxFuel: 10000
   currentFuel: 10000
-  maxOTwo: 20000
-  currentOTwo: 20000
   maxBattery: 240000
   currentBattery: 240000
-  cameraState: 0
   generatorConsumptionOfFuelPerSecond: 21
   generatorRFOutputPerSecond: 1000
   totalConsumptionAlL: 1600
@@ -58,19 +58,19 @@ MonoBehaviour:
   maxPumpPressure: 80
   pressureDelta: 0
   currentDivePressure: 300
-  interiorPressure: 0
+  interiorPressure: 300
   maxInteriorPressurePumpPressure: 20
   interiorPressurePumpPressure: 0
-  maxPressureDifference: 250
+  maxPressureDifference: 1000
   exteriorPressureFactor: -10
   submarineRotation: 0
   submarineMaxThrust: 15
   submarineThrust: 0
   submarineRotationDampening: 0.8
+  playerVelocity: 0
   playerRotation: 0
   playerRotationSpeed: 0
   caughtFishIDs: 0000000000
-  noiseLevel: 0
   fogGradient:
     serializedVersion: 2
     key0: {r: 0.50445, g: 0.73131627, b: 0.9811321, a: 0.44705883}
@@ -129,22 +129,25 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  lifeSupportState: 1
-  batteryState: 1
+  currentCarbon: 0
+  maxCarbon: 12000
+  carbonPerSec: 100
+  lifeSupportState: 0
+  batteryState: 0
   generatorState: 1
-  oTwoTankState: 1
-  oTwoInteriorState: 1
-  radioState: 1
-  engienState: 1
-  lightState: 1
+  oTwoTankState: 0
+  oTwoInteriorState: 0
+  radioState: 0
+  engienState: 0
+  lightState: 0
   midSpotState: 1
   leftSpotState: 1
   rightSpotState: 1
-  pressureState: 1
+  pressureState: 0
   mainFuse: 0
-  fuseOne: 0
-  fuseTwo: 0
+  fuseOne: 1
+  fuseTwo: 1
   fuseThree: 0
-  fuseFour: 0
+  fuseFour: 1
   fuseFive: 0
   fuseSix: 1
