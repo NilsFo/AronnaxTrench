@@ -105,8 +105,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 32
-  m_Range: 30
+  m_Intensity: 40
+  m_Range: 50
   m_SpotAngle: 75.22092
   m_InnerSpotAngle: 38.237553
   m_CookieSize: 10
@@ -264,8 +264,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 32
-  m_Range: 30
+  m_Intensity: 40
+  m_Range: 50
   m_SpotAngle: 67.6458
   m_InnerSpotAngle: 38.237553
   m_CookieSize: 10
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 4222766365523445023}
   m_Layer: 0
   m_Name: Submarine
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -775,8 +775,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 50.48
-  m_Range: 80
+  m_Intensity: 70
+  m_Range: 120
   m_SpotAngle: 84.09012
   m_InnerSpotAngle: 75.89221
   m_CookieSize: 10
@@ -883,8 +883,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 50.48
-  m_Range: 80
+  m_Intensity: 70
+  m_Range: 120
   m_SpotAngle: 84.09012
   m_InnerSpotAngle: 75.89221
   m_CookieSize: 10
@@ -1597,6 +1597,14 @@ PrefabInstance:
     - target: {fileID: 4298067359567724026, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}
       propertyPath: m_Name
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981903606787770104, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}
+      propertyPath: speedY
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981903606787770104, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}
+      propertyPath: magniudeY
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9e253f900c45445b6682a026f3e1a8, type: 3}

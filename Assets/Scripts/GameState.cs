@@ -787,7 +787,8 @@ public class GameState : MonoBehaviour
       //BEGIN Carbon
       if (LifeSupportState == MaschienState.On)
       {
-        currentCarbon = 0;
+        currentCarbon -= 5*carbonPerSec * Time.deltaTime;
+        currentCarbon = Mathf.Max(currentCarbon, 0);
       }
       else
       {
@@ -798,16 +799,18 @@ public class GameState : MonoBehaviour
       //BEGIN LifeSupport
       if (IsSuffocation >= 1f)
       {
-        //TODO Gameover
-        Debug.Log("Dead");
+        // Death by suffocation
+        FindObjectOfType<RadioManager>()?.RadioMessage("Your oxygen levels are too low! We are pulling you back out!", 7.0f);
+
+        PlayState = GameplayState.Gameover;
       }
-      else if (IsSuffocation >= 0.75f)
+      else if (IsSuffocation >= 0.5f)
       {
-        lifeSupportState = MaschienState.Defective;
+        oTwoInteriorState = MaschienState.Defective;
       }
-      else if (IsSuffocation >= 0.25f)
+      else if (IsSuffocation >= 0.2f)
       {
-        lifeSupportState = MaschienState.Warning;
+        oTwoInteriorState = MaschienState.Warning;
       }
       else
       {
@@ -852,8 +855,11 @@ public class GameState : MonoBehaviour
       //BEGIN Warning lamps
       if (HullIntegrity >= 1f)
       {
-        // TODO: Game over
-        Debug.Log("Dead");
+        // Death by Crushing
+        FindObjectOfType<RadioManager>()?.RadioMessage("Your pressure sensors are going crazy! We are pulling you back out!", 7.0f);
+        FindObjectOfType<ambientSoundController>().PlayGlassCrack();
+        FindObjectOfType<ambientSoundController>().PlayMetalHitSound();
+        PlayState = GameplayState.Gameover;
       }
       else if (HullIntegrity > 0.5f)
       {
@@ -899,6 +905,11 @@ public class GameState : MonoBehaviour
     }
     else if (PlayState == GameplayState.Gameover)
     {
+      currentDivePressure-=200*Time.deltaTime;
+      depth += (ExteriorPressure - currentDivePressure) * Time.deltaTime * 0.01f;
+
+      _submarineRotationSpeed *= (1 - submarineRotationDampening * Time.deltaTime);
+      SubmarineRotation += _submarineRotationSpeed * Time.deltaTime;
       //TODO Back
     }
 

@@ -23,7 +23,10 @@ public class RadioManager : MonoBehaviour
     }
 
 
-
+    public void RadioMessage(string message, float duration) {
+        textBubbleManager.ClearDialogueBoxes();
+        textBubbleManager.Say(transform, message, duration);
+    }
     
 
     // Update is called once per frame
