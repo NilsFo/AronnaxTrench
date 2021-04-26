@@ -72,15 +72,15 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                 //for(int j = -192; j <= 192; j+=64) {
                     //var rayScreenPos = localPos + new Vector2(i,j);
                     //var rayScreenPos = localPos + new Vector2(i+activeCamera.pixelWidth/2,j+activeCamera.pixelHeight/2);
-            for(int i = -4; i <= 4; i++) {
-                for(int j = -2; j <= 2; j++) {
+            for(int i = -8; i <= 8; i++) {
+                for(int j = -4; j <= 4; j++) {
                     
                     //if(newRect.Contains(rayScreenPos + rectPos)) {
                         //var ray = activeCamera.ScreenPointToRay(rayScreenPos);
-                        var ray = new Ray(activeCamera.transform.position, activeCamera.transform.forward*5+activeCamera.transform.localToWorldMatrix.MultiplyVector(new Vector3(i, j, 0)));
+                        var ray = new Ray(activeCamera.transform.position, activeCamera.transform.forward*5+activeCamera.transform.localToWorldMatrix.MultiplyVector(new Vector3(i/2, j/2, 0)));
                         Debug.DrawRay(ray.origin, ray.direction*20, Color.magenta, 20f);
                         //Debug.Log(ray);
-                        var hits = Physics.RaycastAll(ray.origin, ray.direction, 100);
+                        var hits = Physics.RaycastAll(ray.origin, ray.direction, 500);
                         foreach(var hit in hits) {
                             print(hit.transform.gameObject.name);
 
