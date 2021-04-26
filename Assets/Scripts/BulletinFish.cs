@@ -48,7 +48,7 @@ public class BulletinFish : MonoBehaviour
 
     public bool IsDiscovered()
     {
-        if (id < FishDataVault.FISH_ID_MAX)
+        if (id <= FishDataVault.FISH_ID_MAX)
         {
             return manager.GameState.CaughtFishIDs[id];
         }

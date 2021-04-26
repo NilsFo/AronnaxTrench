@@ -20,6 +20,7 @@ namespace UI
                 manager.GameState.Camera = GameState.CameraState.Armed;
             }
         }
+
         void FixedUpdate()
         {
             if (manager.GameState.Camera == GameState.CameraState.Armed)
