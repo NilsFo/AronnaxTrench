@@ -535,6 +535,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnBlockers
       objectReference: {fileID: 0}
+    - target: {fileID: 6720787474199438344, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30.343328
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720787474199438344, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -191.57
+      objectReference: {fileID: 0}
     - target: {fileID: 6919592233633683492, guid: df6d831886be5fb47b21c6dde4887ef1, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -4608,10 +4616,18 @@ PrefabInstance:
       propertyPath: fishManager
       value: 
       objectReference: {fileID: 1051954993}
+    - target: {fileID: 2288023457337102607, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: creationCount
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 2612369165234855392, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: fishManager
       value: 
       objectReference: {fileID: 1051954993}
+    - target: {fileID: 2612369165234855392, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: creationCount
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 2686799810890272587, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: gameState
       value: 
@@ -4620,6 +4636,10 @@ PrefabInstance:
       propertyPath: fishManager
       value: 
       objectReference: {fileID: 1051954993}
+    - target: {fileID: 4222766365523445023, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: creationCount
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 4550284926503417912, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: gameState
       value: 

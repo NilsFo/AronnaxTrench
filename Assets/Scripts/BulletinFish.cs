@@ -65,7 +65,7 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
         {
             if (IsDiscovered())
             {
-                text = dataVault.GetName(id);
+                text = "That's a '"+dataVault.GetName(id)+"'.";
             }
             else
             {
@@ -96,9 +96,9 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
         {
             text = "We have no information about this species. It might be very deep in the trench.";
         }
-        
+
         //Output the name of the GameObject that is being clicked
-        FindObjectOfType<RadioManager>().RadioMessage(text, 7f);
+        FindObjectOfType<RadioManager>().ReuqestRadioMessage(text,7f);
     }
 
 }

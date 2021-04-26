@@ -64,7 +64,11 @@ public class GameState : MonoBehaviour
   [SerializeField] private float totalConsumptionAlL = 1600;
 
   private bool isRFSaturation = true;
-  //END Generator
+    //END Generator
+
+  private float escapeTimerCurrent = 0;
+  private float escapeTimerTarget = 4;
+  private bool waitingForEscape = false;
 
   //Sub Position && Movement
   [Header("Submarine Movement")] [SerializeField]
@@ -710,15 +714,23 @@ public class GameState : MonoBehaviour
   void Update()
   {
         // Pressing ESC
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(playState != GameplayState.End)
             {
-                SceneManager.LoadScene("MainMenu");
-                return;
+                if (escapeTimerCurrent > 0)
+                {
+                    SceneManager.LoadScene("MainMenu");
+                    return;
+                }
+                else
+                {
+                    escapeTimerCurrent = escapeTimerTarget;
+                    FindObjectOfType<RadioManager>().ReuqestRadioMessage("Press ESC again to return to the surface.", 7f);
+                }
             }
         }
+        escapeTimerCurrent = escapeTimerCurrent - Time.deltaTime;
 
         if (playState == GameplayState.New)
     {

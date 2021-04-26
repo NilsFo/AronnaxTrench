@@ -17,27 +17,18 @@ public class UISceneChangerButton : MonoBehaviour
     {
         
         Cursor.visible = true;
-        operation = SceneManager.LoadSceneAsync(sceneName);
-        operation.allowSceneActivation = false;
+        //operation = SceneManager.LoadSceneAsync(sceneName);
+        //operation.allowSceneActivation = false;
 
         loadSceneBtn.onClick.AddListener(ChangeScene);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnMouseUp()
-    {
-        //operation.allowSceneActivation = true;
-        SceneManager.LoadScene(sceneName);
-    }
 
     public void ChangeScene() {
-        operation.allowSceneActivation = true;
+        //operation.allowSceneActivation = true;
         //SceneManager.LoadSceneAsync(sceneName); 
+
+        SceneManager.LoadScene(sceneName);
     }
 
 }
