@@ -64,6 +64,7 @@ namespace UI.Switch
         if (manager.GameState.FuseFive == GameState.FuseState.Off)
         {
           manager.GameState.FuseFive = GameState.FuseState.On;
+          FindObjectOfType<ambientSoundController>().PlayClick();
         }
         else
         {

@@ -1344,7 +1344,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 5
   m_TargetDisplay: 0
@@ -11441,6 +11441,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2835684198876761083}
     m_Modifications:
     - target: {fileID: 905931461189096301, guid: ec77107dc8a812a4e8b99edb5951924b, type: 3}
+      propertyPath: index
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 905931461189096301, guid: ec77107dc8a812a4e8b99edb5951924b, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 2632640605925133925}
@@ -12262,6 +12266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2835684198876761083}
     m_Modifications:
+    - target: {fileID: 8066751877537301784, guid: 08573f0dc40583e46b99360434bd770d, type: 3}
+      propertyPath: index
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8066751877537301784, guid: 08573f0dc40583e46b99360434bd770d, type: 3}
       propertyPath: manager
       value: 

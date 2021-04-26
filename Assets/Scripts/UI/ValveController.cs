@@ -46,7 +46,7 @@ namespace UI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            audioSource.Play();
+            //audioSource.Play();
         }
     }
 }

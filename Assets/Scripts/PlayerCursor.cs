@@ -164,6 +164,6 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
 
     void Start() {
         
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 }

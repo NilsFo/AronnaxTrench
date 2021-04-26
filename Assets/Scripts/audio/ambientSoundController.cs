@@ -9,6 +9,7 @@ public class ambientSoundController : MonoBehaviour
     public AudioSource metalHit;
     public AudioSource glassCrack;
     public AudioSource alarm;
+    public AudioSource click;
 
     void Start() {
         InvokeRepeating("probMetalHitSound", 0, 5.125f);
@@ -16,7 +17,7 @@ public class ambientSoundController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if(!engine.isPlaying && gameState.EngienState == GameState.MaschienState.On) {
             engine.Play();
@@ -26,19 +27,20 @@ public class ambientSoundController : MonoBehaviour
         }
         if(!alarm.isPlaying && 
             (gameState.PressureState == GameState.MaschienState.Defective
-            || gameState.OTwoInteriorState == GameState.MaschienState.Defective
-            || gameState.PlayerVelocityState == GameState.MaschienState.Defective)) {
+            || gameState.OTwoInteriorState == GameState.MaschienState.Defective)) {
                 alarm.loop = true;
                 alarm.Play();
             }
             else if(alarm.isPlaying && 
                 (gameState.PressureState != GameState.MaschienState.Defective
-                && gameState.OTwoInteriorState != GameState.MaschienState.Defective
-                && gameState.PlayerVelocityState != GameState.MaschienState.Defective)) {
+                && gameState.OTwoInteriorState != GameState.MaschienState.Defective)) {
                     alarm.loop = false;
                 }
     }
 
+    public void PlayClick() {
+        click.Play();
+    }
 
     private void probMetalHitSound() {
         if(gameState.HullIntegrity > 0.5f) {
