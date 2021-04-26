@@ -72,7 +72,7 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
             {
                 if (dataVault.GetRarity(id) == 0)
                 {
-                    text = "We have no information about this species. It might be deep in the trench?";
+                    text = "We have no information about this species. It might be deep in the trench.";
                 }
                 else
                 {
@@ -80,7 +80,7 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
                     {
                         if (dataVault.IsDepthBelowMax(id, depth))
                         {
-                            text = "It should be nearby. Keep looking.";
+                            text = "This species should be nearby. Keep looking.";
                         }
                         else
                         {
@@ -95,11 +95,11 @@ public class BulletinFish : MonoBehaviour, IPointerDownHandler
             }
         }else
         {
-            text = "We have no information about this species. It might be very deep in the trench?";
+            text = "We have no information about this species. It might be very deep in the trench.";
         }
         
         //Output the name of the GameObject that is being clicked
-        Debug.Log(text);
+        FindObjectOfType<RadioManager>().RadioMessage(text, 7f);
     }
 
 }

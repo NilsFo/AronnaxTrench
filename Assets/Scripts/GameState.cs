@@ -191,7 +191,7 @@ public class GameState : MonoBehaviour
       {
         return MaschienState.Defective;
       }
-      return MaschienState.Defective;
+      return MaschienState.On;
     }
   }
 
