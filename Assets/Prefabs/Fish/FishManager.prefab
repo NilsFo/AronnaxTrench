@@ -46,18 +46,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
   myFish: []
+  idleFish: []
   dataVault: {fileID: 1107834043851704517, guid: c195d7ca7ffbecb4b8b929a5efbd4489, type: 3}
   fishPrefab: {fileID: 59705166722234159, guid: 7992497ad1506504382dfe58bf7b00ea, type: 3}
   playerCamera: {fileID: 0}
   submarineCanvas: {fileID: 0}
   spawnDelay: 2
   spawnDelayJitter: 1
+  maxIdleFishCount: 12
   spawnPositionMinY: 50
   spawnPositionMaxY: 650
   currentCountDown: 0
   possiblePaths:
   - {fileID: 8229744353237473111}
   applyJitterToSpwawn: 1
+  blockingCubes: []
 --- !u!1 &4142118842324068480
 GameObject:
   m_ObjectHideFlags: 0

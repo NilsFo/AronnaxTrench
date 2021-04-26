@@ -52,9 +52,22 @@ public class RadioManager : MonoBehaviour
         }
     }
 
+    public bool AcceptsAmbientMessages()
+    {
+        return gameState.PlayState == GameState.GameplayState.Playing;
+    }
+
+    public void ReuqestRadioMessage(string text, float time)
+    {
+        if (AcceptsAmbientMessages())
+        {
+            RadioMessage(text, time);
+        }
+    }
+
     public void DialogueLine1() {
         if(!breakerTutorial)
-            textBubbleManager.Say(transform, "Radio check. Do you read, Nemo One?", 5);
+            textBubbleManager.Say(transform, "Radio check. Do you read, Olivaris One?", 5);
     }
     public void DialogueLine2() {
         if(!breakerTutorial)
