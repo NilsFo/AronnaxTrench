@@ -10,6 +10,8 @@ public class ambientSoundController : MonoBehaviour
     public AudioSource glassCrack;
     public AudioSource alarm;
     public AudioSource click;
+    public AudioSource sonar;
+    public AudioSource camera;
 
     void Start() {
         InvokeRepeating("probMetalHitSound", 0, 5.125f);
@@ -74,5 +76,21 @@ public class ambientSoundController : MonoBehaviour
             glassCrack.pitch = Random.Range(0.9f, 1.1f);
             glassCrack.Play();
         }
+    }
+
+    public void PlaySonar()
+    {
+        sonar.Play();
+    }
+
+    public void PlayCamera()
+    {
+        PlayCamera(1f);
+    }
+    
+    public void PlayCamera(float pitch)
+    {
+        camera.pitch = pitch;
+        camera.Play();
     }
 }

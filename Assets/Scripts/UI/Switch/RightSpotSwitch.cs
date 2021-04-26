@@ -32,6 +32,14 @@ public class RightSpotSwitch : Interactible, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         isOn = !isOn;
+        if (!isOn)
+        {
+            FindObjectOfType<ambientSoundController>()?.PlayClick(0.9f);
+        }
+        else
+        {
+            FindObjectOfType<ambientSoundController>()?.PlayClick(1.1f);
+        }
     }
   
     void FixedUpdate()

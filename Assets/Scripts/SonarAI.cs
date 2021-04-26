@@ -19,6 +19,9 @@ public class SonarAI : MonoBehaviour
     private float chaosTimer = 0;
     private bool chaosInvoked = false;
 
+    private float _maxTime = Mathf.PI * 2;
+    private float _timer = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,6 @@ public class SonarAI : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        
         if (IsFinale())
         {
             if (!chaosInvoked)
@@ -47,6 +49,13 @@ public class SonarAI : MonoBehaviour
         {
             clearBleps();
             UpdateNormally();
+            
+            _timer += Time.deltaTime;
+            if (_timer > _maxTime)
+            {
+                _timer = 0;
+                FindObjectOfType<ambientSoundController>()?.PlaySonar();
+            }
         }
     }
 
@@ -54,6 +63,13 @@ public class SonarAI : MonoBehaviour
     {
         clearBleps();
         UpdateChaos();
+        
+        _timer += Time.deltaTime;
+        if (_timer > _maxTime)
+        {
+            _timer = 0;
+            FindObjectOfType<ambientSoundController>()?.PlaySonar();
+        }
     }
 
     private void UpdateChaos()
