@@ -28,15 +28,16 @@ public class ambientSoundController : MonoBehaviour
         else if(engine.isPlaying && gameState.EngienState != GameState.MaschienState.On) {
             engine.Stop();
         }
-        if(!alarm.isPlaying && 
+        if(!alarm.isPlaying && gameState.PlayState != GameState.GameplayState.End &&
             (gameState.PressureState == GameState.MaschienState.Defective
             || gameState.OTwoInteriorState == GameState.MaschienState.Defective)) {
                 alarm.loop = true;
                 alarm.Play();
             }
             else if(alarm.isPlaying && 
-                (gameState.PressureState != GameState.MaschienState.Defective
-                && gameState.OTwoInteriorState != GameState.MaschienState.Defective)) {
+                ((gameState.PressureState != GameState.MaschienState.Defective
+                && gameState.OTwoInteriorState != GameState.MaschienState.Defective)
+                || gameState.PlayState == GameState.GameplayState.End)) {
                     alarm.loop = false;
                 }
     }
