@@ -22,7 +22,7 @@
 
 
 # LudumDare48
-Our Entry for Ludum Dare 48 Game Jam!
+Our Entry for Ludum Dare 48 Game Jam: https://ldjam.com/events/ludum-dare/48/expedition-into-the-aronnax-trench
 
 # Download and Play
 
