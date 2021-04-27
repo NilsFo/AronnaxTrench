@@ -4578,6 +4578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1864895197, guid: 2f2e2190d227af045abf68993e8c3806, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3429922127524008385, guid: 2f2e2190d227af045abf68993e8c3806, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4667,6 +4671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 547522736, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1437222726, guid: e8ca80655caf81848abd01eb2406c6b0, type: 3}
       propertyPath: gameState
       value: 
