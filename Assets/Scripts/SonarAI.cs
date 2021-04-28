@@ -74,7 +74,7 @@ public class SonarAI : MonoBehaviour
 
     private void UpdateChaos()
     {
-        print("chaos");
+//        print("chaos");
         chaosTimer = chaosTimer + Time.deltaTime;
 
         for (int i = 0; i < Random.Range(3,8); i++)

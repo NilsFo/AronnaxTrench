@@ -67,7 +67,7 @@ public class Finale : MonoBehaviour
             if (fadeoutDelayCurrent < fadeoutDelayTarget)
             {
                 fadeoutDelayCurrent = fadeoutDelayCurrent + Time.deltaTime;
-                print("Waiting for fadeout...: "+ fadeoutDelayCurrent);
+//                print("Waiting for fadeout...: "+ fadeoutDelayCurrent);
             }
             else
             {

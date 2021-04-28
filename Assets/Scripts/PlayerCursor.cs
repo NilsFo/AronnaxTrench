@@ -93,7 +93,7 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
                         //Debug.Log(ray);
                         var hits = Physics.RaycastAll(ray.origin, ray.direction, 500);
                         foreach(var hit in hits) {
-                            print(hit.transform.gameObject.name);
+//                            print(hit.transform.gameObject.name);
 
                             FishAI fish = hit.transform.GetComponent<FishAI>();
                             if(fish != null) {
@@ -178,6 +178,6 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
 
     void Start() {
         
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 }
