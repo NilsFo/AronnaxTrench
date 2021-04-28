@@ -58,9 +58,9 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
             Vector2 rectPos = new Vector2(newRect.x, newRect.y);
             Vector2 rectSize = new Vector2(newRect.width, newRect.height);
             
-            Debug.Log(mousePos);
-            Debug.Log(rectPos);
-            Debug.Log(rectSize);
+            //Debug.Log(mousePos);
+            //Debug.Log(rectPos);
+            //Debug.Log(rectSize);
 
             var texture = camTarget.GetComponent<UnityEngine.UI.RawImage>().texture;
             Camera activeCamera = null;
@@ -73,25 +73,23 @@ public class PlayerCursor : MonoBehaviour, IPointerClickHandler
             if(activeCamera == null)
                 return;
             
-            Debug.Log(activeCamera.pixelRect);
+            //Debug.Log(activeCamera.pixelRect);
             Vector2 camRectSize = new Vector2(activeCamera.pixelWidth, activeCamera.pixelHeight);
             Vector2 localPos = (mousePos - rectPos)/rectSize*camRectSize;
-            Debug.Log(localPos);
+            //Debug.Log(localPos);
 
             // Annihilate the fishes with a barrage of deadly raytraces
             int fishcount = 0;
             for(int i = -320; i <= 320; i+=64) {
                 for(int j = -192; j <= 192; j+=64) {
                     var rayScreenPos = localPos + new Vector2(i,j);
-                    //var rayScreenPos = localPos + new Vector2(i+activeCamera.pixelWidth/2,j+activeCamera.pixelHeight/2);
-            //for(int i = -8; i <= 8; i++) {
-              //  for(int j = -4; j <= 4; j++) {
                     
-                    if(activeCamera.pixelRect.Contains(rayScreenPos + rectPos)) {
+                    if(activeCamera.pixelRect.Contains(rayScreenPos)) {
                         //Debug.Log(rayScreenPos);
                         var ray = activeCamera.ScreenPointToRay(rayScreenPos);
+                        
                         //var ray = new Ray(activeCamera.transform.position, activeCamera.transform.forward*5+activeCamera.transform.localToWorldMatrix.MultiplyVector(new Vector3(i/2, j/2, 0)));
-                        Debug.DrawRay(ray.origin, ray.direction*20, Color.magenta, 20f);
+                        //Debug.DrawRay(ray.origin, ray.direction*20, Color.magenta, 20f);
                         //Debug.Log(ray);
                         var hits = Physics.RaycastAll(ray.origin, ray.direction, 500);
                         foreach(var hit in hits) {
