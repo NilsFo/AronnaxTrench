@@ -18,7 +18,7 @@ public class BillBoard : MonoBehaviour
     {
         if (target != null)
         {
-            transform.LookAt(transform.position, Vector3.up);
+            transform.LookAt(target.position, Vector3.up);
         }
     }
 }
