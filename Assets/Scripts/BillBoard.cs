@@ -19,6 +19,7 @@ public class BillBoard : MonoBehaviour
         if (target != null)
         {
             transform.LookAt(target.position, Vector3.up);
+            transform.Rotate(0,180,0);
         }
     }
 }
